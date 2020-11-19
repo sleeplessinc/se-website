@@ -18,13 +18,14 @@
   font-family: Montserrat;
 }
 
+.h1 {
+  font-family: Montserrat;
+}
+
 .carousel-item {
   height: 300px;
-
-  /* Create the parallax scrolling effect */
   background-attachment: scroll;
   background-position: center;
-  background-repeat: no-repeat;
   background-size: cover;
   vertical-align: middle;
 }
@@ -37,6 +38,15 @@
   background-color: rgba(0, 0, 0, 0.6);
   padding: 5px;
   border-radius: 15px;
+}
+
+.section-container {
+  align-content: center;
+  vertical-align: middle;
+  background-attachment: scroll;
+  background-position: center;
+  background-size: cover;
+  vertical-align: middle;
 }
 
 /* Small devices (landscape phones, 576px and up) */
