@@ -10,7 +10,7 @@
   transition: top 0.6s;
 }
 
-.navbar--hidden {
+.navbar-hidden {
   top: -60px;
 }
 

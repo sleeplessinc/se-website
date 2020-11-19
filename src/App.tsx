@@ -8,7 +8,7 @@ function App() {
       <header>
         <Navigation />
       </header>
-      <div className="container fluid"></div>
+      <div className="container-fluid"></div>
     </div>
   );
 }

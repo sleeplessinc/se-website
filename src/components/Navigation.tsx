@@ -40,7 +40,7 @@ const Navigation: React.FC = () => {
         'navbar-light',
         'bg-light',
         {
-          'navbar--hidden': !scrollState.visible,
+          'navbar-hidden': !scrollState.visible,
         }
       )}
     >
@@ -50,7 +50,7 @@ const Navigation: React.FC = () => {
           src={logo}
           width="55"
           height="30"
-          className="d-inline-block align-top mr-2"
+          className="d-inline-block align-middle mr-2"
         />{' '}
         Street Epistemology
       </Navbar.Brand>
