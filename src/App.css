@@ -20,4 +20,50 @@
 
 .carousel-item {
   height: 300px;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: scroll;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  vertical-align: middle;
+}
+
+.mask-text {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.slide-text-container {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 5px;
+  border-radius: 15px;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (max-width: 576px) {
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (max-width: 768px) {
+  .carousel-item {
+    height: 400px;
+  }
+  h1 {
+    font-size: 32px;
+  }
+
+  h4 {
+    font-size: 24px;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (max-width: 992px) {
+  h1 {
+    font-size: 32px;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (max-width: 1200px) {
 }
