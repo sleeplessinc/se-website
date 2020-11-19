@@ -17,3 +17,7 @@
 .montserrat {
   font-family: Montserrat;
 }
+
+.carousel-item {
+  height: 300px;
+}

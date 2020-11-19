@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import FaqCarousel from './components/FaqCarousel';
 import Navigation from './components/Navigation';
 
 function App() {
@@ -8,7 +9,9 @@ function App() {
       <header>
         <Navigation />
       </header>
-      <div className="container-fluid"></div>
+      <div className="container-fluid">
+        <FaqCarousel />
+      </div>
     </div>
   );
 }
