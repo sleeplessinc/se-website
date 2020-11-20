@@ -17,8 +17,7 @@ function App() {
       </header>
       <div className="container-fluid p-0">
         <FaqCarousel />
-        <Container
-          fluid
+        <div
           className="section-container"
           style={{
             backgroundImage:
@@ -27,49 +26,56 @@ function App() {
               ')',
           }}
         >
-          <Row>
-            <Col lg={6} className="text-center align-self-center m-3">
-              <h1>Video Examples</h1>
-              <h4>
-                One of the best ways to learn the techniques used in Street
-                Epistemology is to see them in action. The SE Latest Releases
-                playlist provides is the best place to find new content and see
-                how SE is progressing.
-              </h4>
-            </Col>
-            <Col lg={4} className="text-center align-self-center m-3">
-              <div className="embed-responsive embed-responsive-16by9">
-                <Iframe
-                  className="embed-responsive-item"
-                  title="SE Latest Releases"
-                  src="https://www.youtube.com/embed/videoseries?list=PLfb-sNm-sTE0fZQkynr-qTu6krq68S-po&border=0&modestbranding=1"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  frameBorder="0"
-                />
-              </div>
-            </Col>
-          </Row>
-        </Container>
-        <Container
-          fluid
+          <Container>
+            <Row>
+              <Col lg={6} className="align-self-center">
+                <div className="text-center m-3">
+                  <h1>Video Examples</h1>
+                  <h4>
+                    One of the best ways to learn the techniques used in Street
+                    Epistemology is to see them in action. The SE Latest
+                    Releases playlist provides is the best place to find new
+                    content and see how SE is progressing.
+                  </h4>
+                </div>
+              </Col>
+              <Col lg={6} className="align-self-center">
+                <div className="text-center m-3">
+                  <div className="embed-responsive embed-responsive-16by9">
+                    <Iframe
+                      className="embed-responsive-item"
+                      title="SE Latest Releases"
+                      src="https://www.youtube.com/embed/videoseries?list=PLfb-sNm-sTE0fZQkynr-qTu6krq68S-po&border=0&modestbranding=1"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      frameBorder="0"
+                    />
+                  </div>
+                </div>
+              </Col>
+            </Row>
+          </Container>
+        </div>
+        <div
           className="section-container"
           style={{
             backgroundImage: 'url(' + tools + ')',
           }}
         >
-          <Row className="justify-content-md-center">
-            <Col lg className="text-center align-self-center m-3">
-              <div className="slide-text-container text-light">
-                <h1>Resources</h1>
-                <p>
-                  All the resources needed to become proficient at Street
-                  Epistemology.
-                </p>
-              </div>
-            </Col>
-          </Row>
-        </Container>
+          <Container>
+            <Row className="justify-content-md-center">
+              <Col lg={6} className="text-center align-self-center m-3">
+                <div className="slide-text-container text-light">
+                  <h1>Resources</h1>
+                  <p>
+                    All the resources needed to become proficient at Street
+                    Epistemology.
+                  </p>
+                </div>
+              </Col>
+            </Row>
+          </Container>
+        </div>
       </div>
     </div>
   );

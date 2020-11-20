@@ -18,12 +18,12 @@
   font-family: Montserrat;
 }
 
-.h1 {
+h1 {
   font-family: Montserrat;
 }
 
 .carousel-item {
-  height: 300px;
+  height: 350px;
   background-attachment: scroll;
   background-position: center;
   background-size: cover;
@@ -49,22 +49,8 @@
   vertical-align: middle;
 }
 
-/* Small devices (landscape phones, 576px and up) */
-@media (max-width: 576px) {
-}
-
-/* Medium devices (tablets, 768px and up) */
-@media (max-width: 768px) {
-  .carousel-item {
-    height: 400px;
-  }
-  h1 {
-    font-size: 32px;
-  }
-
-  h4 {
-    font-size: 24px;
-  }
+/* Extra large devices (large desktops, 1200px and up) */
+@media (max-width: 1200px) {
 }
 
 /* Large devices (desktops, 992px and up) */
@@ -74,6 +60,17 @@
   }
 }
 
-/* Extra large devices (large desktops, 1200px and up) */
-@media (max-width: 1200px) {
+/* Medium devices (tablets, 768px and up) */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 32px;
+  }
+
+  h4 {
+    font-size: 20px;
+  }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (max-width: 576px) {
 }
