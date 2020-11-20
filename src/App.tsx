@@ -8,6 +8,8 @@ import FaqCarousel from './components/FaqCarousel';
 import Navigation from './components/Navigation';
 import video_camera from './images/video-camera.png';
 import tools from './images/bg_tools.png';
+import { resources } from './data';
+import IconNavigator from './components/IconNavigator';
 
 function App() {
   return (
@@ -64,15 +66,14 @@ function App() {
         >
           <Container>
             <Row className="justify-content-md-center">
-              <Col lg={6} className="text-center align-self-center m-3">
+              <Col sm className="text-center align-self-center m-3">
                 <div className="slide-text-container text-light">
                   <h1>Resources</h1>
-                  <p>
-                    All the resources needed to become proficient at Street
-                    Epistemology.
-                  </p>
                 </div>
               </Col>
+            </Row>
+            <Row className="justify-content-md-center">
+              <IconNavigator heading={undefined} cardDetails={resources} />
             </Row>
           </Container>
         </div>
