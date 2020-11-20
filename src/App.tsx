@@ -7,6 +7,7 @@ import './App.css';
 import FaqCarousel from './components/FaqCarousel';
 import Navigation from './components/Navigation';
 import video_camera from './images/video-camera.png';
+import tools from './images/bg_tools.png';
 
 function App() {
   return (
@@ -46,6 +47,25 @@ function App() {
                   allowFullScreen
                   frameBorder="0"
                 />
+              </div>
+            </Col>
+          </Row>
+        </Container>
+        <Container
+          fluid
+          className="section-container"
+          style={{
+            backgroundImage: 'url(' + tools + ')',
+          }}
+        >
+          <Row className="justify-content-md-center">
+            <Col lg className="text-center align-self-center m-3">
+              <div className="slide-text-container text-light">
+                <h1>Resources</h1>
+                <p>
+                  All the resources needed to become proficient at Street
+                  Epistemology.
+                </p>
               </div>
             </Col>
           </Row>
