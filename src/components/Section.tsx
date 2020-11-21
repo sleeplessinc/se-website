@@ -9,17 +9,17 @@ export interface SectionProps {
   heading?: string | undefined;
   children?: React.ReactNode | null;
   sectionStyle?: SectionStyle;
-  src?: string | null;
+  backgroundSource?: string | null;
 }
 
 const defaultProps: SectionProps = {
   heading: undefined,
   children: null,
   sectionStyle: SectionStyle.Default,
-  src: null,
+  backgroundSource: null,
 };
 
-const Section = ({ heading, children, sectionStyle, src }: SectionProps) => {
+const Section = ({ heading, children, sectionStyle, backgroundSource: src }: SectionProps) => {
   const isDefault = sectionStyle === SectionStyle.Default;
 
   return (

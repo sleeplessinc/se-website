@@ -8,11 +8,14 @@ import FaqCarousel from './components/FaqCarousel';
 import Navigation from './components/Navigation';
 import video_camera from './images/video-camera.png';
 import bg_tools from './images/bg_tools.png';
+import bg_filming from './images/bg_filming.png';
 import bg_community from './images/bg_community.png';
+import img_shirt from './images/shirt.png';
 import { resources, communities, creators } from './data';
 import IconNavigator from './components/IconNavigator';
 import Section from './components/Section';
 import SectionStyle from './enums/SectionStyle';
+import { Button } from 'react-bootstrap';
 
 function App() {
   return (
@@ -22,14 +25,9 @@ function App() {
       </header>
       <div className="container-fluid p-0">
         <FaqCarousel />
-        <div
-          className="section-background"
-          style={{
-            backgroundImage:
-              'linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url(' +
-              video_camera +
-              ')',
-          }}
+        <Section
+          backgroundSource={video_camera}
+          sectionStyle={SectionStyle.Light}
         >
           <Container>
             <Row>
@@ -60,13 +58,13 @@ function App() {
               </Col>
             </Row>
           </Container>
-        </div>
-        <Section heading="Resources" src={bg_tools}>
+        </Section>
+        <Section heading="Resources" backgroundSource={bg_tools}>
           <IconNavigator heading={undefined} cardDetails={resources} />
         </Section>
         <Section
           heading="Communities"
-          src={bg_community}
+          backgroundSource={bg_community}
           sectionStyle={SectionStyle.Light}
         >
           <IconNavigator
@@ -76,12 +74,38 @@ function App() {
             roundCards={true}
           />
         </Section>
-        <Section heading="Content Creators" src={bg_tools}>
+        <Section heading="Content Creators" backgroundSource={bg_filming}>
           <IconNavigator
             heading={undefined}
             cardDetails={creators}
             roundCards={true}
           />
+        </Section>
+        <Section sectionStyle={SectionStyle.Light}>
+          <Container>
+            <Row>
+              <Col className="align-self-center">
+                <div className="text-center m-3">
+                  <h1>Shop</h1>
+                  <h4>
+                    Help promote Street Epistemology and raise money for the
+                    501(c)(3) Street Epistemology International by purchasing
+                    high-quality SE-themed merchandise from EvolveFish.com!
+                  </h4>
+                  <Button className="m-2">Continue ➧</Button>
+                </div>
+              </Col>
+              <Col className="align-self-center">
+                <img
+                  height="400px"
+                  width="400px"
+                  src={img_shirt}
+                  title="Street Epistemology t shirt"
+                  alt="Street Epistemology t shirt"
+                />
+              </Col>
+            </Row>
+          </Container>
         </Section>
       </div>
     </div>
