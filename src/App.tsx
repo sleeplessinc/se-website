@@ -68,6 +68,7 @@ function App() {
             heading={undefined}
             cardDetails={communities}
             sectionStyle={SectionStyle.Light}
+            roundCards={true}
           />
         </Section>
       </div>

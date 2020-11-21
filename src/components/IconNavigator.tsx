@@ -15,18 +15,21 @@ export interface IconNavigatorProps {
   heading: string | undefined;
   cardDetails: CardDetails[] | undefined;
   sectionStyle?: SectionStyle;
+  roundCards?: boolean;
 }
 
 const defaultProps: IconNavigatorProps = {
   heading: undefined,
   cardDetails: undefined,
   sectionStyle: SectionStyle.Default,
+  roundCards: false,
 };
 
 const IconNavigator = ({
   heading,
   cardDetails,
   sectionStyle,
+  roundCards,
 }: IconNavigatorProps) => {
   const [selectedCard, setSelectedCard]: [
     CardDetails | undefined,
@@ -47,6 +50,7 @@ const IconNavigator = ({
         onClick={() => handleLogoClick(card)}
         className={classnames('logo', 'm-2', {
           selected: card === selectedCard,
+          'rounded-circle': roundCards,
         })}
         height="75px"
         width="75px"
