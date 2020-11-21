@@ -7,9 +7,10 @@ import './App.css';
 import FaqCarousel from './components/FaqCarousel';
 import Navigation from './components/Navigation';
 import video_camera from './images/video-camera.png';
-import tools from './images/bg_tools.png';
-import { resources } from './data';
-import IconNavigator from './components/IconNavigator';
+import bg_tools from './images/bg_tools.png';
+import bg_community from './images/bg_community.png';
+import { resources, communities } from './data';
+import IconNavigator, { SectionStyle } from './components/IconNavigator';
 import Section from './components/Section';
 
 function App() {
@@ -59,8 +60,15 @@ function App() {
             </Row>
           </Container>
         </div>
-        <Section heading="Resources" src={tools}>
+        <Section heading="Resources" src={bg_tools}>
           <IconNavigator heading={undefined} cardDetails={resources} />
+        </Section>
+        <Section heading="Communities" src={bg_community}>
+          <IconNavigator
+            heading={undefined}
+            cardDetails={communities}
+            sectionStyle={SectionStyle.Light}
+          />
         </Section>
       </div>
     </div>

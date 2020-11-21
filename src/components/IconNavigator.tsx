@@ -6,12 +6,28 @@ import Row from 'react-bootstrap/esm/Row';
 import CardDetails from '../models/CardDetails';
 import classnames from 'classnames';
 
+export enum SectionStyle {
+  Default,
+  Light,
+}
+
 export interface IconNavigatorProps {
   heading: string | undefined;
   cardDetails: CardDetails[] | undefined;
+  sectionStyle?: SectionStyle;
 }
 
-const IconNavigator = ({ heading, cardDetails }: IconNavigatorProps) => {
+const defaultProps: IconNavigatorProps = {
+  heading: undefined,
+  cardDetails: undefined,
+  sectionStyle: SectionStyle.Default,
+};
+
+const IconNavigator = ({
+  heading,
+  cardDetails,
+  sectionStyle,
+}: IconNavigatorProps) => {
   const [selectedCard, setSelectedCard]: [
     CardDetails | undefined,
     (card: CardDetails) => void
@@ -40,6 +56,8 @@ const IconNavigator = ({ heading, cardDetails }: IconNavigatorProps) => {
     );
   });
 
+  const isLight = sectionStyle === SectionStyle.Default;
+
   return (
     <Container>
       <Row>
@@ -47,7 +65,12 @@ const IconNavigator = ({ heading, cardDetails }: IconNavigatorProps) => {
           {cards}
         </Col>
         <Col md={6}>
-          <div className="slide-text-container text-light text-center align-self-center">
+          <div
+            className={classnames('text-center', 'align-self-center', {
+              'text-light': isLight,
+              'bg-masked mt-2 mb-2 p-2 rounded-xl': isLight,
+            })}
+          >
             <h2>{selectedCard?.title}</h2>
             <p>{selectedCard?.description}</p>
             <Button className="m-2">Continue ➧</Button>
@@ -57,5 +80,7 @@ const IconNavigator = ({ heading, cardDetails }: IconNavigatorProps) => {
     </Container>
   );
 };
+
+IconNavigator.defaultProps = defaultProps;
 
 export default IconNavigator;
