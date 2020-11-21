@@ -13,7 +13,7 @@ const FaqCarousel: React.FC = () => {
     <Carousel>
       <Carousel.Item style={{ backgroundImage: 'url(' + question_mark + ')' }}>
         <Carousel.Caption>
-          <div className="slide-text-container">
+          <div className="bg-masked p-2 rounded-xl">
             <h1 className="montserrat">
               <b>What</b> is Street Epistemology?
             </h1>
@@ -29,7 +29,7 @@ const FaqCarousel: React.FC = () => {
       </Carousel.Item>
       <Carousel.Item style={{ backgroundImage: 'url(' + light_bulb + ')' }}>
         <Carousel.Caption>
-          <div className="slide-text-container">
+          <div className="bg-masked p-2 rounded-xl">
             <h1 className="montserrat">
               <b>Why</b> use Street Epistemology?
             </h1>
@@ -46,7 +46,7 @@ const FaqCarousel: React.FC = () => {
         style={{ backgroundImage: 'url(' + buildings_aerial_view + ')' }}
       >
         <Carousel.Caption>
-          <div className="slide-text-container">
+          <div className="bg-masked p-2 rounded-xl">
             <h1 className="montserrat">
               <b>Where</b> to use Street Epistemology?
             </h1>
@@ -60,7 +60,7 @@ const FaqCarousel: React.FC = () => {
       </Carousel.Item>
       <Carousel.Item style={{ backgroundImage: 'url(' + pocket_watch + ')' }}>
         <Carousel.Caption>
-          <div className="slide-text-container">
+          <div className="bg-masked p-2 rounded-xl">
             <h1 className="montserrat">
               <b>When</b> to use Street Epistemology?
             </h1>
@@ -76,7 +76,7 @@ const FaqCarousel: React.FC = () => {
         style={{ backgroundImage: 'url(' + pedestrian_crossing + ')' }}
       >
         <Carousel.Caption>
-          <div className="slide-text-container">
+          <div className="bg-masked p-2 rounded-xl">
             <h1 className="montserrat">
               <b>Who</b> is Street Epistemology for?
             </h1>
@@ -90,7 +90,7 @@ const FaqCarousel: React.FC = () => {
       </Carousel.Item>
       <Carousel.Item style={{ backgroundImage: 'url(' + hand_shake + ')' }}>
         <Carousel.Caption>
-          <div className="slide-text-container">
+          <div className="bg-masked p-2 rounded-xl">
             <h1 className="montserrat">
               <b>How</b> to use Street Epistemology?
             </h1>

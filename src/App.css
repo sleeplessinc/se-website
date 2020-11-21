@@ -30,13 +30,11 @@ h1 {
   vertical-align: middle;
 }
 
-.mask-text {
+.bg-masked {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.slide-text-container {
-  background-color: rgba(0, 0, 0, 0.6);
-  padding: 5px;
+.rounded-xl {
   border-radius: 15px;
 }
 
