@@ -19,8 +19,8 @@ h1,
   font-family: Montserrat;
 }
 
-.carousel-item {
-  height: 350px;
+.carousel-slide {
+  min-height: 350px;
   background-attachment: scroll;
   background-position: center;
   background-size: cover;
