@@ -10,6 +10,7 @@ import video_camera from './images/video-camera.png';
 import tools from './images/bg_tools.png';
 import { resources } from './data';
 import IconNavigator from './components/IconNavigator';
+import Section from './components/Section';
 
 function App() {
   return (
@@ -58,25 +59,9 @@ function App() {
             </Row>
           </Container>
         </div>
-        <div
-          className="section-container"
-          style={{
-            backgroundImage: 'url(' + tools + ')',
-          }}
-        >
-          <Container>
-            <Row className="justify-content-md-center">
-              <Col sm className="text-center align-self-center m-3">
-                <div className="slide-text-container text-light">
-                  <h1>Resources</h1>
-                </div>
-              </Col>
-            </Row>
-            <Row className="justify-content-md-center">
-              <IconNavigator heading={undefined} cardDetails={resources} />
-            </Row>
-          </Container>
-        </div>
+        <Section heading="Resources" src={tools}>
+          <IconNavigator heading={undefined} cardDetails={resources} />
+        </Section>
       </div>
     </div>
   );
