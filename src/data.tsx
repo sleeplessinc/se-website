@@ -1,5 +1,64 @@
 import CardDetails from './models/CardDetails';
 
+export const creators: CardDetails[] = [
+  {
+    logo: 'logo_anthony_magnabosco',
+    title: 'Anthony Magnabosco',
+    description:
+      'Hundreds of Street Epistemology examples on dozens of topics.',
+    url: 'https://www.youtube.com/user/magnabosco210',
+  },
+  {
+    logo: 'logo_cordial_curiosity',
+    title: 'Cordial Curiosity',
+    description:
+      'Reid Nicewonder practices cool-headed conversation instead of heated debate using Street Epistemology.',
+    url: 'https://www.youtube.com/channel/UCiWKxPMKUBFjN3Ny_VxpkYw',
+  },
+  {
+    logo: 'logo_lets_chat',
+    title: "Let's Chat",
+    description:
+      'Tyrone strives to demonstrate that people can have productive chats about anything.',
+    url: 'https://www.youtube.com/channel/UCtShJugohT2eaolubHnIuMg',
+  },
+  {
+    logo: 'logo_deep_discussions',
+    title: 'Deep Discussions',
+    description:
+      'Eddie practices Street Epistemology in Tyler, Texas and focuses on teaching SE by demonstration and commentary.',
+    url: 'https://www.youtube.com/channel/UCtftwuFFsiXLkzmpWPncd5w',
+  },
+  {
+    logo: 'logo_street_knowledge',
+    title: 'Street Knowledge',
+    description:
+      'Street Knowledge hits the streets to speak with people about how they know what they know.',
+    url: 'https://www.youtube.com/channel/UCRzxNyqE-FHUq7DozWh8sgg',
+  },
+  {
+    logo: 'logo_abstract_activist',
+    title: 'Abstract Activist SE',
+    description:
+      'Are we open minded to the idea that we might be close minded? What would it take to find out?',
+    url: 'https://www.youtube.com/channel/UCaGAzPm0iExb4I4iq0TCXEw',
+  },
+  {
+    logo: 'logo_campefire_convos',
+    title: 'Campfire Convos',
+    description:
+      'Blending Street Epistemology with the primitive tradition of sitting around a campfire. I sometimes allow Collaborators on Discord the opportunity to ask the questions!',
+    url: 'https://www.youtube.com/channel/UCuFOqi7YRgy4HqU-JPNHkZQ',
+  },
+  {
+    logo: 'logo_mortage_hill_musings',
+    title: 'Mortgage Hill Musings',
+    description:
+      'Breakdowns of SE interviews / sermons, as well as lectures that highlight critical thinking skills implicit in the scientific method.',
+    url: 'https://www.youtube.com/channel/UCQU9GcG93HyDa4oV_TbO9vQ',
+  },
+];
+
 export const communities: CardDetails[] = [
   {
     logo: 'logo_discord',
