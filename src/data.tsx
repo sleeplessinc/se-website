@@ -42,6 +42,27 @@ export const communities: CardDetails[] = [
       'Check out the official SE YouTube channel and other active channels!',
     url: 'https://www.youtube.com/user/StreetEpistemologist/channels',
   },
+  {
+    logo: 'logo_facebook',
+    title: 'Facebook "Chat With a Street Epistemologist" Group',
+    description:
+      'This group is for facilitating SE discussions over particular beliefs.',
+    url: 'https://www.facebook.com/groups/ChatWithAStreetEpistemologist/',
+  },
+  {
+    logo: 'logo_facebook',
+    title: 'Facebook Critique SE Group',
+    description:
+      'This group is for raising and discussing any critiques of SE so that we can further learn about and improve the method.',
+    url: 'https://www.facebook.com/groups/ChatWithAStreetEpistemologist/',
+  },
+  {
+    logo: 'logo_facebook',
+    title: 'Public SE Facebook Page',
+    description:
+      'A public page for believers and non-believers to discuss topics related to Street Epistemology.',
+    url: 'https://www.facebook.com/StreetEpistemology',
+  },
 ];
 
 export const resources: CardDetails[] = [
