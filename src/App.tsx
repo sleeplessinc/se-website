@@ -9,9 +9,10 @@ import Navigation from './components/Navigation';
 import video_camera from './images/video-camera.png';
 import bg_tools from './images/bg_tools.png';
 import bg_community from './images/bg_community.png';
-import { resources, communities } from './data';
-import IconNavigator, { SectionStyle } from './components/IconNavigator';
+import { resources, communities, creators } from './data';
+import IconNavigator from './components/IconNavigator';
 import Section from './components/Section';
+import SectionStyle from './enums/SectionStyle';
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
       <div className="container-fluid p-0">
         <FaqCarousel />
         <div
-          className="section-container"
+          className="section-background"
           style={{
             backgroundImage:
               'linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url(' +
@@ -63,11 +64,22 @@ function App() {
         <Section heading="Resources" src={bg_tools}>
           <IconNavigator heading={undefined} cardDetails={resources} />
         </Section>
-        <Section heading="Communities" src={bg_community}>
+        <Section
+          heading="Communities"
+          src={bg_community}
+          sectionStyle={SectionStyle.Light}
+        >
           <IconNavigator
             heading={undefined}
             cardDetails={communities}
             sectionStyle={SectionStyle.Light}
+            roundCards={true}
+          />
+        </Section>
+        <Section heading="Content Creators" src={bg_tools}>
+          <IconNavigator
+            heading={undefined}
+            cardDetails={creators}
             roundCards={true}
           />
         </Section>
