@@ -1,5 +1,49 @@
 import CardDetails from './models/CardDetails';
 
+export const communities: CardDetails[] = [
+  {
+    logo: 'logo_discord',
+    title: 'Discord Server',
+    description:
+      'Discord is a group chat application, and you are invited to join in the conversation!',
+    url: 'https://discord.gg/sKap3zM',
+  },
+  {
+    logo: 'logo_facebook',
+    title: 'Facebook SE Study Group',
+    description: 'This group is for people to learn about and discuss SE.',
+    url: 'https://www.facebook.com/groups/streetepistemology/',
+  },
+  {
+    logo: 'logo_reddit',
+    title: 'Reddit',
+    description:
+      'Join the subreddit for sharing the latest updates, ideas, and content related to SE.',
+    url: 'https://www.reddit.com/r/StreetEpistemology/',
+  },
+  {
+    logo: 'logo_facebook',
+    title: 'Facebook Learn SE Group',
+    description:
+      'This group is for helping people learn the principles, methods, and techniques of street epistemology.',
+    url: 'https://www.facebook.com/groups/learnstreetepistemology/',
+  },
+  {
+    logo: 'logo_twitter',
+    title: 'Twitter',
+    description:
+      'Follow the official Street Epistemology Twitter account for short updates.',
+    url: 'https://twitter.com/StEpistemology',
+  },
+  {
+    logo: 'logo_youtube',
+    title: 'YouTube',
+    description:
+      'Check out the official SE YouTube channel and other active channels!',
+    url: 'https://www.youtube.com/user/StreetEpistemologist/channels',
+  },
+];
+
 export const resources: CardDetails[] = [
   {
     logo: 'logo_youtube',
