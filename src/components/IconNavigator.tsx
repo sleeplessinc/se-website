@@ -4,6 +4,7 @@ import Col from 'react-bootstrap/esm/Col';
 import Container from 'react-bootstrap/esm/Container';
 import Row from 'react-bootstrap/esm/Row';
 import CardDetails from '../models/CardDetails';
+import classnames from 'classnames';
 
 export interface IconNavigatorProps {
   heading: string | undefined;
@@ -28,17 +29,20 @@ const IconNavigator = ({ heading, cardDetails }: IconNavigatorProps) => {
         src={process.env.PUBLIC_URL + '/img/' + card.logo + '.png'}
         key={card.title}
         onClick={() => handleLogoClick(card)}
-        className="logo m-2"
-        height="60px"
-        width="60px"
-        alt={process.env.PUBLIC_URL + '/img/' + card.logo + '.png'}
+        className={classnames('logo', 'm-2', {
+          selected: card === selectedCard,
+        })}
+        height="75px"
+        width="75px"
+        alt={card.title}
+        title={card.title}
       />
     );
   });
 
   return (
     <Container>
-      <Row className="justify-content-md-center">
+      <Row>
         <Col md={6} className="text-center mb-2">
           {cards}
         </Col>
