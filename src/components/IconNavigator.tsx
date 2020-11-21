@@ -68,7 +68,7 @@ const IconNavigator = ({
           <div
             className={classnames('text-center', 'align-self-center', {
               'text-light': isDefault,
-              'bg-masked mt-2 mb-2 p-2 rounded-xl': isDefault,
+              'bg-masked-dark mt-2 mb-2 p-2 rounded-xl': isDefault,
             })}
           >
             <h2>{selectedCard?.title}</h2>

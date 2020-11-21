@@ -16,6 +16,7 @@ import IconNavigator from './components/IconNavigator';
 import Section from './components/Section';
 import SectionStyle from './enums/SectionStyle';
 import { Button } from 'react-bootstrap';
+import ShopSection from './components/ShopSection';
 
 function App() {
   return (
@@ -82,30 +83,7 @@ function App() {
           />
         </Section>
         <Section sectionStyle={SectionStyle.Light}>
-          <Container>
-            <Row>
-              <Col className="align-self-center">
-                <div className="text-center m-3">
-                  <h1>Shop</h1>
-                  <h4>
-                    Help promote Street Epistemology and raise money for the
-                    501(c)(3) Street Epistemology International by purchasing
-                    high-quality SE-themed merchandise from EvolveFish.com!
-                  </h4>
-                  <Button className="m-2">Continue ➧</Button>
-                </div>
-              </Col>
-              <Col className="align-self-center">
-                <img
-                  height="400px"
-                  width="400px"
-                  src={img_shirt}
-                  title="Street Epistemology t shirt"
-                  alt="Street Epistemology t shirt"
-                />
-              </Col>
-            </Row>
-          </Container>
+          <ShopSection />
         </Section>
       </div>
     </div>

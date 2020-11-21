@@ -19,7 +19,12 @@ const defaultProps: SectionProps = {
   backgroundSource: null,
 };
 
-const Section = ({ heading, children, sectionStyle, backgroundSource: src }: SectionProps) => {
+const Section = ({
+  heading,
+  children,
+  sectionStyle,
+  backgroundSource: src,
+}: SectionProps) => {
   const isDefault = sectionStyle === SectionStyle.Default;
 
   return (
@@ -49,7 +54,7 @@ const Section = ({ heading, children, sectionStyle, backgroundSource: src }: Sec
                   'p-2',
                   {
                     'text-light': isDefault,
-                    'bg-masked rounded-xl': isDefault,
+                    'bg-masked-dark rounded-xl': isDefault,
                   }
                 )}
               >

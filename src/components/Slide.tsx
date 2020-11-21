@@ -11,7 +11,7 @@ const Slide: React.FC<SlideProps> = ({ background, title, description }) => {
   return (
     <Carousel.Item style={{ backgroundImage: background }}>
       <Carousel.Caption>
-        <div className="bg-masked p-2 rounded-xl">
+        <div className="bg-masked-dark p-2 rounded-xl">
           <h1 className="montserrat">{title}</h1>
           <h4>{description}</h4>
         </div>
