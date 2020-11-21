@@ -2,32 +2,57 @@ import React from 'react';
 import Col from 'react-bootstrap/esm/Col';
 import Container from 'react-bootstrap/esm/Container';
 import Row from 'react-bootstrap/esm/Row';
+import SectionStyle from '../enums/SectionStyle';
+import classnames from 'classnames';
 
 export interface SectionProps {
   heading?: string | undefined;
   children?: React.ReactNode | null;
+  sectionStyle?: SectionStyle;
   src?: string | null;
 }
 
 const defaultProps: SectionProps = {
   heading: undefined,
   children: null,
+  sectionStyle: SectionStyle.Default,
   src: null,
 };
 
-const Section = ({ heading, children, src }: SectionProps) => {
+const Section = ({ heading, children, sectionStyle, src }: SectionProps) => {
+  const isDefault = sectionStyle === SectionStyle.Default;
+
   return (
-    <div
-      className="section-container"
+    <Container
+      fluid
+      className="section-background d-flex align-items-center"
       style={{
-        backgroundImage: 'url(' + src + ')',
+        backgroundImage:
+          (isDefault
+            ? ''
+            : 'linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), ') +
+          'url(' +
+          src +
+          ')',
       }}
     >
-      <Container>
+      <Container className="section-container align-middle">
         {heading && (
-          <Row className="justify-content-md-center">
+          <Row className="align-items-center">
             <Col sm className="text-center align-self-center">
-              <div className="bg-masked p-2 rounded-xl text-light mt-3 mb-3">
+              <div
+                className={classnames(
+                  'text-center',
+                  'align-self-center',
+                  'mt-2',
+                  'mb-2',
+                  'p-2',
+                  {
+                    'text-light': isDefault,
+                    'bg-masked rounded-xl': isDefault,
+                  }
+                )}
+              >
                 <h1>{heading}</h1>
               </div>
             </Col>
@@ -37,7 +62,7 @@ const Section = ({ heading, children, src }: SectionProps) => {
           <>{children}</>
         </Row>
       </Container>
-    </div>
+    </Container>
   );
 };
 

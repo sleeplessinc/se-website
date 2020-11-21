@@ -14,11 +14,8 @@
   top: -60px;
 }
 
+h1,
 .montserrat {
-  font-family: Montserrat;
-}
-
-h1 {
   font-family: Montserrat;
 }
 
@@ -38,7 +35,8 @@ h1 {
   border-radius: 15px;
 }
 
-.section-container {
+.section-background {
+  min-height: 400px;
   align-content: center;
   vertical-align: middle;
   background-attachment: scroll;

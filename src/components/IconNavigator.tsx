@@ -5,11 +5,7 @@ import Container from 'react-bootstrap/esm/Container';
 import Row from 'react-bootstrap/esm/Row';
 import CardDetails from '../models/CardDetails';
 import classnames from 'classnames';
-
-export enum SectionStyle {
-  Default,
-  Light,
-}
+import SectionStyle from '../enums/SectionStyle';
 
 export interface IconNavigatorProps {
   heading: string | undefined;
@@ -60,7 +56,7 @@ const IconNavigator = ({
     );
   });
 
-  const isLight = sectionStyle === SectionStyle.Default;
+  const isDefault = sectionStyle === SectionStyle.Default;
 
   return (
     <Container>
@@ -71,8 +67,8 @@ const IconNavigator = ({
         <Col md={6}>
           <div
             className={classnames('text-center', 'align-self-center', {
-              'text-light': isLight,
-              'bg-masked mt-2 mb-2 p-2 rounded-xl': isLight,
+              'text-light': isDefault,
+              'bg-masked mt-2 mb-2 p-2 rounded-xl': isDefault,
             })}
           >
             <h2>{selectedCard?.title}</h2>
