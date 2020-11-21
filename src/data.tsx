@@ -3,7 +3,7 @@ import CardDetails from './models/CardDetails';
 export const resources: CardDetails[] = [
   {
     logo: 'logo_youtube',
-    title: 'SE Latest Release Playlist',
+    title: 'Latest Releases Playlist',
     description: 'A curated list of new Street Epistemology videos.',
     url:
       'https://www.youtube.com/playlist?list=PLfb-sNm-sTE0fZQkynr-qTu6krq68S-po',
@@ -39,21 +39,21 @@ export const resources: CardDetails[] = [
   },
   {
     logo: 'logo_blog',
-    title: 'SE Blog',
+    title: 'Street Epistemology Blog',
     description:
       'People familiar with Street Epistemology share their tips and experiences here with you.',
     url: 'https://streetepistemology.com/blog',
   },
   {
     logo: 'logo_community',
-    title: 'SE Community',
+    title: 'Street Epistemology Community',
     description:
       'Street Epistemology is worldwide. Interact with others who are learning and practicing the method.',
     url: 'https://streetepistemology.com/community',
   },
   {
     logo: 'logo_content_creators',
-    title: 'SE Content Creators',
+    title: 'Street Epistemology Content Creators',
     description:
       'There are hundreds of video examples of Street Epistemology in action. Watch some now!',
     url: 'https://streetepistemology.com/creators',
@@ -76,7 +76,7 @@ export const resources: CardDetails[] = [
   },
   {
     logo: 'logo_acronyms',
-    title: 'List of Common Acronyms used in Street Epistemology',
+    title: 'List of Common Acronyms',
     description:
       "Here you'll find a list of commonly used acronyms used in the street epistemology community and what they stand for.",
     url:
@@ -84,7 +84,7 @@ export const resources: CardDetails[] = [
   },
   {
     logo: 'logo_se_style',
-    title: 'SE Logo Style Guide',
+    title: 'Logo Style Guide',
     description:
       'Official information about how you can use the Street Epistemology logo and download links for the logo files.',
     url:
@@ -92,7 +92,7 @@ export const resources: CardDetails[] = [
   },
   {
     logo: 'logo_drive',
-    title: 'SE Public Drive',
+    title: 'Public Drive',
     description:
       'This read-only public drive includes Street Epistemology slides, videos and images from past presentations and workshops for your convenience.',
     url:
