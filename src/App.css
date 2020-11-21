@@ -52,15 +52,16 @@ h1 {
 .logo {
   box-shadow: 5px 5px 5px rgb(0, 0, 0);
   border-radius: 15%;
-  border: 1px solid #ddd;
+  border: 1px solid var(--light);
   transition: transform 0.2s;
 }
 
-.logo:hover {
-  transform: scale(1.2);
+.logo.selected {
+  outline: 0;
+  border: 0.2rem solid var(--primary);
 }
 
-.logo.selected {
+.logo:hover {
   transform: scale(1.2);
 }
 
