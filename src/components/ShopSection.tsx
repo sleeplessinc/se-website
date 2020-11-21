@@ -28,25 +28,25 @@ const ShopSection = () => {
 
   return (
     <>
-      <Container className="d-none d-lg-block">
-        <Row>
-          <Col className="align-self-center">{text}</Col>
-          <Col className="align-self-center">{image}</Col>
-        </Row>
+      <Container fluid className="d-none d-lg-block section-background">
+        <Container>
+          <Row>
+            <Col className="align-self-center">{text}</Col>
+            <Col className="align-self-center">{image}</Col>
+          </Row>
+        </Container>
       </Container>
-      <div className="d-lg-none position-relative">
-        <div className="position-relative">{image}</div>
-        <div
-          className="position-absolute"
-          style={{
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-          }}
-        >
-          {text}
-        </div>
-      </div>
+      <Container
+        fluid
+        className="d-flex d-lg-none section-background align-items-center"
+        style={{
+          backgroundImage: 'url(' + img_shirt + ')',
+        }}
+      >
+        <Container>
+          <Row>{text}</Row>
+        </Container>
+      </Container>
     </>
   );
 };

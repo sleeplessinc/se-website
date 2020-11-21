@@ -82,9 +82,7 @@ function App() {
             roundCards={true}
           />
         </Section>
-        <Section sectionStyle={SectionStyle.Light}>
-          <ShopSection />
-        </Section>
+        <ShopSection />
       </div>
     </div>
   );
