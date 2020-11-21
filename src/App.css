@@ -36,7 +36,7 @@ h1,
 }
 
 .section-background {
-  min-height: 400px;
+  min-height: 512px;
   align-content: center;
   vertical-align: middle;
   background-attachment: scroll;
