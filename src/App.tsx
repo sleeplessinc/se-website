@@ -11,7 +11,7 @@ import bg_tools from './images/bg_tools.png';
 import bg_filming from './images/bg_filming.png';
 import bg_community from './images/bg_community.png';
 import img_shirt from './images/shirt.png';
-import { resources, communities, creators } from './data';
+import { resources, communities, creators } from './data/data';
 import IconNavigator from './components/IconNavigator';
 import Section from './components/Section';
 import SectionStyle from './enums/SectionStyle';

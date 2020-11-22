@@ -1,4 +1,4 @@
-import CardDetails from './models/CardDetails';
+import CardDetails from '../models/CardDetails';
 
 export const creators: CardDetails[] = [
   {
