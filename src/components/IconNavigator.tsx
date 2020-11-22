@@ -73,7 +73,9 @@ const IconNavigator = ({
           >
             <h2>{selectedCard?.title}</h2>
             <p>{selectedCard?.description}</p>
-            <Button className="m-2">Continue ➧</Button>
+            <Button className="m-2" href={selectedCard?.url} target="_blank">
+              Continue ➧
+            </Button>
           </div>
         </Col>
       </Row>
