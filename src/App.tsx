@@ -52,7 +52,7 @@ function App() {
                       src="https://www.youtube.com/embed/videoseries?list=PLfb-sNm-sTE0fZQkynr-qTu6krq68S-po&border=0&modestbranding=1"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
-                      frameBorder="0"
+                      frameBorder={0}
                     />
                   </div>
                 </div>
