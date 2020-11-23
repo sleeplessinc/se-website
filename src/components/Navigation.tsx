@@ -9,10 +9,7 @@ interface ScrollState {
 }
 
 const Navigation: React.FC = () => {
-  const [scrollState, setScrollState]: [
-    ScrollState,
-    (value: ScrollState) => void
-  ] = useState<ScrollState>({
+  const [scrollState, setScrollState]: [ScrollState, (value: ScrollState) => void] = useState<ScrollState>({
     prevScrollpos: window.pageYOffset,
     visible: true,
   });
@@ -34,25 +31,13 @@ const Navigation: React.FC = () => {
     <Navbar
       bg="dark"
       variant="dark"
-      className={classnames(
-        'navbar',
-        'navbar-expand-lg',
-        'navbar-light',
-        'bg-light',
-        {
-          'navbar-hidden': !scrollState.visible,
-        }
-      )}
+      className={classnames('navbar', 'navbar-expand-lg', 'navbar-light', 'bg-light', {
+        'navbar-hidden': !scrollState.visible,
+      })}
     >
       <Navbar.Brand href="#home" className="montserrat">
-        <img
-          alt=""
-          src={logo}
-          width="55"
-          height="30"
-          className="d-inline-block align-middle mr-2"
-        />{' '}
-        Street Epistemology
+        <img alt="" src={logo} width="55" height="30" className="d-inline-block align-middle mr-2" /> Street
+        Epistemology
       </Navbar.Brand>
     </Navbar>
   );

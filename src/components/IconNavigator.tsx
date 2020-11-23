@@ -21,18 +21,10 @@ const defaultProps: IconNavigatorProps = {
   roundCards: false,
 };
 
-const IconNavigator = ({
-  heading,
-  cardDetails,
-  sectionStyle,
-  roundCards,
-}: IconNavigatorProps) => {
-  const [selectedCard, setSelectedCard]: [
-    CardDetails | undefined,
-    (card: CardDetails) => void
-  ] = useState<CardDetails | undefined>(
-    cardDetails ? cardDetails[0] : undefined
-  );
+const IconNavigator = ({ heading, cardDetails, sectionStyle, roundCards }: IconNavigatorProps) => {
+  const [selectedCard, setSelectedCard]: [CardDetails | undefined, (card: CardDetails) => void] = useState<
+    CardDetails | undefined
+  >(cardDetails ? cardDetails[0] : undefined);
 
   const handleLogoClick = (card: CardDetails) => {
     setSelectedCard(card);

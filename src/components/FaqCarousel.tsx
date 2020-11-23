@@ -34,9 +34,7 @@ const FaqCarousel: React.FC = () => {
           background={light_bulb}
         />
       </Carousel.Item>
-      <Carousel.Item
-        style={{ backgroundImage: 'url(' + buildings_aerial_view + ')' }}
-      >
+      <Carousel.Item style={{ backgroundImage: 'url(' + buildings_aerial_view + ')' }}>
         <Slide
           title="Where to use Street Epistemology?"
           description="
@@ -56,9 +54,7 @@ const FaqCarousel: React.FC = () => {
           background={pocket_watch}
         />
       </Carousel.Item>
-      <Carousel.Item
-        style={{ backgroundImage: 'url(' + pedestrian_crossing + ')' }}
-      >
+      <Carousel.Item style={{ backgroundImage: 'url(' + pedestrian_crossing + ')' }}>
         <Slide
           title="Who is Street Epistemology for?"
           description="
