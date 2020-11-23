@@ -16,7 +16,7 @@ import Section from './components/Section';
 import SectionStyle from './enums/SectionStyle';
 import ShopSection from './components/ShopSection';
 
-function App() {
+const App: React.FC = () => {
   return (
     <div className="App">
       <header>
@@ -73,6 +73,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
 export default App;

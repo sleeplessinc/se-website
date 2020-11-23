@@ -19,7 +19,7 @@ const defaultProps: SectionProps = {
   backgroundSource: null,
 };
 
-const Section = ({ heading, children, sectionStyle, backgroundSource: src }: SectionProps) => {
+const Section: React.FC<SectionProps> = ({ heading, children, sectionStyle, backgroundSource: src }: SectionProps) => {
   const isDefault = sectionStyle === SectionStyle.Default;
 
   return (

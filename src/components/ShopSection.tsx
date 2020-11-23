@@ -5,7 +5,7 @@ import Row from 'react-bootstrap/esm/Row';
 import img_shirt from '../images/shirt.png';
 import { Button } from 'react-bootstrap';
 
-const ShopSection = () => {
+const ShopSection: React.FC = () => {
   const text = (
     <div className="text-center m-1 bg-masked-light p-2 rounded-xl">
       <h1>Shop</h1>
