@@ -5,26 +5,19 @@ import Row from 'react-bootstrap/esm/Row';
 import img_shirt from '../images/shirt.png';
 import { Button } from 'react-bootstrap';
 
-const ShopSection = () => {
+const ShopSection: React.FC = () => {
   const text = (
     <div className="text-center m-1 bg-masked-light p-2 rounded-xl">
       <h1>Shop</h1>
       <h4>
-        Help promote Street Epistemology and raise money for the 501(c)(3)
-        Street Epistemology International by purchasing high-quality SE-themed
-        merchandise from EvolveFish.com!
+        Help promote Street Epistemology and raise money for the 501(c)(3) Street Epistemology International by
+        purchasing high-quality SE-themed merchandise from EvolveFish.com!
       </h4>
       <Button className="m-2">Continue ➧</Button>
     </div>
   );
 
-  const image = (
-    <img
-      src={img_shirt}
-      title="Street Epistemology t shirt"
-      alt="Street Epistemology t shirt"
-    />
-  );
+  const image = <img src={img_shirt} title="Street Epistemology t shirt" alt="Street Epistemology t shirt" />;
 
   return (
     <>

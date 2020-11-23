@@ -7,11 +7,7 @@ export interface SlideProps {
   description: string;
 }
 
-const Slide: React.FC<SlideProps> = ({
-  background,
-  title,
-  description,
-}: SlideProps) => {
+const Slide: React.FC<SlideProps> = ({ background, title, description }: SlideProps) => {
   return (
     <Container
       fluid

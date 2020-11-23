@@ -19,12 +19,7 @@ const defaultProps: SectionProps = {
   backgroundSource: null,
 };
 
-const Section = ({
-  heading,
-  children,
-  sectionStyle,
-  backgroundSource: src,
-}: SectionProps) => {
+const Section: React.FC<SectionProps> = ({ heading, children, sectionStyle, backgroundSource: src }: SectionProps) => {
   const isDefault = sectionStyle === SectionStyle.Default;
 
   return (
@@ -33,9 +28,7 @@ const Section = ({
       className="section-background d-flex align-items-center"
       style={{
         backgroundImage:
-          (isDefault
-            ? ''
-            : 'linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), ') +
+          (isDefault ? '' : 'linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), ') +
           'url(' +
           src +
           ')',
@@ -46,17 +39,10 @@ const Section = ({
           <Row className="align-items-center">
             <Col sm className="text-center align-self-center">
               <div
-                className={classnames(
-                  'text-center',
-                  'align-self-center',
-                  'mt-2',
-                  'mb-2',
-                  'p-2',
-                  {
-                    'text-light': isDefault,
-                    'bg-masked-dark rounded-xl': isDefault,
-                  }
-                )}
+                className={classnames('text-center', 'align-self-center', 'mt-2', 'mb-2', 'p-2', {
+                  'text-light': isDefault,
+                  'bg-masked-dark rounded-xl': isDefault,
+                })}
               >
                 <h1>{heading}</h1>
               </div>
