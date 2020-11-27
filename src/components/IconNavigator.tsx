@@ -30,6 +30,10 @@ const IconNavigator: React.FC<IconNavigatorProps> = ({ cardDetails, sectionStyle
     setSelectedCard(card);
   };
 
+  if (!selectedCard && cardDetails && cardDetails.length > 0) {
+    setSelectedCard(cardDetails[0]);
+  }
+
   const cards = cardDetails?.map((card) => {
     return (
       <img
