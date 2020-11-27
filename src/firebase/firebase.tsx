@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import app from 'firebase/app';
 import 'firebase/database';
 import CollectionType from '../enums/CollectionType';
@@ -18,7 +19,7 @@ class Firebase {
   constructor() {
     app.initializeApp(config);
   }
-  database() {
+  database(): app.database.Database {
     return app.database();
   }
 
