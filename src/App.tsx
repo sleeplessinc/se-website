@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Col from 'react-bootstrap/esm/Col';
 import Container from 'react-bootstrap/esm/Container';
 import Row from 'react-bootstrap/esm/Row';
@@ -10,13 +10,40 @@ import video_camera from './images/video-camera.png';
 import bg_tools from './images/bg_tools.png';
 import bg_filming from './images/bg_filming.png';
 import bg_community from './images/bg_community.png';
-import { resources, communities, creators } from './data/data';
+import { creators } from './data/data';
 import IconNavigator from './components/IconNavigator';
 import Section from './components/Section';
 import SectionStyle from './enums/SectionStyle';
 import ShopSection from './components/ShopSection';
+import { FirebaseContext } from './firebase';
+import CardDetails from './models/CardDetails';
+import CollectionType from './enums/CollectionType';
 
 const App: React.FC = () => {
+  const firebaseContext = React.useContext(FirebaseContext);
+  const [communities, setCommunities] = useState<CardDetails[]>([]);
+  const [resources, setResources] = useState<CardDetails[]>([]);
+  useEffect(() => {
+    firebaseContext?.subscribeToCollection(
+      CollectionType.Communities,
+      (results) => {
+        setCommunities(results);
+      },
+      (error) => {
+        console.log(error);
+      },
+    );
+    firebaseContext?.subscribeToCollection(
+      CollectionType.Resources,
+      (results) => {
+        setResources(results);
+      },
+      (error) => {
+        console.log(error);
+      },
+    );
+  }, [firebaseContext]);
+
   return (
     <div className="App">
       <header>
