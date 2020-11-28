@@ -37,7 +37,7 @@ const Navigation: React.FC = () => {
       <Navbar.Brand href="#home" className="montserrat">
         <img
           alt=""
-          src={process.env.PUBLIC_URL + '/logo192.png'}
+          src={process.env.PUBLIC_URL + '/img/logo_app.webp'}
           width="55"
           height="auto"
           className="d-inline-block align-middle mr-2"
