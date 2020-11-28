@@ -20,6 +20,9 @@ const App: React.FC = () => {
                 backgroundSource={bg_question_mark}
               />
             </Route>
+            <Route path="/acronyms">
+              <DynamicContentPage pageName="acronyms" title="Acronyms" backgroundSource={bg_question_mark} />
+            </Route>
             <Route path="/">
               <MainPage />
             </Route>
