@@ -1,8 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Col from 'react-bootstrap/esm/Col';
-import Container from 'react-bootstrap/esm/Container';
-import Row from 'react-bootstrap/esm/Row';
-import Iframe from 'react-iframe';
 import './App.css';
 import FaqCarousel from './components/FaqCarousel';
 import Navigation from './components/Navigation';
