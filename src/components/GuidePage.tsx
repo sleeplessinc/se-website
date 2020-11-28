@@ -8,7 +8,7 @@ import bg_book from '../images/bg_book.webp';
 
 const GuidePage: React.FC = () => {
   return (
-    <Section heading="The Complete Guide" backgroundSource={bg_book}>
+    <Section heading="The Complete SE Guide" backgroundSource={bg_book}>
       <Container>
         <Row>
           <Col md={6}>
