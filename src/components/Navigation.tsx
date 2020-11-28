@@ -35,7 +35,7 @@ const Navigation: React.FC = () => {
 
   return (
     <Navbar
-      bg="dark"
+      bg="primary"
       variant="dark"
       expand="lg"
       fixed="top"
