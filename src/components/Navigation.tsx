@@ -64,6 +64,7 @@ const Navigation: React.FC = () => {
           <Nav.Link href="/#communities">Communities</Nav.Link>
           <Nav.Link href="/#creators">Creators</Nav.Link>
           <Nav.Link href="/#shop">Shop</Nav.Link>
+          <Nav.Link href="/#guide">Guide</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

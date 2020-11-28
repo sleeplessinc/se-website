@@ -12,6 +12,7 @@ import { FirebaseContext } from '../firebase';
 import CardDetails from '../models/CardDetails';
 import CollectionType from '../enums/CollectionType';
 import ExamplesPage from './ExamplesPage';
+import GuidePage from './GuidePage';
 
 const MainPage: React.FC = () => {
   const firebaseContext = React.useContext(FirebaseContext);
@@ -80,6 +81,9 @@ const MainPage: React.FC = () => {
       </a>
       <a id="shop">
         <ShopSection />
+      </a>
+      <a id="guide">
+        <GuidePage />
       </a>
     </div>
   );
