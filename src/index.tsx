@@ -5,11 +5,24 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Firebase, { FirebaseContext } from './firebase';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 ReactDOM.render(
   <React.StrictMode>
     <FirebaseContext.Provider value={new Firebase()}>
-      <App />
+      <Router>
+        <Switch>
+          {/* <Route path="/about">
+          <AboutPage />
+        </Route>
+          <Route path="/:id">
+            <App />
+          </Route> */}
+          <Route path="/">
+            <App />
+          </Route>
+        </Switch>
+      </Router>
     </FirebaseContext.Provider>
   </React.StrictMode>,
   document.getElementById('root'),
