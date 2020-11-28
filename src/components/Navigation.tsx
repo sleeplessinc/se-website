@@ -58,7 +58,7 @@ const Navigation: React.FC = () => {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link href="/#faq">FAQ</Nav.Link>
+          <Nav.Link href="/faq">FAQ</Nav.Link>
           <Nav.Link href="/#examples">Examples</Nav.Link>
           <Nav.Link href="/#resources">Resources</Nav.Link>
           <Nav.Link href="/#communities">Communities</Nav.Link>
