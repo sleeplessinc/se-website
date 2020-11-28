@@ -1,11 +1,11 @@
 import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
-import question_mark from '../images/bg_question_mark.png';
-import light_bulb from '../images/bg_light_bulb.png';
-import buildings_aerial_view from '../images/bg_buildings_aerial_view.png';
-import pedestrian_crossing from '../images/bg_pedestrian_crossing.png';
-import pocket_watch from '../images/bg_pocket_watch.png';
-import hand_shake from '../images/bg_hand_shake.png';
+import question_mark from '../images/bg_question_mark.webp';
+import light_bulb from '../images/bg_light_bulb.webp';
+import buildings_aerial_view from '../images/bg_buildings_aerial_view.webp';
+import pedestrian_crossing from '../images/bg_pedestrian_crossing.webp';
+import pocket_watch from '../images/bg_pocket_watch.webp';
+import hand_shake from '../images/bg_hand_shake.webp';
 import Slide from './Slide';
 
 const FaqCarousel: React.FC = () => {

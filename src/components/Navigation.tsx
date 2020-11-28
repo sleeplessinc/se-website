@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import classnames from 'classnames';
 import Navbar from 'react-bootstrap/Navbar';
-import logo from '../images/se_logo_wide.png';
 
 interface ScrollState {
   prevScrollpos: number;
@@ -36,8 +35,14 @@ const Navigation: React.FC = () => {
       })}
     >
       <Navbar.Brand href="#home" className="montserrat">
-        <img alt="" src={logo} width="55" height="30" className="d-inline-block align-middle mr-2" /> Street
-        Epistemology
+        <img
+          alt=""
+          src={process.env.PUBLIC_URL + '/logo192.png'}
+          width="55"
+          height="auto"
+          className="d-inline-block align-middle mr-2"
+        />{' '}
+        Street Epistemology
       </Navbar.Brand>
     </Navbar>
   );
