@@ -37,7 +37,7 @@ const IconNavigator: React.FC<IconNavigatorProps> = ({ cardDetails, sectionStyle
   const cards = cardDetails?.map((card) => {
     return (
       <img
-        src={process.env.PUBLIC_URL + '/img/' + card.logo + '.png'}
+        src={process.env.PUBLIC_URL + '/img/' + card.logo + '.webp'}
         key={card.title}
         onClick={() => handleLogoClick(card)}
         className={classnames('logo', 'm-2', {
