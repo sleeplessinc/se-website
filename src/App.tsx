@@ -52,10 +52,8 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
-      <header>
-        <Navigation />
-      </header>
-      <div className="container-fluid p-0">
+      <Navigation />
+      <div className="container-fluid p-0 mt-5">
         <a id="faq">
           <FaqCarousel />
         </a>

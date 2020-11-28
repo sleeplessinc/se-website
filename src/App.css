@@ -3,10 +3,7 @@
   src: url(fonts/Montserrat-Bold.otf);
 }
 
-.navbar {
-  width: 100%;
-  padding: 10px;
-  top: 0;
+.navbar-animated {
   transition: top 0.6s;
 }
 

@@ -17,6 +17,11 @@ const Navigation: React.FC = () => {
 
   const handleScroll = () => {
     const currentScrollPos = window.pageYOffset;
+    console.log(
+      `Visible: ${scrollState.prevScrollpos > currentScrollPos}, Prev: ${
+        scrollState.prevScrollpos
+      }, Current: ${currentScrollPos}`,
+    );
     setScrollState({
       prevScrollpos: currentScrollPos,
       visible: scrollState.prevScrollpos > currentScrollPos,
@@ -33,7 +38,8 @@ const Navigation: React.FC = () => {
       bg="dark"
       variant="dark"
       expand="lg"
-      className={classnames('navbar', 'navbar-expand-lg', 'navbar-light', 'bg-light', {
+      fixed="top"
+      className={classnames('navbar-animated', {
         'navbar-hidden': !scrollState.visible,
       })}
     >
