@@ -41,14 +41,21 @@ const DynamicContentPage: React.FC<DynamicContentPageProps> = ({
         backgroundSize: 'cover',
       }}
     >
-      <Container className="section-background align-items-center">
+      <Container
+        style={{
+          height: '100%',
+        }}
+      >
         {title && (
-          <Row className="align-items-center">
-            <Col sm className="text-center align-self-center">
-              <div className={'align-self-center p-3 text-light bg-masked-dark rounded-xl'}>
-                <h1>{title}</h1>
-                <div className="text-left">{parse(content)}</div>
-              </div>
+          <Row
+            className="align-items-center"
+            style={{
+              height: '100%',
+            }}
+          >
+            <Col className="text-center align-self-center p-3 text-light bg-masked-dark rounded-xl">
+              <h1>{title}</h1>
+              <div className="text-left">{parse(content)}</div>
             </Col>
           </Row>
         )}
