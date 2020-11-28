@@ -44,6 +44,24 @@ class Firebase {
         cancelCallbackOrContext,
       );
   }
+
+  subscribeToPage(
+    pageName: string,
+    callback: (content: string) => void,
+    cancelCallbackOrContext?: (error: any) => void,
+  ): void {
+    app
+      .database()
+      .ref(`pages/${pageName}`)
+      .on(
+        'value',
+        (snapshot) => {
+          const content = snapshot.val() as string;
+          callback(content);
+        },
+        cancelCallbackOrContext,
+      );
+  }
 }
 
 export default Firebase;
