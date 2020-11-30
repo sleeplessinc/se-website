@@ -6,6 +6,7 @@ import Row from 'react-bootstrap/esm/Row';
 import CardDetails from '../models/CardDetails';
 import classnames from 'classnames';
 import SectionStyle from '../enums/SectionStyle';
+import { Link } from 'react-router-dom';
 
 export interface IconNavigatorProps {
   heading: string | undefined;
@@ -53,6 +54,8 @@ const IconNavigator: React.FC<IconNavigatorProps> = ({ cardDetails, sectionStyle
   });
 
   const isDefault = sectionStyle === SectionStyle.Default;
+  const isSectionRef = selectedCard && selectedCard.url.startsWith('/#');
+  const isLocalLink = selectedCard && selectedCard.url.startsWith('/') && !isSectionRef;
 
   return (
     <Container>
@@ -69,9 +72,15 @@ const IconNavigator: React.FC<IconNavigatorProps> = ({ cardDetails, sectionStyle
           >
             <h2>{selectedCard?.title}</h2>
             <p>{selectedCard?.description}</p>
-            <Button className="m-2" href={selectedCard?.url} target="_blank">
-              Continue ➧
-            </Button>
+            {isLocalLink ? (
+              <Link to={selectedCard?.url}>
+                <Button className="m-2">Continue ➧</Button>
+              </Link>
+            ) : (
+              <Button className="m-2" href={selectedCard?.url} target={isSectionRef ? '' : '_blank'}>
+                Continue ➧
+              </Button>
+            )}
           </div>
         </Col>
       </Row>

@@ -35,7 +35,7 @@ const Navigation: React.FC = () => {
 
   return (
     <Navbar
-      bg="dark"
+      bg="primary"
       variant="dark"
       expand="lg"
       fixed="top"
@@ -58,12 +58,13 @@ const Navigation: React.FC = () => {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link href="/#faq">FAQ</Nav.Link>
+          <Nav.Link href="/faq">FAQ</Nav.Link>
           <Nav.Link href="/#examples">Examples</Nav.Link>
           <Nav.Link href="/#resources">Resources</Nav.Link>
           <Nav.Link href="/#communities">Communities</Nav.Link>
           <Nav.Link href="/#creators">Creators</Nav.Link>
           <Nav.Link href="/#shop">Shop</Nav.Link>
+          <Nav.Link href="/#guide">Guide</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
