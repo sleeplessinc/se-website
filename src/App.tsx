@@ -5,6 +5,7 @@ import DynamicContentPage from './components/DynamicContentPage';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import MainPage from './components/MainPage';
 import bg_question_mark from './images/bg_question_mark.webp';
+import BlogListPage from './components/BlogListPage';
 
 const App: React.FC = () => {
   return (
@@ -22,6 +23,9 @@ const App: React.FC = () => {
             </Route>
             <Route path="/acronyms">
               <DynamicContentPage pageName="acronyms" title="Acronyms" backgroundSource={bg_question_mark} />
+            </Route>
+            <Route path="/blog">
+              <BlogListPage />
             </Route>
             <Route path="/">
               <MainPage />
