@@ -25,7 +25,7 @@ const BlogListPage: React.FC = () => {
 
   const blogCards = blogs?.map((blog) => {
     return (
-      <Jumbotron key={blog.path}>
+      <Jumbotron key={blog.path} className="rounded-xl">
         <Container>
           <Row className="justify-content-center">
             <Col sm={4} className="blog-thumb">
@@ -35,9 +35,9 @@ const BlogListPage: React.FC = () => {
               <h1>{blog.title}</h1>
               <p>{'Published ' + formatDistance(new Date(blog.published), new Date()) + ' ago'}</p>
               <p>{blog.blurb}</p>
-              <p>
-                <Button variant="primary">Continue</Button>
-              </p>
+              <Button variant="primary" className="align-text-bottom" href={'blog/' + blog.path}>
+                Continue
+              </Button>
             </Col>
           </Row>
         </Container>
