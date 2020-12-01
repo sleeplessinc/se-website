@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Button from 'react-bootstrap/esm/Button';
 import Col from 'react-bootstrap/esm/Col';
 import Container from 'react-bootstrap/esm/Container';
@@ -7,21 +7,24 @@ import Blog from '../models/Blog';
 import { FirebaseContext } from '../firebase';
 import { Jumbotron } from 'react-bootstrap';
 import { formatDistance } from 'date-fns';
+import useStateWithLocalStorage from '../utils/storage';
 
 const BlogListPage: React.FC = () => {
   const firebaseContext = React.useContext(FirebaseContext);
-  const [blogs, setBlogs]: [Blog[], (blogs: Blog[]) => void] = useState<Blog[]>([]);
+  const [blogJson, setBlogJson] = useStateWithLocalStorage('blog');
 
   useEffect(() => {
     firebaseContext?.subscribeToBlogs(
       (results) => {
-        setBlogs(results);
+        setBlogJson(JSON.stringify(results));
       },
       (error) => {
         console.log(error);
       },
     );
   }, [firebaseContext]);
+
+  const blogs: Blog[] = blogJson === '' ? [] : JSON.parse(blogJson);
 
   const blogCards = blogs?.map((blog) => {
     return (
