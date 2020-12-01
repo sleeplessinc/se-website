@@ -1,7 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import app from 'firebase/app';
 import 'firebase/database';
+import { deserialize } from 'json-typescript-mapper';
 import CollectionType from '../enums/CollectionType';
+import Blog from '../models/Blog';
 import CardDetails from '../models/CardDetails';
 import * as mapper from '../utils/mapper';
 
@@ -35,11 +37,11 @@ class Firebase {
         'value',
         (snapshot) => {
           const val = snapshot.val();
-          const sessions = Object.keys(val).map((key) => {
+          const collection = Object.keys(val).map((key) => {
             const session = mapper.mapAnyToCardDetails(val[key]);
             return session;
           });
-          callback(sessions);
+          callback(collection);
         },
         cancelCallbackOrContext,
       );
@@ -58,6 +60,30 @@ class Firebase {
         (snapshot) => {
           const content = snapshot.val() as string;
           callback(content);
+        },
+        cancelCallbackOrContext,
+      );
+  }
+
+  subscribeToBlogs(callback: (blogs: Blog[]) => void, cancelCallbackOrContext?: (error: any) => void): void {
+    app
+      .database()
+      .ref(`blog`)
+      .on(
+        'value',
+        (snapshot) => {
+          const val = snapshot.val();
+          console.log(Object.keys(val));
+          const blogs = Object.keys(val)
+            .map((key) => {
+              const blog = deserialize(Blog, val[key]);
+              blog.path = key;
+              return blog;
+            })
+            .sort(
+              (first: Blog, second: Blog) => new Date(second.published).getTime() - new Date(first.published).getTime(),
+            );
+          callback(blogs);
         },
         cancelCallbackOrContext,
       );
