@@ -33,12 +33,15 @@ const Navigation: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   });
 
+  const isTop = window.pageYOffset === 0;
+  const location: 'top' | undefined = isTop ? undefined : 'top';
+
   return (
     <Navbar
       bg="primary"
       variant="dark"
       expand="lg"
-      fixed="top"
+      fixed={location}
       className={classnames('navbar-animated', {
         'navbar-hidden': !scrollState.visible,
       })}

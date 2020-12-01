@@ -12,11 +12,7 @@ interface DynamicContentPageProps {
   backgroundSource?: string | null;
 }
 
-const DynamicContentPage: React.FC<DynamicContentPageProps> = ({
-  pageName,
-  title,
-  backgroundSource,
-}: DynamicContentPageProps) => {
+const DynamicContentPage: React.FC<DynamicContentPageProps> = ({ pageName, title }: DynamicContentPageProps) => {
   const firebaseContext = React.useContext(FirebaseContext);
   const [content, setContent] = useStateWithLocalStorage(pageName);
   useEffect(() => {
@@ -31,37 +27,21 @@ const DynamicContentPage: React.FC<DynamicContentPageProps> = ({
     );
   }, [firebaseContext]);
   return (
-    <div
-      style={{
-        position: 'fixed',
-        width: '100%',
-        height: '100%',
-        overflow: 'scroll',
-        backgroundImage: 'url(' + backgroundSource + ')',
-        backgroundPosition: 'center',
-        backgroundSize: 'cover',
-      }}
-    >
-      <Container
-        style={{
-          height: '100%',
-        }}
-      >
-        {title && (
-          <Row
-            className="align-items-center"
-            style={{
-              height: '100%',
-            }}
-          >
-            <Col className="text-center align-self-center p-3 text-light bg-masked-dark rounded-xl">
-              <h1>{title}</h1>
-              <div className="text-left">{parse(content)}</div>
-            </Col>
-          </Row>
-        )}
-      </Container>
-    </div>
+    <Container>
+      {title && (
+        <Row
+          className="align-items-center"
+          style={{
+            height: '100%',
+          }}
+        >
+          <Col className="text-center align-self-center">
+            <h1>{title}</h1>
+            <div className="text-left">{parse(content)}</div>
+          </Col>
+        </Row>
+      )}
+    </Container>
   );
   return <>{parse(content)}</>;
 };

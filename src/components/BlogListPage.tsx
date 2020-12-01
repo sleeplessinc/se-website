@@ -28,7 +28,7 @@ const BlogListPage: React.FC = () => {
 
   const blogCards = blogs?.map((blog) => {
     return (
-      <Jumbotron key={blog.path} className="rounded-xl">
+      <Jumbotron key={blog.path} className="rounded-xl mt-4">
         <Container>
           <Row className="justify-content-center">
             <Col sm={4} className="blog-thumb">
