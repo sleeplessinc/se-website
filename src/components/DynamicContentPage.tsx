@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Col from 'react-bootstrap/esm/Col';
 import Container from 'react-bootstrap/esm/Container';
 import Row from 'react-bootstrap/esm/Row';
 import { FirebaseContext } from '../firebase';
 import parse from 'html-react-parser';
+import useStateWithLocalStorage from '../utils/storage';
 
 interface DynamicContentPageProps {
   pageName: string;
@@ -17,7 +18,7 @@ const DynamicContentPage: React.FC<DynamicContentPageProps> = ({
   backgroundSource,
 }: DynamicContentPageProps) => {
   const firebaseContext = React.useContext(FirebaseContext);
-  const [content, setContent] = useState<string>('');
+  const [content, setContent] = useStateWithLocalStorage(pageName);
   useEffect(() => {
     firebaseContext?.subscribeToPage(
       pageName,
