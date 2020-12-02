@@ -22,26 +22,7 @@ const BlogPage: React.FC = () => {
     );
   }, [firebaseContext]);
   console.log('Content: ' + content);
-  return (
-    <div
-      style={{
-        position: 'fixed',
-        width: '100%',
-        height: '100%',
-        overflow: 'scroll',
-        backgroundPosition: 'center',
-        backgroundSize: 'cover',
-      }}
-    >
-      <Container
-        style={{
-          height: '100%',
-        }}
-      >
-        <div className="text-left">{parse(content)}</div>
-      </Container>
-    </div>
-  );
+  return <Container>{parse(content)}</Container>;
 };
 
 export default BlogPage;
