@@ -28,19 +28,8 @@ const DynamicContentPage: React.FC<DynamicContentPageProps> = ({ pageName, title
   }, [firebaseContext]);
   return (
     <Container>
-      {title && (
-        <Row
-          className="align-items-center"
-          style={{
-            height: '100%',
-          }}
-        >
-          <Col className="text-center align-self-center">
-            <h1>{title}</h1>
-            <div className="text-left">{parse(content)}</div>
-          </Col>
-        </Row>
-      )}
+      {title && <h1 className="text-center m-3">{title}</h1>}
+      <div className="text-left">{parse(content)}</div>
     </Container>
   );
   return <>{parse(content)}</>;
