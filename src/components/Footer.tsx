@@ -35,13 +35,15 @@ const Footer: React.FC = () => {
             <br />
             Street Epistemology International
           </div>
-          <img
-            alt=""
-            src={process.env.PUBLIC_URL + '/img/logo_app.webp'}
-            width="65"
-            height="auto"
-            className="d-inline-block align-middle mr-2"
-          />
+          <a href="https://streetepistemologyinternational.org/" target="blank">
+            <img
+              alt=""
+              src={process.env.PUBLIC_URL + '/img/logo_app.webp'}
+              width="65"
+              height="auto"
+              className="d-inline-block align-middle mr-2"
+            />
+          </a>
         </Col>
       </Container>
     </Navbar>
