@@ -31,7 +31,7 @@ const Footer: React.FC = () => {
         </Col>
         <Col md={3} className="text-center m-1">
           <div className="d-inline-block align-middle mr-2 pr-2 text-light font-weight-light text-right">
-            Copyright &copy; 2020
+            Copyright &copy; {new Date().getFullYear()}
             <br />
             Street Epistemology International
           </div>
