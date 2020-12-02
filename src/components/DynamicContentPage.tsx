@@ -1,7 +1,5 @@
 import React, { useEffect } from 'react';
-import Col from 'react-bootstrap/esm/Col';
 import Container from 'react-bootstrap/esm/Container';
-import Row from 'react-bootstrap/esm/Row';
 import { FirebaseContext } from '../firebase';
 import parse from 'html-react-parser';
 import useStateWithLocalStorage from '../utils/storage';
