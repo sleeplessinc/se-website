@@ -46,18 +46,16 @@ const Navigation: React.FC = () => {
         'navbar-hidden': !scrollState.visible,
       })}
     >
-      <Link to="/">
-        <Navbar.Brand href="/" className="montserrat">
-          <img
-            alt=""
-            src={process.env.PUBLIC_URL + '/img/logo_app.webp'}
-            width="55"
-            height="auto"
-            className="d-inline-block align-middle mr-2"
-          />{' '}
-          Street Epistemology
-        </Navbar.Brand>
-      </Link>
+      <Navbar.Brand href="/" className="montserrat">
+        <img
+          alt=""
+          src={process.env.PUBLIC_URL + '/img/logo_app.webp'}
+          width="55"
+          height="auto"
+          className="d-inline-block align-middle mr-2"
+        />{' '}
+        Street Epistemology
+      </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
