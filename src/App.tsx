@@ -8,6 +8,7 @@ import bg_question_mark from './images/bg_question_mark.webp';
 import BlogListPage from './components/BlogListPage';
 import BlogPage from './components/BlogPage';
 import PageNotFound from './components/PageNotFound';
+import Footer from './components/Footer';
 
 const App: React.FC = () => {
   return (
@@ -37,6 +38,7 @@ const App: React.FC = () => {
             <PageNotFound />
           </Route>
         </Switch>
+        <Footer />
       </div>
     </Router>
   );
