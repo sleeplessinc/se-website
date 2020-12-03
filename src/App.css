@@ -112,3 +112,17 @@ blockquote p {
   height: 300px;
   width: 300px;
 }
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.footer {
+  margin-top: auto;
+}
+
+.grecaptcha-badge {
+  z-index: 999;
+}

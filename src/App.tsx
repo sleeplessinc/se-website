@@ -8,6 +8,8 @@ import bg_question_mark from './images/bg_question_mark.webp';
 import BlogListPage from './components/BlogListPage';
 import BlogPage from './components/BlogPage';
 import PageNotFound from './components/PageNotFound';
+import Footer from './components/Footer';
+import ContactUsPage from './components/ContactUsPage';
 
 const App: React.FC = () => {
   return (
@@ -27,6 +29,9 @@ const App: React.FC = () => {
           <Route path="/blog" exact={true}>
             <BlogListPage />
           </Route>
+          <Route path="/contact" exact={true}>
+            <ContactUsPage />
+          </Route>
           <Route path="/" exact={true}>
             <MainPage />
           </Route>
@@ -37,6 +42,7 @@ const App: React.FC = () => {
             <PageNotFound />
           </Route>
         </Switch>
+        <Footer />
       </div>
     </Router>
   );
