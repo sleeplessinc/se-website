@@ -5,7 +5,7 @@ import Container from 'react-bootstrap/esm/Container';
 import Row from 'react-bootstrap/esm/Row';
 import Blog from '../models/Blog';
 import { FirebaseContext } from '../firebase';
-import { Jumbotron, Spinner } from 'react-bootstrap';
+import { Badge, Jumbotron, Spinner } from 'react-bootstrap';
 import { formatDistance } from 'date-fns';
 import useStateWithLocalStorage from '../utils/storage';
 
@@ -39,7 +39,12 @@ const BlogListPage: React.FC = () => {
             </Col>
             <Col sm={8}>
               <h1>{blog.title}</h1>
-              <p>{'Published ' + formatDistance(new Date(blog.published), new Date()) + ' ago'}</p>
+              by {blog.author}
+              <br />
+              <Badge variant="primary">{blog.category}</Badge>
+              <small>
+                <p>{'Published ' + formatDistance(new Date(blog.published), new Date()) + ' ago'}</p>
+              </small>
               <p>{blog.blurb}</p>
               <Button variant="primary" className="align-text-bottom" href={'blog/' + blog.path}>
                 Continue
