@@ -5,6 +5,7 @@ import app from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/analytics';
 import 'firebase/firestore';
+import { useForm } from 'react-hook-form';
 
 declare global {
   interface Window {
@@ -12,38 +13,27 @@ declare global {
   }
 }
 
-interface Message {
-  email: string;
-  subject: string;
-  body: string;
-}
-
-const defaultMessage: Message = {
-  email: '',
-  subject: '',
-  body: '',
-};
-
 const ContactUsPage: React.FC = () => {
-  const [isVerified, setIsVerified] = useState(false);
-  const [message, setMessage] = useState<Message>(defaultMessage);
-
-  const onMessageChange = <P extends keyof Message>(prop: P, value: Message[P]) => {
-    setMessage({ ...message, [prop]: value });
+  const { register, handleSubmit, errors } = useForm();
+  const onSubmit = async (data) => {
+    const result = await verifyAsync();
+    if (result) {
+      console.log(data);
+    }
   };
 
   useEffect(() => {
-    window.recaptchaVerifier = new app.auth.RecaptchaVerifier('button-submit', {
+    window.recaptchaVerifier = new app.auth.RecaptchaVerifier('recaptcha-container', {
       size: 'invisible',
     });
-    const doVerifyAsync = async () => {
-      const result = await verifyAsync();
-      setIsVerified(result);
-    };
-    if (!isVerified) {
-      doVerifyAsync();
-    }
   });
+  //   const doVerifyAsync = async () => {
+  //     const result = await verifyAsync();
+  //     setIsVerified(result);
+  //   };
+  //   if (!isVerified) {
+  //     doVerifyAsync();
+  //   }
 
   const tryToVerifyAsync = async (applicationVerifier: app.auth.ApplicationVerifier) => {
     try {
@@ -52,10 +42,6 @@ const ContactUsPage: React.FC = () => {
     } catch (error) {
       return false;
     }
-  };
-
-  const onSubmitAsync = async (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
   };
 
   const verifyAsync = async () => {
@@ -74,59 +60,57 @@ const ContactUsPage: React.FC = () => {
         </a>
         &nbsp;or by filling out the form below:
         <hr />
-        <form>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className="form-group">
-            <label htmlFor="input-email">Your Email address</label>
+            <label htmlFor="input-email">Last name *</label>
             <input
               type="email"
               className="form-control"
+              name="email"
               id="input-email"
-              aria-describedby="emailHelp"
               placeholder="Enter email"
-              value={message.email}
-              onChange={(e) => {
-                onMessageChange('email', e.target.value);
-              }}
+              ref={register({ pattern: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i, required: true })}
             />
-            <small id="emailHelp" className="form-text text-muted">
-              We&apos;ll never share your email with anyone else.
-            </small>
+            {errors.email && (
+              <small id="email" className="form-text text-danger">
+                Please enter a valid email address.
+              </small>
+            )}
           </div>
           <div className="form-group">
-            <label htmlFor="input-subject">Subject</label>
+            <label htmlFor="input-subject">Last name *</label>
             <input
               className="form-control"
+              name="subject"
               id="input-subject"
               placeholder="Enter subject"
-              value={message.subject}
-              onChange={(e) => {
-                onMessageChange('subject', e.target.value);
-              }}
+              ref={register({ required: true, minLength: 5, maxLength: 100 })}
             />
+            {errors.subject && (
+              <small id="subject" className="form-text text-danger">
+                Please enter a subject that has between 5 and 100 characters.
+              </small>
+            )}
           </div>
           <div className="form-group">
-            <label htmlFor="input-message">Message</label>
+            <label htmlFor="input-message">Last name *</label>
             <textarea
               className="form-control"
+              name="message"
               id="input-message"
               rows={5}
-              onChange={(e) => {
-                onMessageChange('body', e.target.value);
-              }}
-              value={message.body}
+              placeholder="Enter message"
+              ref={register({ required: true, minLength: 50 })}
             />
+            {errors.message && (
+              <small id="message" className="form-text text-danger">
+                Please enter a message that is at least 50 characters long.
+              </small>
+            )}
           </div>
-          <div id="recaptcha-container" />
-          <button
-            id="button-submit"
-            type="submit"
-            className="btn btn-primary"
-            onClick={onSubmitAsync}
-            disabled={!isVerified}
-          >
-            Submit
-          </button>
+          <input id="button-submit" type="submit" className="btn btn-primary" />
         </form>
+        <div id="recaptcha-container" />
       </div>
     </Container>
   );
