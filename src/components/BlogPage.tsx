@@ -43,7 +43,7 @@ const BlogPage: React.FC = () => {
           </Spinner>
         </div>
       ) : (
-        parse(content)
+        <div className="text-justify">{parse(content)}</div>
       )}
     </Container>
   );
