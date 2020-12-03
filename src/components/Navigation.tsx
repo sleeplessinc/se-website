@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import classnames from 'classnames';
 import Navbar from 'react-bootstrap/Navbar';
 import { Nav } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 
 interface ScrollState {
   prevScrollpos: number;
