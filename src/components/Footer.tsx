@@ -30,7 +30,7 @@ const Footer: React.FC = () => {
           </Nav.Link>
         </Col>
         <Col md={3} className="text-center m-1">
-          <small className="d-inline-block align-middle mr-2 pr-2 text-light font-weight-light text-right">
+          <small className="d-block d-md-inline-block align-middle m-2 pr-2 text-light font-weight-light">
             Copyright &copy; {new Date().getFullYear()}
             <br />
             Street Epistemology International
