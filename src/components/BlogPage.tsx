@@ -26,6 +26,7 @@ const BlogPage: React.FC = () => {
         }
       },
       (error) => {
+        console.log(error);
         setnotFound(true);
       },
     );
