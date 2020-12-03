@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
   return (
     <Navbar bg="primary" variant="dark" expand="lg" className="footer">
       <Container fluid>
-        <Col md className="text-center m-1">
+        <Col md={3} className="text-center m-1">
           <Nav className="mr-auto">
             <Nav.Link href="/contact">Contact Us</Nav.Link>
           </Nav>
@@ -29,12 +29,12 @@ const Footer: React.FC = () => {
             <img src={icon_twitter} width="30px" height="30px" />
           </Nav.Link>
         </Col>
-        <Col md className="text-center m-1">
-          <div className="d-inline-block align-middle mr-2 pr-2 text-light font-weight-light text-right">
+        <Col md={3} className="text-center m-1">
+          <small className="d-inline-block align-middle mr-2 pr-2 text-light font-weight-light text-right">
             Copyright &copy; {new Date().getFullYear()}
             <br />
             Street Epistemology International
-          </div>
+          </small>
           <a href="https://streetepistemologyinternational.org/" target="blank">
             <img
               alt=""
