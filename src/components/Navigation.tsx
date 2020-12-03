@@ -47,8 +47,10 @@ const Navigation: React.FC = () => {
           width="55"
           height="auto"
           className="d-inline-block align-middle mr-2"
-        />{' '}
-        Street Epistemology
+        />
+        <div className="d-inline">
+          <span className="d-none d-sm-inline-block">Street Epistemology</span>
+        </div>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
