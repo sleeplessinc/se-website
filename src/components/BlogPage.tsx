@@ -5,6 +5,7 @@ import parse from 'html-react-parser';
 import { useParams } from 'react-router-dom';
 import useStateWithLocalStorage from '../utils/storage';
 import PageNotFound from './PageNotFound';
+import { Spinner } from 'react-bootstrap';
 
 const BlogPage: React.FC = () => {
   const firebaseContext = React.useContext(FirebaseContext);
@@ -12,6 +13,7 @@ const BlogPage: React.FC = () => {
   const path = `blog/${id}`;
   const [content, setContent] = useStateWithLocalStorage(path);
   const [notFound, setnotFound] = useState(false);
+  const [isLoading, setIsLoading] = useState(content !== '');
   useEffect(() => {
     firebaseContext?.subscribeToPage(
       path,
@@ -20,6 +22,7 @@ const BlogPage: React.FC = () => {
           setnotFound(true);
         } else {
           setContent(results);
+          setIsLoading(false);
         }
       },
       (error) => {
@@ -29,7 +32,21 @@ const BlogPage: React.FC = () => {
     );
   }, [firebaseContext]);
   console.log(content);
-  return notFound ? <PageNotFound /> : <Container>{parse(content)}</Container>;
+  return notFound ? (
+    <PageNotFound />
+  ) : (
+    <Container>
+      {isLoading ? (
+        <div className="text-center">
+          <Spinner className="m-2" animation="border" role="status" variant="primary">
+            <span className="sr-only">Loading...</span>
+          </Spinner>
+        </div>
+      ) : (
+        parse(content)
+      )}
+    </Container>
+  );
 };
 
 export default BlogPage;
