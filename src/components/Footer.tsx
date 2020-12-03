@@ -8,9 +8,9 @@ import icon_discord from '../images/icon-discord.svg';
 
 const Footer: React.FC = () => {
   return (
-    <Navbar bg="primary" variant="dark" expand="lg" sticky="bottom">
+    <Navbar bg="primary" variant="dark" expand="lg" className="footer">
       <Container fluid>
-        <Col md={3} className="text-center m-1">
+        <Col md className="text-center m-1">
           <Nav className="mr-auto">
             <Nav.Link href="/contact">Contact Us</Nav.Link>
           </Nav>
@@ -29,7 +29,7 @@ const Footer: React.FC = () => {
             <img src={icon_twitter} width="30px" height="30px" />
           </Nav.Link>
         </Col>
-        <Col md={3} className="text-center m-1">
+        <Col md className="text-center m-1">
           <div className="d-inline-block align-middle mr-2 pr-2 text-light font-weight-light text-right">
             Copyright &copy; {new Date().getFullYear()}
             <br />
