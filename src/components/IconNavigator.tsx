@@ -62,7 +62,7 @@ const IconNavigator: React.FC<IconNavigatorProps> = ({
   const isLocalLink = selectedCard && selectedCard.url.startsWith('/') && !isSectionRef;
 
   return isLoading ? (
-    <Spinner className="m-2" animation="border" role="status" variant="primary">
+    <Spinner className="m-5" animation="border" role="status" variant="primary">
       <span className="sr-only">Loading...</span>
     </Spinner>
   ) : (

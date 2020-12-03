@@ -55,7 +55,7 @@ const BlogListPage: React.FC = () => {
     <Container>
       {isLoading ? (
         <div className="text-center">
-          <Spinner className="m-2" animation="border" role="status" variant="primary">
+          <Spinner className="m-5" animation="border" role="status" variant="primary">
             <span className="sr-only">Loading...</span>
           </Spinner>
         </div>
