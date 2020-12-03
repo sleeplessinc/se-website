@@ -122,3 +122,7 @@ blockquote p {
 .footer {
   margin-top: auto;
 }
+
+.grecaptcha-badge {
+  z-index: 999;
+}
