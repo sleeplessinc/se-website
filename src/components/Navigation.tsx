@@ -16,11 +16,6 @@ const Navigation: React.FC = () => {
 
   const handleScroll = () => {
     const currentScrollPos = window.pageYOffset;
-    console.log(
-      `Visible: ${scrollState.prevScrollpos > currentScrollPos}, Prev: ${
-        scrollState.prevScrollpos
-      }, Current: ${currentScrollPos}`,
-    );
     setScrollState({
       prevScrollpos: currentScrollPos,
       visible: scrollState.prevScrollpos > currentScrollPos,
