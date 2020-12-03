@@ -16,16 +16,16 @@ const Footer: React.FC = () => {
           </Nav>
         </Col>
         <Col md className="text-center m-1">
-          <Nav.Link href="https://discordapp.com/invite/sKap3zM" className="d-inline">
+          <Nav.Link href="https://discordapp.com/invite/sKap3zM" target="blank" className="d-inline">
             <img src={icon_discord} width="30px" height="30px" />
           </Nav.Link>
-          <Nav.Link href="https://www.facebook.com/StreetEpistemology/" className="d-inline">
+          <Nav.Link href="https://www.facebook.com/StreetEpistemology/" target="blank" className="d-inline">
             <img src={icon_facebook} width="30px" height="30px" />
           </Nav.Link>
-          <Nav.Link href="https://www.reddit.com/r/StreetEpistemology/" className="d-inline">
+          <Nav.Link href="https://www.reddit.com/r/StreetEpistemology/" target="blank" className="d-inline">
             <img src={icon_reddit} width="30px" height="30px" />
           </Nav.Link>
-          <Nav.Link href="https://twitter.com/StEpistemology" className="d-inline">
+          <Nav.Link href="https://twitter.com/StEpistemology" target="blank" className="d-inline">
             <img src={icon_twitter} width="30px" height="30px" />
           </Nav.Link>
         </Col>
