@@ -126,3 +126,7 @@ blockquote p {
 .grecaptcha-badge {
   z-index: 999;
 }
+
+.blog p {
+  text-align: justify;
+}
