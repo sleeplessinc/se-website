@@ -26,12 +26,12 @@ const BlogPage: React.FC = () => {
         }
       },
       (error) => {
-        setnotFound(true);
         console.log(error);
+        setnotFound(true);
       },
     );
   }, [firebaseContext]);
-  console.log(content);
+
   return notFound ? (
     <PageNotFound />
   ) : (
@@ -43,7 +43,7 @@ const BlogPage: React.FC = () => {
           </Spinner>
         </div>
       ) : (
-        <div className="text-justify">{parse(content)}</div>
+        <div className="blog">{parse(content)}</div>
       )}
     </Container>
   );
