@@ -12,8 +12,25 @@ declare global {
   }
 }
 
+interface Message {
+  email: string;
+  subject: string;
+  body: string;
+}
+
+const defaultMessage: Message = {
+  email: '',
+  subject: '',
+  body: '',
+};
+
 const ContactUsPage: React.FC = () => {
   const [isVerified, setIsVerified] = useState(false);
+  const [message, setMessage] = useState<Message>(defaultMessage);
+
+  const onMessageChange = <P extends keyof Message>(prop: P, value: Message[P]) => {
+    setMessage({ ...message, [prop]: value });
+  };
 
   useEffect(() => {
     window.recaptchaVerifier = new app.auth.RecaptchaVerifier('button-submit', {
@@ -66,6 +83,10 @@ const ContactUsPage: React.FC = () => {
               id="input-email"
               aria-describedby="emailHelp"
               placeholder="Enter email"
+              value={message.email}
+              onChange={(e) => {
+                onMessageChange('email', e.target.value);
+              }}
             />
             <small id="emailHelp" className="form-text text-muted">
               We&apos;ll never share your email with anyone else.
@@ -73,18 +94,34 @@ const ContactUsPage: React.FC = () => {
           </div>
           <div className="form-group">
             <label htmlFor="input-subject">Subject</label>
-            <input type="email" className="form-control" id="input-subject" placeholder="Enter subject" />
+            <input
+              className="form-control"
+              id="input-subject"
+              placeholder="Enter subject"
+              value={message.subject}
+              onChange={(e) => {
+                onMessageChange('subject', e.target.value);
+              }}
+            />
           </div>
           <div className="form-group">
             <label htmlFor="input-message">Message</label>
-            <textarea className="form-control" id="input-message" rows={5}></textarea>
+            <textarea
+              className="form-control"
+              id="input-message"
+              rows={5}
+              onChange={(e) => {
+                onMessageChange('body', e.target.value);
+              }}
+              value={message.body}
+            />
           </div>
           <div id="recaptcha-container" />
           <button
             id="button-submit"
             type="submit"
             className="btn btn-primary"
-            onClick={(e) => onSubmitAsync(e)}
+            onClick={onSubmitAsync}
             disabled={!isVerified}
           >
             Submit
