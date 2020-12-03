@@ -7,25 +7,29 @@ import CardDetails from '../models/CardDetails';
 import classnames from 'classnames';
 import SectionStyle from '../enums/SectionStyle';
 import { Link } from 'react-router-dom';
+import { Spinner } from 'react-bootstrap';
 
 export interface IconNavigatorProps {
-  heading: string | undefined;
   cardDetails: CardDetails[] | undefined;
   sectionStyle?: SectionStyle;
   roundCards?: boolean;
+  isLoading: boolean;
 }
 
 const defaultProps: IconNavigatorProps = {
-  heading: undefined,
   cardDetails: undefined,
   sectionStyle: SectionStyle.Default,
   roundCards: false,
+  isLoading: false,
 };
 
-const IconNavigator: React.FC<IconNavigatorProps> = ({ cardDetails, sectionStyle, roundCards }: IconNavigatorProps) => {
-  const [selectedCard, setSelectedCard]: [CardDetails | undefined, (card: CardDetails) => void] = useState<
-    CardDetails | undefined
-  >(cardDetails ? cardDetails[0] : undefined);
+const IconNavigator: React.FC<IconNavigatorProps> = ({
+  cardDetails,
+  sectionStyle,
+  roundCards,
+  isLoading,
+}: IconNavigatorProps) => {
+  const [selectedCard, setSelectedCard] = useState<CardDetails | undefined>(cardDetails ? cardDetails[0] : undefined);
 
   const handleLogoClick = (card: CardDetails) => {
     setSelectedCard(card);
@@ -57,7 +61,11 @@ const IconNavigator: React.FC<IconNavigatorProps> = ({ cardDetails, sectionStyle
   const isSectionRef = selectedCard && selectedCard.url.startsWith('/#');
   const isLocalLink = selectedCard && selectedCard.url.startsWith('/') && !isSectionRef;
 
-  return (
+  return isLoading ? (
+    <Spinner className="m-2" animation="border" role="status" variant="primary">
+      <span className="sr-only">Loading...</span>
+    </Spinner>
+  ) : (
     <Container>
       <Row>
         <Col md={6} className="text-center mb-2">
