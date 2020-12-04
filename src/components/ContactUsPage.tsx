@@ -62,7 +62,7 @@ const ContactUsPage: React.FC = () => {
           <hr />
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-group">
-              <label htmlFor="input-email">Last name *</label>
+              <label htmlFor="input-email">Email *</label>
               <input
                 type="email"
                 className="form-control"
@@ -78,7 +78,7 @@ const ContactUsPage: React.FC = () => {
               )}
             </div>
             <div className="form-group">
-              <label htmlFor="input-subject">Last name *</label>
+              <label htmlFor="input-subject">Subject *</label>
               <input
                 className="form-control"
                 name="subject"
@@ -93,7 +93,7 @@ const ContactUsPage: React.FC = () => {
               )}
             </div>
             <div className="form-group">
-              <label htmlFor="input-message">Last name *</label>
+              <label htmlFor="input-message">Message *</label>
               <textarea
                 className="form-control"
                 name="message"
