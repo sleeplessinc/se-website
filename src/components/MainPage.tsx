@@ -15,20 +15,20 @@ import CollectionType from '../enums/CollectionType';
 const MainPage: React.FC = () => {
   return (
     <div className="container-fluid p-0">
-      <a id="faq">
+      <div id="faq">
         <FaqCarousel />
-      </a>
-      <a id="examples">
+      </div>
+      <div id="examples">
         <Section backgroundSource={video_camera} sectionStyle={SectionStyle.Light}>
           <ExamplesPage />
         </Section>
-      </a>
-      <a id="resources">
+      </div>
+      <div id="resources">
         <Section heading="Resources" backgroundSource={bg_tools}>
           <ContentCollection collectionType={CollectionType.Resources} />
         </Section>
-      </a>
-      <a id="communities">
+      </div>
+      <div id="communities">
         <Section heading="Communities" backgroundSource={bg_community} sectionStyle={SectionStyle.Light}>
           <ContentCollection
             collectionType={CollectionType.Communities}
@@ -36,18 +36,18 @@ const MainPage: React.FC = () => {
             roundCards={true}
           />
         </Section>
-      </a>
-      <a id="creators">
+      </div>
+      <div id="creators">
         <Section heading="Content Creators" backgroundSource={bg_filming}>
           <ContentCollection collectionType={CollectionType.Creators} roundCards={true} />
         </Section>
-      </a>
-      <a id="shop">
+      </div>
+      <div id="shop">
         <ShopSection />
-      </a>
-      <a id="guide">
+      </div>
+      <div id="guide">
         <GuidePage />
-      </a>
+      </div>
     </div>
   );
 };
