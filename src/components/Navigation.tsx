@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import classnames from 'classnames';
 import Navbar from 'react-bootstrap/Navbar';
 import { Nav } from 'react-bootstrap';
+import { UserContext } from './UserProvider';
+import { FirebaseContext } from '../firebase';
 
 interface ScrollState {
   prevScrollpos: number;
@@ -13,6 +15,8 @@ const Navigation: React.FC = () => {
     prevScrollpos: window.pageYOffset,
     visible: true,
   });
+  const user = React.useContext(UserContext);
+  const firebase = React.useContext(FirebaseContext);
 
   const handleScroll = () => {
     const currentScrollPos = window.pageYOffset;
@@ -29,6 +33,13 @@ const Navigation: React.FC = () => {
 
   const isTop = window.pageYOffset === 0;
   const location: 'top' | undefined = isTop ? undefined : 'top';
+  const handleSignIn = async () => {
+    if (!user) {
+      firebase?.signInWithGoogle();
+    } else {
+      firebase?.signOut();
+    }
+  };
 
   return (
     <Navbar
@@ -63,6 +74,7 @@ const Navigation: React.FC = () => {
           <Nav.Link href="/#shop">Shop</Nav.Link>
           <Nav.Link href="/#guide">Guide</Nav.Link>
           <Nav.Link href="/blog">Blog</Nav.Link>
+          <Nav.Link onClick={handleSignIn}>{user ? 'Sign Out' : 'Sign In'}</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
