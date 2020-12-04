@@ -18,12 +18,26 @@ const config = {
 };
 
 class Firebase {
+  auth: app.auth.Auth;
+  provider: app.auth.GoogleAuthProvider;
+
   constructor() {
     app.initializeApp(config);
+    this.auth = app.auth();
+    this.provider = new app.auth.GoogleAuthProvider();
   }
+
   database(): app.database.Database {
     return app.database();
   }
+
+  signInWithGoogle = (): void => {
+    this.auth.signInWithPopup(this.provider);
+  };
+
+  signOut = (): void => {
+    this.auth.signOut();
+  };
 
   subscribeToCollection(
     collectionType: CollectionType,
