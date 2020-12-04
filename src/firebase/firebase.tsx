@@ -31,12 +31,12 @@ class Firebase {
     return app.database();
   }
 
-  signInWithGoogle = (): void => {
-    this.auth.signInWithPopup(this.provider);
+  signInWithGoogle = async (): Promise<void> => {
+    await this.auth.signInWithPopup(this.provider);
   };
 
-  signOut = (): void => {
-    this.auth.signOut();
+  signOut = async (): Promise<void> => {
+    await this.auth.signOut();
   };
 
   subscribeToCollection(
@@ -87,7 +87,6 @@ class Firebase {
         'value',
         (snapshot) => {
           const val = snapshot.val();
-          console.log(Object.keys(val));
           const blogs = Object.keys(val)
             .map((key) => {
               const blog = deserialize(Blog, val[key]);
