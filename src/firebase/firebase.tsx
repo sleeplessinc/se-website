@@ -18,6 +18,11 @@ const config = {
   appId: '1:46383537676:web:9dacd993f857c3cec1d829',
 };
 
+interface IUserClaims {
+  admin?: boolean;
+  editor?: boolean;
+}
+
 class Firebase {
   auth: app.auth.Auth;
   provider: app.auth.GoogleAuthProvider;
@@ -42,12 +47,28 @@ class Firebase {
     return this.auth.signOut();
   };
 
-  assignAdmin = async (email: string): Promise<boolean> => {
-    const setAdmin = this.functions.httpsCallable('setAdmin');
-    return setAdmin({ email: email })
+  assignAdmin = async (email: string): Promise<IUserClaims | undefined> => {
+    return this.assignClaim(email, { admin: true });
+  };
+
+  revokeAdmin = async (email: string): Promise<IUserClaims | undefined> => {
+    return this.assignClaim(email, { admin: false });
+  };
+
+  assignEditor = async (email: string): Promise<IUserClaims | undefined> => {
+    return this.assignClaim(email, { editor: true });
+  };
+
+  revokeEditor = async (email: string): Promise<IUserClaims | undefined> => {
+    return this.assignClaim(email, { editor: false });
+  };
+
+  private assignClaim = async (email: string, claim: IUserClaims): Promise<IUserClaims | undefined> => {
+    return this.functions
+      .httpsCallable('setClaim')({ email: email, claim: claim })
       .then((result) => {
         // Read result of the Cloud Function.
-        return result.data.admin;
+        return result.data.claim as IUserClaims;
       })
       .catch((error) => {
         // Getting the Error details.
@@ -55,7 +76,7 @@ class Firebase {
         const message = error.message;
         // const details = error.details;
         console.log(message);
-        return false;
+        return undefined;
       });
   };
 
