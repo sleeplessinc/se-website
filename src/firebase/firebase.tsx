@@ -123,7 +123,7 @@ class Firebase {
   subscribeToBlogs(callback: (blogs: Blog[]) => void, cancelCallbackOrContext?: (error: any) => void): void {
     app
       .database()
-      .ref(`blog`)
+      .ref('page-details/blog')
       .on(
         'value',
         (snapshot) => {
