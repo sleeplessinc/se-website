@@ -10,6 +10,7 @@ import BlogPage from './components/BlogPage';
 import PageNotFound from './components/PageNotFound';
 import Footer from './components/Footer';
 import ContactUsPage from './components/ContactUsPage';
+import Login from './components/Login';
 
 const App: React.FC = () => {
   return (
@@ -28,6 +29,9 @@ const App: React.FC = () => {
           </Route>
           <Route path="/blog" exact={true}>
             <BlogListPage />
+          </Route>
+          <Route path="/login" exact={true}>
+            <Login />
           </Route>
           <Route path="/contact" exact={true}>
             <ContactUsPage />
