@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import app from 'firebase/app';
 import 'firebase/database';
+import 'firebase/functions';
 import { deserialize } from 'json-typescript-mapper';
 import CollectionType from '../enums/CollectionType';
 import Blog from '../models/Blog';
@@ -17,13 +18,67 @@ const config = {
   appId: '1:46383537676:web:9dacd993f857c3cec1d829',
 };
 
+interface IUserClaims {
+  admin?: boolean;
+  editor?: boolean;
+}
+
 class Firebase {
+  auth: app.auth.Auth;
+  provider: app.auth.GoogleAuthProvider;
+  functions: app.functions.Functions;
+
   constructor() {
     app.initializeApp(config);
+    this.auth = app.auth();
+    this.provider = new app.auth.GoogleAuthProvider();
+    this.functions = app.functions();
   }
+
   database(): app.database.Database {
     return app.database();
   }
+
+  signInWithGoogle = async (): Promise<app.auth.UserCredential> => {
+    return this.auth.signInWithPopup(this.provider);
+  };
+
+  signOut = async (): Promise<void> => {
+    return this.auth.signOut();
+  };
+
+  assignAdmin = async (email: string): Promise<IUserClaims | undefined> => {
+    return this.assignClaim(email, { admin: true });
+  };
+
+  revokeAdmin = async (email: string): Promise<IUserClaims | undefined> => {
+    return this.assignClaim(email, { admin: false });
+  };
+
+  assignEditor = async (email: string): Promise<IUserClaims | undefined> => {
+    return this.assignClaim(email, { editor: true });
+  };
+
+  revokeEditor = async (email: string): Promise<IUserClaims | undefined> => {
+    return this.assignClaim(email, { editor: false });
+  };
+
+  private assignClaim = async (email: string, claim: IUserClaims): Promise<IUserClaims | undefined> => {
+    return this.functions
+      .httpsCallable('setClaim')({ email: email, claim: claim })
+      .then((result) => {
+        // Read result of the Cloud Function.
+        return result.data.claim as IUserClaims;
+      })
+      .catch((error) => {
+        // Getting the Error details.
+        // const code = error.code;
+        const message = error.message;
+        // const details = error.details;
+        console.log(message);
+        return undefined;
+      });
+  };
 
   subscribeToCollection(
     collectionType: CollectionType,
@@ -73,7 +128,6 @@ class Firebase {
         'value',
         (snapshot) => {
           const val = snapshot.val();
-          console.log(Object.keys(val));
           const blogs = Object.keys(val)
             .map((key) => {
               const blog = deserialize(Blog, val[key]);

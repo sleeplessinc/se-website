@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react';
 import classnames from 'classnames';
 import Navbar from 'react-bootstrap/Navbar';
 import { Nav } from 'react-bootstrap';
+import { UserContext } from './UserProvider';
+import { FirebaseContext } from '../firebase';
+import { Link } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 
 interface ScrollState {
   prevScrollpos: number;
@@ -9,10 +13,12 @@ interface ScrollState {
 }
 
 const Navigation: React.FC = () => {
-  const [scrollState, setScrollState]: [ScrollState, (value: ScrollState) => void] = useState<ScrollState>({
+  const [scrollState, setScrollState] = useState<ScrollState>({
     prevScrollpos: window.pageYOffset,
     visible: true,
   });
+  const user = React.useContext(UserContext);
+  const firebase = React.useContext(FirebaseContext);
 
   const handleScroll = () => {
     const currentScrollPos = window.pageYOffset;
@@ -29,6 +35,13 @@ const Navigation: React.FC = () => {
 
   const isTop = window.pageYOffset === 0;
   const location: 'top' | undefined = isTop ? undefined : 'top';
+  const handleSignIn = async () => {
+    if (!user) {
+      await firebase?.signInWithGoogle();
+    } else {
+      await firebase?.signOut();
+    }
+  };
 
   return (
     <Navbar
@@ -40,7 +53,7 @@ const Navigation: React.FC = () => {
         'navbar-hidden': !scrollState.visible,
       })}
     >
-      <Navbar.Brand href="/" className="montserrat">
+      <Navbar.Brand as={HashLink} to="/#top" className="montserrat">
         <img
           alt=""
           src={process.env.PUBLIC_URL + '/img/logo_app.webp'}
@@ -55,15 +68,41 @@ const Navigation: React.FC = () => {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link href="/faq">FAQ</Nav.Link>
-          <Nav.Link href="/#examples">Examples</Nav.Link>
-          <Nav.Link href="/#resources">Resources</Nav.Link>
-          <Nav.Link href="/#communities">Communities</Nav.Link>
-          <Nav.Link href="/#creators">Creators</Nav.Link>
-          <Nav.Link href="/#shop">Shop</Nav.Link>
-          <Nav.Link href="/#guide">Guide</Nav.Link>
-          <Nav.Link href="/blog">Blog</Nav.Link>
+          <Nav.Link as={Link} to="/faq">
+            FAQ
+          </Nav.Link>
+          <Nav.Link as={HashLink} to="/#examples">
+            Examples
+          </Nav.Link>
+          <Nav.Link as={HashLink} to="/#resources">
+            Resources
+          </Nav.Link>
+          <Nav.Link as={HashLink} to="/#communities">
+            Communities
+          </Nav.Link>
+          <Nav.Link as={HashLink} to="/#creators">
+            Creators
+          </Nav.Link>
+          <Nav.Link as={HashLink} to="/#shop">
+            Shop
+          </Nav.Link>
+          <Nav.Link as={HashLink} to="/#guide">
+            Guide
+          </Nav.Link>
+          <Nav.Link as={Link} to="/blog">
+            Blog
+          </Nav.Link>
         </Nav>
+        {user !== null ? (
+          <Nav className="mr-sm-2">
+            <Nav.Link onClick={handleSignIn}>{user ? 'Sign Out' : 'Sign In'}</Nav.Link>
+            {user.isAdmin ? (
+              <Nav.Link as={Link} to="/admin">
+                Admin
+              </Nav.Link>
+            ) : null}
+          </Nav>
+        ) : null}
       </Navbar.Collapse>
     </Navbar>
   );

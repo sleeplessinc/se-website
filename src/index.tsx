@@ -1,15 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.css';
+import 'alertifyjs/build/css/alertify.css';
+import 'alertifyjs/build/css/themes/bootstrap.min.css';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Firebase, { FirebaseContext } from './firebase';
+import UserProvider from './components/UserProvider';
 
 ReactDOM.render(
   <React.StrictMode>
     <FirebaseContext.Provider value={new Firebase()}>
-      <App />
+      <UserProvider>
+        <App />
+      </UserProvider>
     </FirebaseContext.Provider>
   </React.StrictMode>,
   document.getElementById('root'),
