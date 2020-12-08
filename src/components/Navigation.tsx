@@ -5,6 +5,7 @@ import { Nav } from 'react-bootstrap';
 import { UserContext } from './UserProvider';
 import { FirebaseContext } from '../firebase';
 import { Link } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 
 interface ScrollState {
   prevScrollpos: number;
@@ -52,7 +53,7 @@ const Navigation: React.FC = () => {
         'navbar-hidden': !scrollState.visible,
       })}
     >
-      <Navbar.Brand as={Link} to="/" className="montserrat">
+      <Navbar.Brand as={HashLink} to="/#top" className="montserrat">
         <img
           alt=""
           src={process.env.PUBLIC_URL + '/img/logo_app.webp'}
@@ -70,22 +71,22 @@ const Navigation: React.FC = () => {
           <Nav.Link as={Link} to="/faq">
             FAQ
           </Nav.Link>
-          <Nav.Link as={Link} to="/#examples">
+          <Nav.Link as={HashLink} to="/#examples">
             Examples
           </Nav.Link>
-          <Nav.Link as={Link} to="/#resources">
+          <Nav.Link as={HashLink} to="/#resources">
             Resources
           </Nav.Link>
-          <Nav.Link as={Link} to="/#communities">
+          <Nav.Link as={HashLink} to="/#communities">
             Communities
           </Nav.Link>
-          <Nav.Link as={Link} to="/#creators">
+          <Nav.Link as={HashLink} to="/#creators">
             Creators
           </Nav.Link>
-          <Nav.Link as={Link} to="/#shop">
+          <Nav.Link as={HashLink} to="/#shop">
             Shop
           </Nav.Link>
-          <Nav.Link as={Link} to="/#guide">
+          <Nav.Link as={HashLink} to="/#guide">
             Guide
           </Nav.Link>
           <Nav.Link as={Link} to="/blog">
