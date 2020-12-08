@@ -5,10 +5,12 @@ import parse from 'html-react-parser';
 import { useParams } from 'react-router-dom';
 import useStateWithLocalStorage from '../utils/storage';
 import PageNotFound from './PageNotFound';
-import { Spinner } from 'react-bootstrap';
+import { Button, Spinner } from 'react-bootstrap';
+import { UserContext } from './UserProvider';
 
 const BlogPage: React.FC = () => {
   const firebaseContext = React.useContext(FirebaseContext);
+  const userContext = React.useContext(UserContext);
   const { id } = useParams();
   const path = `blog/${id}`;
   const [content, setContent] = useStateWithLocalStorage(path);
@@ -43,7 +45,10 @@ const BlogPage: React.FC = () => {
           </Spinner>
         </div>
       ) : (
-        <div className="blog">{parse(content)}</div>
+        <div className="blog">
+          {userContext?.isAdmin ? <Button className="position-absolute m-2">Edit Page</Button> : null}
+          {parse(content)}
+        </div>
       )}
     </Container>
   );
