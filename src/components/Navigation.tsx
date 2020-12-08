@@ -93,14 +93,16 @@ const Navigation: React.FC = () => {
             Blog
           </Nav.Link>
         </Nav>
-        <Nav className="mr-sm-2">
-          <Nav.Link onClick={handleSignIn}>{user ? 'Sign Out' : 'Sign In'}</Nav.Link>
-          {user?.isAdmin ? (
-            <Nav.Link as={Link} to="/admin">
-              Admin
-            </Nav.Link>
-          ) : null}
-        </Nav>
+        {user !== null ? (
+          <Nav className="mr-sm-2">
+            <Nav.Link onClick={handleSignIn}>{user ? 'Sign Out' : 'Sign In'}</Nav.Link>
+            {user.isAdmin ? (
+              <Nav.Link as={Link} to="/admin">
+                Admin
+              </Nav.Link>
+            ) : null}
+          </Nav>
+        ) : null}
       </Navbar.Collapse>
     </Navbar>
   );
