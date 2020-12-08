@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import app from 'firebase/app';
 import 'firebase/database';
+import 'firebase/functions';
 import { deserialize } from 'json-typescript-mapper';
 import CollectionType from '../enums/CollectionType';
 import Blog from '../models/Blog';
@@ -20,23 +21,42 @@ const config = {
 class Firebase {
   auth: app.auth.Auth;
   provider: app.auth.GoogleAuthProvider;
+  functions: app.functions.Functions;
 
   constructor() {
     app.initializeApp(config);
     this.auth = app.auth();
     this.provider = new app.auth.GoogleAuthProvider();
+    this.functions = app.functions();
   }
 
   database(): app.database.Database {
     return app.database();
   }
 
-  signInWithGoogle = async (): Promise<void> => {
-    await this.auth.signInWithPopup(this.provider);
+  signInWithGoogle = async (): Promise<app.auth.UserCredential> => {
+    return this.auth.signInWithPopup(this.provider);
   };
 
   signOut = async (): Promise<void> => {
-    await this.auth.signOut();
+    return this.auth.signOut();
+  };
+
+  assignAdmin = async (email: string): Promise<boolean> => {
+    const setAdmin = this.functions.httpsCallable('setAdmin');
+    return setAdmin({ email: email })
+      .then((result) => {
+        // Read result of the Cloud Function.
+        return result.data.admin;
+      })
+      .catch((error) => {
+        // Getting the Error details.
+        // const code = error.code;
+        const message = error.message;
+        // const details = error.details;
+        console.log(message);
+        return false;
+      });
   };
 
   subscribeToCollection(
