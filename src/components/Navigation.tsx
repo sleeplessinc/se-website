@@ -91,11 +91,14 @@ const Navigation: React.FC = () => {
           <Nav.Link as={Link} to="/blog">
             Blog
           </Nav.Link>
+        </Nav>
+        <Nav className="mr-sm-2">
           <Nav.Link onClick={handleSignIn}>{user ? 'Sign Out' : 'Sign In'}</Nav.Link>
-          <Nav.Link as={Link} to="/admin">
-            Admin
-          </Nav.Link>
-          {user?.isAdmin ? <Link to="/admin">Admin</Link> : null}
+          {user?.isAdmin ? (
+            <Nav.Link as={Link} to="/admin">
+              Admin
+            </Nav.Link>
+          ) : null}
         </Nav>
       </Navbar.Collapse>
     </Navbar>
