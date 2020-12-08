@@ -22,10 +22,12 @@ export const UserContext = React.createContext<IUser | null>(null);
 const UserProvider: React.FC<UserProviderProps> = ({ children }: UserProviderProps) => {
   const firebaseContext = React.useContext(FirebaseContext);
   const [user, setUser] = useState<IUser | null>(null);
+  const [initialized, setInitialized] = useState(false);
+
   useEffect(() => {
     const setState = async (user: app.User | null) => {
       if (!user) {
-        alertify.success('Logged out');
+        if (initialized) alertify.message('Logged out');
         setUser(null);
         return;
       }
@@ -38,10 +40,11 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }: UserProviderPro
         isAdmin = token?.claims['admin'];
         isEditor = token?.claims['editor'];
       } catch {
-        alertify.error('Could not retrieve token');
+        if (initialized) alertify.error('Could not retrieve token');
       } finally {
-        alertify.success('Logged in');
+        if (initialized) alertify.success('Logged in');
         setUser({ user: user, isAdmin: isAdmin, isEditor: isEditor });
+        setInitialized(true);
       }
     };
 
