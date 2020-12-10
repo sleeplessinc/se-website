@@ -11,6 +11,7 @@ import PageNotFound from './components/PageNotFound';
 import Footer from './components/Footer';
 import ContactUsPage from './components/ContactUsPage';
 import Login from './components/Login';
+import EditPage from './components/EditPage';
 
 const App: React.FC = () => {
   return (
@@ -24,7 +25,10 @@ const App: React.FC = () => {
           <Route path="/acronyms" exact={true}>
             <DynamicContentPage pageName="acronyms" title="Acronyms" backgroundSource={bg_question_mark} />
           </Route>
-          <Route path="/blog/:id">
+          <Route path="/blog/:id/edit" exact={true}>
+            <EditPage />
+          </Route>
+          <Route path="/blog/:id" exact={true}>
             <BlogPage />
           </Route>
           <Route path="/blog" exact={true}>
