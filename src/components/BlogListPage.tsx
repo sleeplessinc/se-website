@@ -8,6 +8,7 @@ import { FirebaseContext } from '../firebase';
 import { Badge, Jumbotron, Spinner } from 'react-bootstrap';
 import { formatDistance } from 'date-fns';
 import useStateWithLocalStorage from '../utils/storage';
+import * as config from '../config.json';
 
 const BlogListPage: React.FC = () => {
   const firebaseContext = React.useContext(FirebaseContext);
@@ -35,7 +36,11 @@ const BlogListPage: React.FC = () => {
         <Container>
           <Row className="justify-content-center">
             <Col sm={4} className="blog-thumb">
-              <img src={blog.thumbnail} height="100%" width="auto" />
+              <img
+                src={config.googleCloudBaseUrl + config.thumbFolder + 'blog/' + blog.path + '.webp'}
+                height="100%"
+                width="auto"
+              />
             </Col>
             <Col sm={8}>
               <h1>{blog.title}</h1>
