@@ -106,18 +106,61 @@ class Firebase {
     pageName: string,
     callback: (content: string) => void,
     cancelCallbackOrContext?: (error: any) => void,
+  ): () => void {
+    return this.subscribeToPath(
+      `pages/${pageName}`,
+      (snapshot) => snapshot.val() as string,
+      callback,
+      cancelCallbackOrContext,
+    );
+  }
+
+  subscribeToPageDetails(
+    pageName: string,
+    callback: (content: Blog) => void,
+    cancelCallbackOrContext?: (error: any) => void,
+  ): () => void {
+    return this.subscribeToPath(
+      `page-details/${pageName}`,
+      (snapshot) => deserialize(Blog, snapshot.val()),
+      callback,
+      cancelCallbackOrContext,
+    );
+  }
+
+  subscribeToPath<T>(
+    path: string,
+    converter: (snapshot: any) => T,
+    callback: (content: T) => void,
+    cancelCallbackOrContext?: (error: any) => void,
+  ): () => void {
+    const internalCallback = (snapshot) => {
+      const content = converter(snapshot);
+      callback(content);
+    };
+    app.database().ref(path).on('value', internalCallback, cancelCallbackOrContext);
+    return () => {
+      app.database().ref(path).off('value', internalCallback);
+    };
+  }
+
+  updatePageContent(
+    pageName: string,
+    content: string,
+    callback: () => void,
+    errorCallback?: (error: string) => void,
   ): void {
     app
       .database()
       .ref(`pages/${pageName}`)
-      .on(
-        'value',
-        (snapshot) => {
-          const content = snapshot.val() as string;
-          callback(content);
-        },
-        cancelCallbackOrContext,
-      );
+      .set(content, (error) => {
+        if (error && errorCallback) {
+          errorCallback(error.message);
+          return;
+        }
+
+        callback();
+      });
   }
 
   subscribeToBlogs(callback: (blogs: Blog[]) => void, cancelCallbackOrContext?: (error: any) => void): void {
