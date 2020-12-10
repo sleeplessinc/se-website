@@ -7,16 +7,7 @@ import CollectionType from '../enums/CollectionType';
 import Blog from '../models/Blog';
 import CardDetails from '../models/CardDetails';
 import * as mapper from '../utils/mapper';
-
-const config = {
-  apiKey: 'AIzaSyBBmfx-gBbK-zr2S2aVN5cJeTXo1BrX1OI',
-  authDomain: 'se-website-fe4a4.firebaseapp.com',
-  databaseURL: 'https://se-website-fe4a4.firebaseio.com',
-  projectId: 'se-website-fe4a4',
-  storageBucket: 'se-website-fe4a4.appspot.com',
-  messagingSenderId: '46383537676',
-  appId: '1:46383537676:web:9dacd993f857c3cec1d829',
-};
+import * as firebaseConfig from '../firebase-config.json';
 
 interface IUserClaims {
   admin?: boolean;
@@ -29,7 +20,7 @@ class Firebase {
   functions: app.functions.Functions;
 
   constructor() {
-    app.initializeApp(config);
+    app.initializeApp(firebaseConfig.config);
     this.auth = app.auth();
     this.provider = new app.auth.GoogleAuthProvider();
     this.functions = app.functions();
@@ -166,7 +157,7 @@ class Firebase {
   subscribeToBlogs(callback: (blogs: Blog[]) => void, cancelCallbackOrContext?: (error: any) => void): void {
     app
       .database()
-      .ref('page-details/blog')
+      .ref(`page-details/blog`)
       .on(
         'value',
         (snapshot) => {
