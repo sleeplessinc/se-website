@@ -130,3 +130,19 @@ blockquote p {
 .blog p {
   text-align: justify;
 }
+
+.blog img {
+  height: auto;
+  max-width: 100%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.editor-toolbar {
+  position: fixed;
+  background-color: #ccc;
+  z-index: 999;
+}
