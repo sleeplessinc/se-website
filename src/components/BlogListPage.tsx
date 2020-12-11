@@ -16,7 +16,7 @@ const BlogListPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(blogJson !== '');
 
   useEffect(() => {
-    firebaseContext?.subscribeToBlogs(
+    return firebaseContext?.subscribeToBlogs(
       (results) => {
         setBlogJson(JSON.stringify(results));
         setIsLoading(false);

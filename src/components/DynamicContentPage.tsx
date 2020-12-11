@@ -16,7 +16,7 @@ const DynamicContentPage: React.FC<DynamicContentPageProps> = ({ pageName, title
   const [content, setContent] = useStateWithLocalStorage(pageName);
   const [isLoading, setIsLoading] = useState(content !== '');
   useEffect(() => {
-    firebaseContext?.subscribeToPage(
+    return firebaseContext?.subscribeToPage(
       pageName,
       (results) => {
         setContent(results);

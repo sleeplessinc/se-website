@@ -6,8 +6,8 @@ import { deserialize } from 'json-typescript-mapper';
 import CollectionType from '../enums/CollectionType';
 import Blog from '../models/Blog';
 import CardDetails from '../models/CardDetails';
-import * as mapper from '../utils/mapper';
 import * as firebaseConfig from '../firebase-config.json';
+import AppSetting from '../enums/AppSetting';
 
 interface IUserClaims {
   admin?: boolean;
@@ -71,26 +71,58 @@ class Firebase {
       });
   };
 
+  subscribeToPath<T>(
+    path: string,
+    converter: (snapshot: any) => T,
+    callback: (content: T) => void,
+    cancelCallbackOrContext?: (error: any) => void,
+  ): () => void {
+    const internalCallback = (snapshot) => {
+      if (!snapshot || !snapshot.val()) {
+        if (cancelCallbackOrContext) cancelCallbackOrContext('Not found');
+        return;
+      }
+
+      const content = converter(snapshot);
+      callback(content);
+    };
+    app.database().ref(path).on('value', internalCallback, cancelCallbackOrContext);
+    return () => {
+      app.database().ref(path).off('value', internalCallback);
+    };
+  }
+
+  subscribeToBlogs(callback: (blogs: Blog[]) => void, cancelCallbackOrContext?: (error: any) => void): () => void {
+    const converter = (snapshot) => {
+      const val = snapshot.val();
+      return Object.keys(val)
+        .map((key) => {
+          const blog = deserialize(Blog, val[key]);
+          blog.path = key;
+          return blog;
+        })
+        .sort(
+          (first: Blog, second: Blog) => new Date(second.published).getTime() - new Date(first.published).getTime(),
+        );
+    };
+    return this.subscribeToPath(`page-details/blog`, converter, callback, cancelCallbackOrContext);
+  }
+
   subscribeToCollection(
     collectionType: CollectionType,
     callback: (sessions: CardDetails[]) => void,
     cancelCallbackOrContext?: (error: any) => void,
-  ): void {
-    app
-      .database()
-      .ref(CollectionType[collectionType].toLowerCase())
-      .on(
-        'value',
-        (snapshot) => {
-          const val = snapshot.val();
-          const collection = Object.keys(val).map((key) => {
-            const session = mapper.mapAnyToCardDetails(val[key]);
-            return session;
-          });
-          callback(collection);
-        },
-        cancelCallbackOrContext,
-      );
+  ): () => void {
+    const path = CollectionType[collectionType].toLowerCase();
+    const converter = (snapshot) => {
+      const val = snapshot.val();
+      return Object.keys(val).map((key) => {
+        const session = deserialize(CardDetails, val[key]);
+        return session;
+      });
+    };
+
+    return this.subscribeToPath(path, converter, callback, cancelCallbackOrContext);
   }
 
   subscribeToPage(
@@ -119,20 +151,18 @@ class Firebase {
     );
   }
 
-  subscribeToPath<T>(
-    path: string,
-    converter: (snapshot: any) => T,
-    callback: (content: T) => void,
+  subscribeToSetting(
+    appSetting: AppSetting,
+    callback: (value: string) => void,
     cancelCallbackOrContext?: (error: any) => void,
   ): () => void {
-    const internalCallback = (snapshot) => {
-      const content = converter(snapshot);
-      callback(content);
-    };
-    app.database().ref(path).on('value', internalCallback, cancelCallbackOrContext);
-    return () => {
-      app.database().ref(path).off('value', internalCallback);
-    };
+    const key = AppSetting[appSetting];
+    return this.subscribeToPath(
+      `settings/${key}`,
+      (snapshot) => snapshot.val() as string,
+      callback,
+      cancelCallbackOrContext,
+    );
   }
 
   updatePageContent(
@@ -152,29 +182,6 @@ class Firebase {
 
         callback();
       });
-  }
-
-  subscribeToBlogs(callback: (blogs: Blog[]) => void, cancelCallbackOrContext?: (error: any) => void): void {
-    app
-      .database()
-      .ref(`page-details/blog`)
-      .on(
-        'value',
-        (snapshot) => {
-          const val = snapshot.val();
-          const blogs = Object.keys(val)
-            .map((key) => {
-              const blog = deserialize(Blog, val[key]);
-              blog.path = key;
-              return blog;
-            })
-            .sort(
-              (first: Blog, second: Blog) => new Date(second.published).getTime() - new Date(first.published).getTime(),
-            );
-          callback(blogs);
-        },
-        cancelCallbackOrContext,
-      );
   }
 }
 
