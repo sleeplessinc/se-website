@@ -19,6 +19,7 @@ const ShopSection: React.FC = () => {
         setShopUrl(result);
       },
       (error) => {
+        console.log(error);
         alertify.error(`Error loading shop URL`);
       },
     );
