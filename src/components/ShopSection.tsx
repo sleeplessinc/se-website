@@ -14,7 +14,7 @@ const ShopSection: React.FC = () => {
 
   useEffect(() => {
     return firebaseContext?.subscribeToSetting(
-      AppSetting.OtherSetting,
+      AppSetting.ShopUrl,
       (result) => {
         setShopUrl(result);
       },
