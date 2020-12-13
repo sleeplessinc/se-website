@@ -14,6 +14,12 @@ interface IUserClaims {
   editor?: boolean;
 }
 
+interface IEmail {
+  email: string;
+  subject: string;
+  message: string;
+}
+
 class Firebase {
   auth: app.auth.Auth;
   provider: app.auth.GoogleAuthProvider;
@@ -69,6 +75,21 @@ class Firebase {
         console.log(message);
         return undefined;
       });
+  };
+
+  sendMail = async (email: IEmail, callback: () => void, errorCallback: (error: any) => void): Promise<void> => {
+    return this.functions
+      .httpsCallable('sendMail')(email)
+      .then((result) => {
+        console.log(result);
+        if ('error' in result.data) {
+          errorCallback(result.data.error);
+          return;
+        }
+
+        callback();
+      })
+      .catch(errorCallback);
   };
 
   subscribeToPath<T>(
