@@ -19,7 +19,7 @@ const ContentCollection: React.FC<ContentCollectionProps> = ({
   const firebaseContext = React.useContext(FirebaseContext);
   const [state, setState] = useState<[CardDetails[], boolean]>([[], true]);
   useEffect(() => {
-    firebaseContext?.subscribeToCollection(
+    return firebaseContext?.subscribeToCollection(
       collectionType,
       (results) => {
         setState([results, false]);

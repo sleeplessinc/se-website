@@ -6,7 +6,10 @@ import 'firebase/auth';
 import 'firebase/analytics';
 import 'firebase/firestore';
 import { useForm } from 'react-hook-form';
-import { Alert, Button, Modal } from 'react-bootstrap';
+import { Alert, Button, Modal, Spinner } from 'react-bootstrap';
+import { FirebaseContext } from '../firebase';
+import * as alertify from 'alertifyjs';
+import { useHistory } from 'react-router-dom';
 
 declare global {
   interface Window {
@@ -15,18 +18,33 @@ declare global {
 }
 
 const ContactUsPage: React.FC = () => {
+  const history = useHistory();
+  const firebaseContext = React.useContext(FirebaseContext);
   const [showModal, setShowModal] = useState(false);
+  const [isSending, setIsSending] = useState(false);
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = async (data) => {
+    setIsSending(true);
     const result = await verifyAsync();
-    if (result) {
-      console.log(data);
-      handleShow();
+    if (!result) {
+      return;
     }
+
+    firebaseContext?.sendMail(
+      data,
+      () => {
+        setShowModal(true);
+        setIsSending(false);
+      },
+      (error) => {
+        console.log(error);
+        setIsSending(false);
+        alertify.error('Could not send email');
+      },
+    );
   };
 
-  const handleClose = () => setShowModal(false);
-  const handleShow = () => setShowModal(true);
+  const handleClose = () => history.goBack();
 
   useEffect(() => {
     window.recaptchaVerifier = new app.auth.RecaptchaVerifier('recaptcha-container', {
@@ -108,7 +126,12 @@ const ContactUsPage: React.FC = () => {
                 </small>
               )}
             </div>
-            <input id="button-submit" type="submit" className="btn btn-primary" />
+            <Button id="button-submit" type="submit" className="btn btn-primary" disabled={isSending}>
+              {isSending ? (
+                <Spinner className="mr-2" as="span" animation="border" size="sm" role="status" aria-hidden="true" />
+              ) : null}
+              Submit
+            </Button>
           </form>
           <div id="recaptcha-container" />
         </div>
