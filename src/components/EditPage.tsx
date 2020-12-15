@@ -26,8 +26,8 @@ const getInitialEditorState = (content: string): EditorState => {
 
 const EditPage: React.FC = () => {
   const firebaseContext = React.useContext(FirebaseContext);
-  const { id } = useParams();
-  const path = `blog/${id}`;
+  const { collection, id } = useParams();
+  const path = collection ? `${collection}/${id}` : id;
   const [content, setContent] = useStateWithLocalStorage(path);
   const [notFound, setnotFound] = useState(false);
   const [isLoading, setIsLoading] = useState(content !== '');

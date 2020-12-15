@@ -25,7 +25,10 @@ const App: React.FC = () => {
           <Route path="/acronyms" exact={true}>
             <DynamicContentPage pageName="acronyms" title="Acronyms" backgroundSource={bg_question_mark} />
           </Route>
-          <Route path="/blog/:id/edit" exact={true}>
+          <Route path="/:collection/:id/edit" exact={true}>
+            <EditPage />
+          </Route>
+          <Route path="/:id/edit" exact={true}>
             <EditPage />
           </Route>
           <Route path="/blog/:id" exact={true}>
