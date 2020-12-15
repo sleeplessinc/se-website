@@ -11,11 +11,11 @@ import Blog from '../models/Blog';
 import { formatDistance } from 'date-fns';
 import * as config from '../config.json';
 
-const BlogPage: React.FC = () => {
+const ContentPage: React.FC = () => {
   const firebaseContext = React.useContext(FirebaseContext);
   const userContext = React.useContext(UserContext);
-  const { id } = useParams();
-  const path = `blog/${id}`;
+  const { collection, id } = useParams();
+  const path = collection ? `${collection}/${id}` : id;
   const [details, setDetails] = useState<Blog | undefined>(undefined);
   const [content, setContent] = useStateWithLocalStorage(path);
   const [notFound, setnotFound] = useState(false);
@@ -92,4 +92,4 @@ const BlogPage: React.FC = () => {
   );
 };
 
-export default BlogPage;
+export default ContentPage;
