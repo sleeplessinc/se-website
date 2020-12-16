@@ -10,6 +10,8 @@ import { ContentState, convertToRaw, EditorState } from 'draft-js';
 import draftToHtml from 'draftjs-to-html';
 import htmlToDraft from 'html-to-draftjs';
 import * as alertify from 'alertifyjs';
+import { UserContext } from './UserProvider';
+import NotAuthorized from './NotAuthorized';
 
 const getInitialEditorState = (content: string): EditorState => {
   const contentBlock = htmlToDraft(content);
@@ -30,12 +32,18 @@ interface IEditPageProps {
 
 const EditPage: React.FC<IEditPageProps> = ({ path }: IEditPageProps) => {
   const firebaseContext = React.useContext(FirebaseContext);
+  const userContext = React.useContext(UserContext);
+
   const [content, setContent] = useStateWithLocalStorage(path);
   const [notFound, setnotFound] = useState(false);
   const [isLoading, setIsLoading] = useState(content !== '');
   const [editorState, setEditorState] = useState(getInitialEditorState(content));
   const [showConfirm, setShowConfirm] = useState(false);
   const [cancelled, setCancelled] = useState(false);
+
+  if (!userContext?.isAdmin) {
+    return <NotAuthorized />;
+  }
 
   useEffect(() => {
     return firebaseContext?.subscribeToPage(
