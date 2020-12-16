@@ -17,15 +17,33 @@ const App: React.FC = () => {
       <div className="App">
         <Navigation />
         <Switch>
-          <Route path="/:collection/:id/edit" exact={true}>
-            <EditPage />
-          </Route>
-          <Route path="/:id/edit" exact={true}>
-            <EditPage />
-          </Route>
-          <Route path="/:collection/:id" exact={true}>
-            <ContentPage />
-          </Route>
+          <Route
+            path="/:collection/:id/edit"
+            exact={true}
+            render={(routeProps) => (
+              <EditPage
+                path={`${routeProps.match.params.collection}/${routeProps.match.params.id}`}
+                key={`${routeProps.match.params.collection}/${routeProps.match.params.id}`}
+              />
+            )}
+          />
+          <Route
+            path="/:id/edit"
+            exact={true}
+            render={(routeProps) => (
+              <EditPage path={`${routeProps.match.params.id}`} key={routeProps.match.params.id} />
+            )}
+          />
+          <Route
+            path="/:collection/:id"
+            exact={true}
+            render={(routeProps) => (
+              <ContentPage
+                path={`${routeProps.match.params.collection}/${routeProps.match.params.id}`}
+                key={`${routeProps.match.params.collection}/${routeProps.match.params.id}`}
+              />
+            )}
+          />
           <Route path="/blog" exact={true}>
             <BlogListPage />
           </Route>
@@ -35,9 +53,13 @@ const App: React.FC = () => {
           <Route path="/contact" exact={true}>
             <ContactUsPage />
           </Route>
-          <Route path="/:id" exact={true}>
-            <ContentPage />
-          </Route>
+          <Route
+            path="/:id"
+            exact={true}
+            render={(routeProps) => (
+              <ContentPage path={`${routeProps.match.params.id}`} key={routeProps.match.params.id} />
+            )}
+          />
           <Route path="/" exact={true}>
             <MainPage />
           </Route>

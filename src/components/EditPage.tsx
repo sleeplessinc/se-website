@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Container from 'react-bootstrap/esm/Container';
 import { FirebaseContext } from '../firebase';
-import { Redirect, useParams } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import useStateWithLocalStorage from '../utils/storage';
 import PageNotFound from './PageNotFound';
 import { Button, Col, Modal, Row, Spinner } from 'react-bootstrap';
@@ -24,10 +24,12 @@ const getInitialEditorState = (content: string): EditorState => {
   return initialEditorState;
 };
 
-const EditPage: React.FC = () => {
+interface IEditPageProps {
+  path: string;
+}
+
+const EditPage: React.FC<IEditPageProps> = ({ path }: IEditPageProps) => {
   const firebaseContext = React.useContext(FirebaseContext);
-  const { collection, id } = useParams();
-  const path = collection ? `${collection}/${id}` : id;
   const [content, setContent] = useStateWithLocalStorage(path);
   const [notFound, setnotFound] = useState(false);
   const [isLoading, setIsLoading] = useState(content !== '');
