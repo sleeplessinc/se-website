@@ -7,7 +7,7 @@ import CollectionType from '../enums/CollectionType';
 import Blog from '../models/Blog';
 import CardDetails from '../models/CardDetails';
 import * as firebaseConfig from '../firebase-config.json';
-import AppSetting from '../enums/AppSetting';
+import AppSettings from '../models/AppSettings';
 
 interface IUserClaims {
   admin?: boolean;
@@ -172,15 +172,13 @@ class Firebase {
     );
   }
 
-  subscribeToSetting(
-    appSetting: AppSetting,
-    callback: (value: string) => void,
+  subscribeToAppSettings(
+    callback: (value: AppSettings) => void,
     cancelCallbackOrContext?: (error: any) => void,
   ): () => void {
-    const key = AppSetting[appSetting];
     return this.subscribeToPath(
-      `settings/${key}`,
-      (snapshot) => snapshot.val() as string,
+      `settings`,
+      (snapshot) => deserialize(AppSettings, snapshot.val()),
       callback,
       cancelCallbackOrContext,
     );

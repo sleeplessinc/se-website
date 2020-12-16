@@ -5,7 +5,6 @@ import Row from 'react-bootstrap/esm/Row';
 import img_shirt from '../images/shirt.webp';
 import { Button } from 'react-bootstrap';
 import { FirebaseContext } from '../firebase';
-import AppSetting from '../enums/AppSetting';
 import * as alertify from 'alertifyjs';
 
 const ShopSection: React.FC = () => {
@@ -13,10 +12,11 @@ const ShopSection: React.FC = () => {
   const [shopUrl, setShopUrl] = useState('');
 
   useEffect(() => {
-    return firebaseContext?.subscribeToSetting(
-      AppSetting.ShopUrl,
+    return firebaseContext?.subscribeToAppSettings(
       (result) => {
-        setShopUrl(result);
+        if (result?.shopUrl) {
+          setShopUrl(result.shopUrl);
+        }
       },
       (error) => {
         console.log(error);
