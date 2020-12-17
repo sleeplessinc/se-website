@@ -7,6 +7,7 @@ import classnames from 'classnames';
 
 export interface SectionProps {
   heading?: string | undefined;
+  blurb?: string | undefined;
   children?: React.ReactNode | null;
   sectionStyle?: SectionStyle;
   backgroundSource?: string | null;
@@ -19,7 +20,13 @@ const defaultProps: SectionProps = {
   backgroundSource: null,
 };
 
-const Section: React.FC<SectionProps> = ({ heading, children, sectionStyle, backgroundSource: src }: SectionProps) => {
+const Section: React.FC<SectionProps> = ({
+  heading,
+  blurb,
+  children,
+  sectionStyle,
+  backgroundSource: src,
+}: SectionProps) => {
   const isDefault = sectionStyle === SectionStyle.Default;
 
   return (
@@ -45,6 +52,7 @@ const Section: React.FC<SectionProps> = ({ heading, children, sectionStyle, back
                 })}
               >
                 <h1>{heading}</h1>
+                {blurb ? <h4>{blurb}</h4> : null}
               </div>
             </Col>
           </Row>
