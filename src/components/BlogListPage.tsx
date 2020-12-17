@@ -28,7 +28,7 @@ const BlogListPage: React.FC = () => {
     );
   }, [firebaseContext]);
 
-  const blogs: Blog[] = blogJson === '' ? [] : JSON.parse(blogJson);
+  const blogs: Blog[] = blogJson ? JSON.parse(blogJson) : [];
 
   const blogCards = blogs?.map((blog) => {
     return (
