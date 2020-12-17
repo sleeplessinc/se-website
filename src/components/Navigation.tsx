@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import classnames from 'classnames';
 import Navbar from 'react-bootstrap/Navbar';
 import { Nav } from 'react-bootstrap';
 import { UserContext } from './UserProvider';
@@ -44,15 +43,7 @@ const Navigation: React.FC = () => {
   };
 
   return (
-    <Navbar
-      bg="primary"
-      variant="dark"
-      expand="lg"
-      fixed={location}
-      className={classnames('navbar-animated', {
-        'navbar-hidden': !scrollState.visible,
-      })}
-    >
+    <Navbar bg="primary" variant="dark" expand="lg" fixed={location}>
       <Navbar.Brand as={HashLink} to="/#top" className="montserrat">
         <img
           alt=""
@@ -83,11 +74,11 @@ const Navigation: React.FC = () => {
           <Nav.Link as={HashLink} to="/#creators">
             Creators
           </Nav.Link>
-          <Nav.Link as={HashLink} to="/#shop">
-            Shop
-          </Nav.Link>
           <Nav.Link as={HashLink} to="/#guide">
             Guide
+          </Nav.Link>
+          <Nav.Link as={HashLink} to="/#shop">
+            Shop
           </Nav.Link>
           <Nav.Link as={Link} to="/blog">
             Blog

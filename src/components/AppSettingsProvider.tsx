@@ -18,21 +18,23 @@ const defaultProps: AppSettingsProps = {
   children: null,
 };
 
-const defaultSettings: AppSettings = {
-  contactAddress: 'contact@streetepistemologyinternational.org',
-  featuredVideo: {
+const defaultSettings = () => {
+  const result = new AppSettings();
+  result.contactAddress = 'contact@streetepistemologyinternational.org';
+  result.featuredVideo = {
     author: 'Street Epistemology',
     channelUrl: 'https://www.youtube.com/user/StreetEpistemologist',
     videoId: 'r1e4HZfHSRQ',
-  },
-  shopUrl: 'https://www.evolvefish.com/Street-Epistemology_c_143.html',
+  };
+
+  return result;
 };
 
-export const AppSettingsContext = React.createContext<AppSettings>(defaultSettings);
+export const AppSettingsContext = React.createContext<AppSettings>(defaultSettings());
 
 const AppSettingsProvider: React.FC<AppSettingsProps> = ({ children }: AppSettingsProps) => {
   const firebaseContext = React.useContext(FirebaseContext);
-  const [settings, setSettings] = useState<AppSettings>(defaultSettings);
+  const [settings, setSettings] = useState<AppSettings>(defaultSettings());
 
   useEffect(() => {
     return firebaseContext?.subscribeToAppSettings(setSettings, alertify.error);

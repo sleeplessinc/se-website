@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import Navigation from './components/Navigation';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import Navigation from './components/Navigation';
 import MainPage from './components/MainPage';
 import BlogListPage from './components/BlogListPage';
 import ContentPage from './components/ContentPage';
@@ -10,12 +10,14 @@ import Footer from './components/Footer';
 import ContactUsPage from './components/ContactUsPage';
 import Login from './components/Login';
 import EditPage from './components/EditPage';
+import Announcement from './components/Announcement';
 
 const App: React.FC = () => {
   return (
     <Router>
       <div className="App">
         <Navigation />
+        <Announcement />
         <Switch>
           <Route
             path="/:collection/:id/edit"
@@ -33,6 +35,16 @@ const App: React.FC = () => {
             render={(routeProps) => (
               <EditPage path={`${routeProps.match.params.id}`} key={routeProps.match.params.id} />
             )}
+          />
+          {/* Account for legacy blog URLs */}
+          <Route
+            path="/publications/:id"
+            exact={true}
+            render={(routeProps) => {
+              const path = '/blog/' + routeProps.match.params.id.replace(/_/g, '-');
+              console.log('Path', path);
+              return <Redirect to={path} />;
+            }}
           />
           <Route
             path="/:collection/:id"
