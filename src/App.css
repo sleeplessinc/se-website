@@ -146,3 +146,10 @@ blockquote p {
   background-color: #ccc;
   z-index: 999;
 }
+
+.float-r {
+  position: absolute;
+  top: 25px;
+  right: 40px;
+  z-index: 999;
+}

@@ -72,7 +72,7 @@ const ExamplesPage: React.FC = () => {
             name="videoId"
             id="input-video-id"
             placeholder="e.g. By6OBNMT0XY"
-            ref={register({ required: true, minLength: 13, maxLength: 13 })}
+            ref={register({ required: true })}
           />
           {errors.videoId && (
             <small id="videoId" className="form-text text-danger">
@@ -102,19 +102,29 @@ const ExamplesPage: React.FC = () => {
             name="channelUrl"
             id="input-channel-url"
             placeholder="e.g. https://www.youtube.com/user/StreetEpistemologist"
-            ref={register({ required: true, minLength: 50 })}
+            ref={register({ required: true, minLength: 10 })}
           />
           {errors.channelUrl && (
             <small id="channel-url" className="form-text text-danger">
-              Please enter a channel-url that is at least 50 characters long.
+              Please enter a valid Youtube channel URL.
             </small>
           )}
         </div>
+        <Button
+          id="button-cancel"
+          className="btn btn-secondary mr-2"
+          disabled={isSaving}
+          onClick={() => {
+            setIsUpdating(false);
+          }}
+        >
+          Cancel
+        </Button>
         <Button id="button-submit" type="submit" className="btn btn-primary" disabled={isSaving}>
           {isSaving ? (
             <Spinner className="mr-2" as="span" animation="border" size="sm" role="status" aria-hidden="true" />
           ) : null}
-          Submit
+          Save
         </Button>
       </form>
     );
@@ -149,6 +159,14 @@ const ExamplesPage: React.FC = () => {
             ) : (
               <>
                 {embed(featuredVideo.videoId)}
+                <Button
+                  className="btn btn-primary float-r"
+                  onClick={() => {
+                    setIsUpdating(true);
+                  }}
+                >
+                  Edit
+                </Button>
                 <p className="badge badge-dark p-2 m-2">
                   Video courtesy of&nbsp;
                   <a href={featuredVideo.channelUrl} target="blank">
