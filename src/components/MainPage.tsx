@@ -26,7 +26,7 @@ const MainPage: React.FC = () => {
       <div id="resources">
         <Section
           heading="Resources"
-          blurb="Information, tips and tricks to help you learn more about or become better at Street Epistemology."
+          blurb="The best resources available today for learning more about Street Epistemology have been gathered for you here."
           backgroundSource={bg_tools}
         >
           <ContentCollection collectionType={CollectionType.Resources} />
@@ -35,7 +35,7 @@ const MainPage: React.FC = () => {
       <div id="communities">
         <Section
           heading="Communities"
-          blurb="Street Epistemology is worldwide. Interact with others learning and practicing the method."
+          blurb="Looking for other people who are interested in Street Epistemology? There are a variety of active fan-managed communities waiting for you."
           backgroundSource={bg_community}
           sectionStyle={SectionStyle.Light}
         >
@@ -49,7 +49,7 @@ const MainPage: React.FC = () => {
       <div id="creators">
         <Section
           heading="Content Creators"
-          blurb="Street Epistemology made its mark when people started making video examples. This is a list of some of our favorites."
+          blurb="People are coming up with all sorts of creative ways to demonstrate Street Epistemology. Here are some of the most prolific."
           backgroundSource={bg_filming}
         >
           <ContentCollection collectionType={CollectionType.Creators} roundCards={true} />
