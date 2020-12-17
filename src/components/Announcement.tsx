@@ -6,14 +6,13 @@ import useStateWithLocalStorage from '../utils/storage';
 
 const Announcement: React.FC = () => {
   const appSettingsContext = React.useContext(AppSettingsContext);
-  const [announcementJson, setAnnouncementJson] = useStateWithLocalStorage('blog');
+  const [cachedAnnouncement, setCachedAnnouncement] = useStateWithLocalStorage('blog');
   const [showAnnouncement, setShowAnnouncement] = useState(true);
-  const savedAnnouncement = JSON.parse(announcementJson);
-  const announcementDismissed = savedAnnouncement.message === appSettingsContext.announcement?.message;
+  const announcementDismissed = cachedAnnouncement === appSettingsContext.announcement?.message;
 
   const handleClose = () => {
     setShowAnnouncement(false);
-    setAnnouncementJson(JSON.stringify(appSettingsContext.announcement));
+    setCachedAnnouncement(appSettingsContext.announcement?.message ?? '');
   };
 
   if (!appSettingsContext.hasAnnouncement() || announcementDismissed) {
