@@ -42,11 +42,11 @@ const MainPage: React.FC = () => {
           <ContentCollection collectionType={CollectionType.Creators} roundCards={true} />
         </Section>
       </div>
-      <div id="shop">
-        <ShopSection />
-      </div>
       <div id="guide">
         <GuidePage />
+      </div>
+      <div id="shop">
+        <ShopSection />
       </div>
     </div>
   );

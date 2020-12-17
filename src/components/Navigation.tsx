@@ -74,11 +74,11 @@ const Navigation: React.FC = () => {
           <Nav.Link as={HashLink} to="/#creators">
             Creators
           </Nav.Link>
-          <Nav.Link as={HashLink} to="/#shop">
-            Shop
-          </Nav.Link>
           <Nav.Link as={HashLink} to="/#guide">
             Guide
+          </Nav.Link>
+          <Nav.Link as={HashLink} to="/#shop">
+            Shop
           </Nav.Link>
           <Nav.Link as={Link} to="/blog">
             Blog
