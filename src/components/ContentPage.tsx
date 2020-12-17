@@ -21,7 +21,7 @@ const ContentPage: React.FC<IContentPageProps> = ({ path }: IContentPageProps) =
   const [details, setDetails] = useState<Blog | undefined>(undefined);
   const [content, setContent] = useStateWithLocalStorage(path);
   const [notFound, setnotFound] = useState(false);
-  const [isLoading, setIsLoading] = useState(content !== '');
+  const [isLoading, setIsLoading] = useState(content ? false : true);
 
   useEffect(() => {
     return firebaseContext?.subscribeToPage(
