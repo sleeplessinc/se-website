@@ -1,11 +1,13 @@
+import { IVideoReference } from './interfaces';
+
 export default class AppSettings {
   shopUrl: string;
   contactAddress: string;
-  featuredVideo: { author: string; channelUrl: string; url: string };
+  featuredVideo: IVideoReference;
 
   constructor() {
     this.shopUrl = '';
     this.contactAddress = '';
-    this.featuredVideo = { author: '', channelUrl: '', url: '' };
+    this.featuredVideo = { author: '', channelUrl: '', videoId: '' };
   }
 }

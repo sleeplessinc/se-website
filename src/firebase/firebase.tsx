@@ -8,17 +8,7 @@ import Blog from '../models/Blog';
 import CardDetails from '../models/CardDetails';
 import * as firebaseConfig from '../firebase-config.json';
 import AppSettings from '../models/AppSettings';
-
-interface IUserClaims {
-  admin?: boolean;
-  editor?: boolean;
-}
-
-interface IEmail {
-  email: string;
-  subject: string;
-  message: string;
-}
+import { IEmail, IUserClaims } from '../models/interfaces';
 
 class Firebase {
   auth: app.auth.Auth;

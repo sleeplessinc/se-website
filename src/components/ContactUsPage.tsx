@@ -10,6 +10,7 @@ import { Alert, Button, Modal, Spinner } from 'react-bootstrap';
 import { FirebaseContext } from '../firebase';
 import * as alertify from 'alertifyjs';
 import { useHistory } from 'react-router-dom';
+import { IEmail } from '../models/interfaces';
 
 declare global {
   interface Window {
@@ -22,7 +23,7 @@ const ContactUsPage: React.FC = () => {
   const firebaseContext = React.useContext(FirebaseContext);
   const [showModal, setShowModal] = useState(false);
   const [isSending, setIsSending] = useState(false);
-  const { register, handleSubmit, errors } = useForm();
+  const { register, handleSubmit, errors } = useForm<IEmail>();
   const onSubmit = async (data) => {
     setIsSending(true);
     const result = await verifyAsync();
