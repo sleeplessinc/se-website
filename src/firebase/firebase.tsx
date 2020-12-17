@@ -174,16 +174,11 @@ class Firebase {
     );
   }
 
-  updatePageContent(
-    pageName: string,
-    content: string,
-    callback: () => void,
-    errorCallback?: (error: string) => void,
-  ): void {
+  updateObject<T>(path: string, newValue: T, callback: () => void, errorCallback?: (error: string) => void): void {
     app
       .database()
-      .ref(`pages/${pageName}`)
-      .set(content, (error) => {
+      .ref(path)
+      .set(newValue, (error) => {
         if (error && errorCallback) {
           errorCallback(error.message);
           return;
@@ -191,6 +186,15 @@ class Firebase {
 
         callback();
       });
+  }
+
+  updatePageContent(
+    pageName: string,
+    content: string,
+    callback: () => void,
+    errorCallback?: (error: string) => void,
+  ): void {
+    this.updateObject(`pages/${pageName}`, content, callback, errorCallback);
   }
 }
 
