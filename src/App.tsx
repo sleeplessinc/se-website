@@ -36,6 +36,16 @@ const App: React.FC = () => {
               <EditPage path={`${routeProps.match.params.id}`} key={routeProps.match.params.id} />
             )}
           />
+          {/* Account for legacy blog URLs */}
+          <Route
+            path="/publications/:id"
+            exact={true}
+            render={(routeProps) => {
+              const path = '/blog/' + routeProps.match.params.id.replace(/_/g, '-');
+              console.log('Path', path);
+              return <Redirect to={path} />;
+            }}
+          />
           <Route
             path="/:collection/:id"
             exact={true}
