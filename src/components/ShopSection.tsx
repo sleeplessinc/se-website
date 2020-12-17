@@ -28,10 +28,7 @@ const ShopSection: React.FC = () => {
   const text = (
     <div className="text-center m-1 bg-masked-light p-2 rounded-xl">
       <h1>Shop</h1>
-      <h4>
-        Help promote Street Epistemology and raise money for the 501(c)(3) Street Epistemology International by
-        purchasing high-quality SE-themed merchandise from EvolveFish.com!
-      </h4>
+      <h4>Looking for Street Epistemology-themed merch? Browse our selection here.</h4>
       <Button className="m-2" href={shopUrl} target="blank" disabled={!shopUrl}>
         Continue ➧
       </Button>
