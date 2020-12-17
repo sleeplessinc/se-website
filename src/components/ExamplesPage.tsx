@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Col from 'react-bootstrap/esm/Col';
 import Container from 'react-bootstrap/esm/Container';
 import Row from 'react-bootstrap/esm/Row';
@@ -6,11 +6,11 @@ import Iframe from 'react-iframe';
 import { FirebaseContext } from '../firebase';
 import * as alertify from 'alertifyjs';
 import { AppSettingsContext } from './AppSettingsProvider';
-import { Link } from 'react-router-dom';
 import { UserContext } from './UserProvider';
 import { Button, Card, Spinner } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { IVideoReference } from '../models/interfaces';
+import * as lodash from 'lodash';
 
 const defaultVideoProps: IVideoReference = {
   author: 'Street Epistemology',
@@ -28,10 +28,17 @@ const ExamplesPage: React.FC = () => {
   const { register, handleSubmit, errors } = useForm<IVideoReference>({
     defaultValues: featuredVideo,
   });
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: IVideoReference) => {
     setIsSaving(true);
-    firebaseContext?.sendMail(
-      data,
+    if (!appSettingsContext) {
+      alertify.error('Could not read app settings');
+      return;
+    }
+
+    const newSettings = lodash.cloneDeep(appSettingsContext);
+    newSettings.featuredVideo = data;
+    firebaseContext?.updateAppSettings(
+      newSettings,
       () => {
         alertify.success('Video details updated');
         setIsSaving(false);
@@ -40,7 +47,7 @@ const ExamplesPage: React.FC = () => {
       (error) => {
         console.log(error);
         setIsSaving(false);
-        alertify.error('Could not send email');
+        alertify.error('Could not update details');
       },
     );
   };
