@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Container from 'react-bootstrap/esm/Container';
 import { FirebaseContext } from '../firebase';
-import { Redirect, useParams } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import useStateWithLocalStorage from '../utils/storage';
 import PageNotFound from './PageNotFound';
 import { Button, Col, Modal, Row, Spinner } from 'react-bootstrap';
@@ -10,6 +10,8 @@ import { ContentState, convertToRaw, EditorState } from 'draft-js';
 import draftToHtml from 'draftjs-to-html';
 import htmlToDraft from 'html-to-draftjs';
 import * as alertify from 'alertifyjs';
+import { UserContext } from './UserProvider';
+import NotAuthorized from './NotAuthorized';
 
 const getInitialEditorState = (content: string): EditorState => {
   const contentBlock = htmlToDraft(content);
@@ -24,16 +26,24 @@ const getInitialEditorState = (content: string): EditorState => {
   return initialEditorState;
 };
 
-const EditPage: React.FC = () => {
+interface IEditPageProps {
+  path: string;
+}
+
+const EditPage: React.FC<IEditPageProps> = ({ path }: IEditPageProps) => {
   const firebaseContext = React.useContext(FirebaseContext);
-  const { id } = useParams();
-  const path = `blog/${id}`;
+  const userContext = React.useContext(UserContext);
+
   const [content, setContent] = useStateWithLocalStorage(path);
   const [notFound, setnotFound] = useState(false);
   const [isLoading, setIsLoading] = useState(content !== '');
   const [editorState, setEditorState] = useState(getInitialEditorState(content));
   const [showConfirm, setShowConfirm] = useState(false);
   const [cancelled, setCancelled] = useState(false);
+
+  if (!userContext?.isAdmin) {
+    return <NotAuthorized />;
+  }
 
   useEffect(() => {
     return firebaseContext?.subscribeToPage(

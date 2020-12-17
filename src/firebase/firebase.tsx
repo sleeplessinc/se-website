@@ -7,18 +7,8 @@ import CollectionType from '../enums/CollectionType';
 import Blog from '../models/Blog';
 import CardDetails from '../models/CardDetails';
 import * as firebaseConfig from '../firebase-config.json';
-import AppSetting from '../enums/AppSetting';
-
-interface IUserClaims {
-  admin?: boolean;
-  editor?: boolean;
-}
-
-interface IEmail {
-  email: string;
-  subject: string;
-  message: string;
-}
+import AppSettings from '../models/AppSettings';
+import { IEmail, IUserClaims } from '../models/interfaces';
 
 class Firebase {
   auth: app.auth.Auth;
@@ -172,18 +162,34 @@ class Firebase {
     );
   }
 
-  subscribeToSetting(
-    appSetting: AppSetting,
-    callback: (value: string) => void,
+  subscribeToAppSettings(
+    callback: (value: AppSettings) => void,
     cancelCallbackOrContext?: (error: any) => void,
   ): () => void {
-    const key = AppSetting[appSetting];
     return this.subscribeToPath(
-      `settings/${key}`,
-      (snapshot) => snapshot.val() as string,
+      `settings`,
+      (snapshot) => deserialize(AppSettings, snapshot.val()),
       callback,
       cancelCallbackOrContext,
     );
+  }
+
+  updateObject<T>(path: string, newValue: T, callback: () => void, errorCallback?: (error: string) => void): void {
+    app
+      .database()
+      .ref(path)
+      .set(newValue, (error) => {
+        if (error && errorCallback) {
+          errorCallback(error.message);
+          return;
+        }
+
+        callback();
+      });
+  }
+
+  updateAppSettings(settings: AppSettings, callback: () => void, errorCallback?: (error: string) => void): void {
+    this.updateObject('settings', settings, callback, errorCallback);
   }
 
   updatePageContent(
@@ -192,17 +198,7 @@ class Firebase {
     callback: () => void,
     errorCallback?: (error: string) => void,
   ): void {
-    app
-      .database()
-      .ref(`pages/${pageName}`)
-      .set(content, (error) => {
-        if (error && errorCallback) {
-          errorCallback(error.message);
-          return;
-        }
-
-        callback();
-      });
+    this.updateObject(`pages/${pageName}`, content, callback, errorCallback);
   }
 }
 

@@ -9,13 +9,16 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Firebase, { FirebaseContext } from './firebase';
 import UserProvider from './components/UserProvider';
+import AppSettingsProvider from './components/AppSettingsProvider';
 
 ReactDOM.render(
   <React.StrictMode>
     <FirebaseContext.Provider value={new Firebase()}>
-      <UserProvider>
-        <App />
-      </UserProvider>
+      <AppSettingsProvider>
+        <UserProvider>
+          <App />
+        </UserProvider>
+      </AppSettingsProvider>
     </FirebaseContext.Provider>
   </React.StrictMode>,
   document.getElementById('root'),
