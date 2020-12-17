@@ -166,14 +166,16 @@ const ExamplesPage: React.FC = () => {
             ) : (
               <>
                 {embed(featuredVideo.videoId)}
-                <Button
-                  className="btn btn-primary float-r"
-                  onClick={() => {
-                    setIsUpdating(true);
-                  }}
-                >
-                  Edit
-                </Button>
+                {userContext?.isAdmin && (
+                  <Button
+                    className="btn btn-primary float-r"
+                    onClick={() => {
+                      setIsUpdating(true);
+                    }}
+                  >
+                    Edit
+                  </Button>
+                )}
                 <p className="badge badge-dark p-2 m-2">
                   Video courtesy of&nbsp;
                   <a href={featuredVideo.channelUrl} target="blank">
