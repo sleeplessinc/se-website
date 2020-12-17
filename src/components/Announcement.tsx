@@ -6,7 +6,7 @@ import useStateWithLocalStorage from '../utils/storage';
 
 const Announcement: React.FC = () => {
   const appSettingsContext = React.useContext(AppSettingsContext);
-  const [cachedAnnouncement, setCachedAnnouncement] = useStateWithLocalStorage('blog');
+  const [cachedAnnouncement, setCachedAnnouncement] = useStateWithLocalStorage('announcement');
   const [showAnnouncement, setShowAnnouncement] = useState(true);
   const announcementDismissed = cachedAnnouncement === appSettingsContext.announcement?.message;
 
