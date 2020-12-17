@@ -12,22 +12,16 @@ import { useForm } from 'react-hook-form';
 import { IVideoReference } from '../models/interfaces';
 import * as lodash from 'lodash';
 
-const defaultVideoProps: IVideoReference = {
-  author: 'Street Epistemology',
-  channelUrl: 'https://www.youtube.com/user/StreetEpistemologist',
-  videoId: 'r1e4HZfHSRQ',
-};
-
 const ExamplesPage: React.FC = () => {
+  console.info('Examples page refreshed');
   const firebaseContext = React.useContext(FirebaseContext);
   const appSettingsContext = React.useContext(AppSettingsContext);
   const userContext = React.useContext(UserContext);
   const [isSaving, setIsSaving] = useState(false);
   const [isUpdating, setIsUpdating] = useState(false);
-  const featuredVideo = appSettingsContext?.featuredVideo ?? defaultVideoProps;
-  const { register, handleSubmit, errors } = useForm<IVideoReference>({
-    defaultValues: featuredVideo,
-  });
+  const featuredVideo = appSettingsContext.featuredVideo;
+  const { register, handleSubmit, errors } = useForm<IVideoReference>();
+
   const onSubmit = async (data: IVideoReference) => {
     setIsSaving(true);
     if (!appSettingsContext) {
@@ -79,6 +73,7 @@ const ExamplesPage: React.FC = () => {
             name="videoId"
             id="input-video-id"
             placeholder="e.g. By6OBNMT0XY"
+            defaultValue={featuredVideo.videoId}
             ref={register({ required: true })}
           />
           {errors.videoId && (
@@ -94,6 +89,7 @@ const ExamplesPage: React.FC = () => {
             name="author"
             id="input-author"
             placeholder="e.g. Anthony Magnabosco"
+            defaultValue={featuredVideo.author}
             ref={register({ required: true, minLength: 5, maxLength: 100 })}
           />
           {errors.author && (
@@ -109,6 +105,7 @@ const ExamplesPage: React.FC = () => {
             name="channelUrl"
             id="input-channel-url"
             placeholder="e.g. https://www.youtube.com/user/StreetEpistemologist"
+            defaultValue={featuredVideo.channelUrl}
             ref={register({ required: true, minLength: 10 })}
           />
           {errors.channelUrl && (
