@@ -1,12 +1,14 @@
-export interface IUserClaims {
-  admin?: boolean;
-  editor?: boolean;
 }
 
 export interface IEmail {
   email: string;
   subject: string;
   message: string;
+}
+
+export interface IUserClaims {
+  admin?: boolean;
+  editor?: boolean;
 }
 
 export interface IVideoReference {
