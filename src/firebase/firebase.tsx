@@ -188,6 +188,10 @@ class Firebase {
       });
   }
 
+  updateAppSettings(settings: AppSettings, callback: () => void, errorCallback?: (error: string) => void): void {
+    this.updateObject('settings', settings, callback, errorCallback);
+  }
+
   updatePageContent(
     pageName: string,
     content: string,
