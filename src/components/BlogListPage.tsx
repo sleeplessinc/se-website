@@ -7,18 +7,17 @@ import Blog from '../models/Blog';
 import { FirebaseContext } from '../firebase';
 import { Badge, Jumbotron, Spinner } from 'react-bootstrap';
 import { formatDistance } from 'date-fns';
-import useStateWithLocalStorage from '../utils/storage';
 import * as config from '../config.json';
 
 const BlogListPage: React.FC = () => {
   const firebaseContext = React.useContext(FirebaseContext);
-  const [blogJson, setBlogJson] = useStateWithLocalStorage('blog');
-  const [isLoading, setIsLoading] = useState(blogJson !== '');
+  const [blogs, setBlogs] = useState<Blog[]>([]);
+  const [isLoading, setIsLoading] = useState(blogs.length > 0);
 
   useEffect(() => {
     return firebaseContext?.subscribeToBlogs(
       (results) => {
-        setBlogJson(JSON.stringify(results));
+        setBlogs(results);
         setIsLoading(false);
       },
       (error) => {
@@ -27,8 +26,6 @@ const BlogListPage: React.FC = () => {
       },
     );
   }, [firebaseContext]);
-
-  const blogs: Blog[] = blogJson ? JSON.parse(blogJson) : [];
 
   const blogCards = blogs?.map((blog) => {
     return (
