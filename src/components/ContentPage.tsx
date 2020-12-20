@@ -3,6 +3,7 @@ import Container from 'react-bootstrap/esm/Container';
 import { FirebaseContext } from '../firebase';
 import parse from 'html-react-parser';
 import { Link } from 'react-router-dom';
+import useStateWithLocalStorage from '../utils/storage';
 import PageNotFound from './PageNotFound';
 import { Button, Col, Badge, Row, Spinner } from 'react-bootstrap';
 import { UserContext } from './UserProvider';
@@ -18,7 +19,7 @@ const ContentPage: React.FC<IContentPageProps> = ({ path }: IContentPageProps) =
   const firebaseContext = React.useContext(FirebaseContext);
   const userContext = React.useContext(UserContext);
   const [details, setDetails] = useState<Blog | undefined>(undefined);
-  const [content, setContent] = useState('');
+  const [content, setContent] = useStateWithLocalStorage(path);
   const [notFound, setnotFound] = useState(false);
   const [isLoading, setIsLoading] = useState(content ? false : true);
 
