@@ -36,16 +36,20 @@ const App: React.FC = () => {
               <EditPage path={`${routeProps.match.params.id}`} key={routeProps.match.params.id} />
             )}
           />
-          {/* Account for legacy blog URLs */}
+
+          {/* Handle legacy blog URLs */}
+          <Route path="/publications/the_complete_se_guide" exact={true}>
+            <Redirect to="/#guide" />
+          </Route>
           <Route
             path="/publications/:id"
             exact={true}
             render={(routeProps) => {
-              const path = '/blog/' + routeProps.match.params.id.replace(/_/g, '-');
-              console.log('Path', path);
-              return <Redirect to={path} />;
+              const path = 'blog/' + routeProps.match.params.id.replace(/_/g, '-');
+              return <Redirect to={'/' + path} />;
             }}
           />
+
           <Route
             path="/:collection/:id"
             exact={true}
@@ -56,6 +60,27 @@ const App: React.FC = () => {
               />
             )}
           />
+
+          {/* Handle legacy collection URLs */}
+          <Route path="/resources" exact={true}>
+            <Redirect to="/#resources" />
+          </Route>
+          <Route path="/community" exact={true}>
+            <Redirect to="/#communities" />
+          </Route>
+          <Route path="/creators" exact={true}>
+            <Redirect to="/#creators" />
+          </Route>
+          <Route path="/street-epistemology-frequently-asked-questions-faq" exact={true}>
+            <Redirect to="/faq" />
+          </Route>
+          <Route path="/shop" exact={true}>
+            <Redirect to="/#shop" />
+          </Route>
+          <Route path="/resources" exact={true}>
+            <Redirect to="/#resources" />
+          </Route>
+
           <Route path="/blog" exact={true}>
             <BlogListPage />
           </Route>

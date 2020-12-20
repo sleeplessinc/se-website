@@ -8,16 +8,6 @@
         "destination": "/index.html"
       }
     ],
-    "headers": [
-      {
-        "source": "/sw.js",
-        "headers": [
-          {
-            "key": "Cache-Control",
-            "value": "no-store"
-          }
-        ]
-      }
-    ]
+    "headers": [{ "source": "/service-worker.js", "headers": [{ "key": "Cache-Control", "value": "no-cache" }] }]
   }
 }

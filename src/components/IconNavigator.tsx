@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/esm/Button';
 import Col from 'react-bootstrap/esm/Col';
 import Container from 'react-bootstrap/esm/Container';
@@ -29,14 +29,49 @@ const IconNavigator: React.FC<IconNavigatorProps> = ({
   roundCards,
   isLoading,
 }: IconNavigatorProps) => {
-  const [selectedCard, setSelectedCard] = useState<CardDetails | undefined>(cardDetails ? cardDetails[0] : undefined);
+  const [state, setState] = useState<{ selectedCard: CardDetails | undefined; isStopped: boolean }>({
+    selectedCard: cardDetails ? cardDetails[0] : undefined,
+    isStopped: false,
+  });
+  let timer: NodeJS.Timeout | undefined = undefined;
+  const cycleSelection = () => {
+    if (!cardDetails || cardDetails.length === 0 || state.isStopped) return;
 
-  const handleLogoClick = (card: CardDetails) => {
-    setSelectedCard(card);
+    if (!state.selectedCard) {
+      setState({
+        selectedCard: cardDetails[0],
+        isStopped: false,
+      });
+      return;
+    }
+
+    const index = cardDetails?.indexOf(state.selectedCard);
+    const selectedCard = index < 0 || index === cardDetails.length - 1 ? cardDetails[0] : cardDetails[index + 1];
+    setState({
+      selectedCard: selectedCard,
+      isStopped: false,
+    });
   };
 
-  if (!selectedCard && cardDetails && cardDetails.length > 0) {
-    setSelectedCard(cardDetails[0]);
+  useEffect(() => {
+    timer = setInterval(cycleSelection, 5000);
+    return () => {
+      if (timer) clearInterval(timer);
+    };
+  });
+
+  const handleLogoClick = (card: CardDetails) => {
+    setState({
+      selectedCard: card,
+      isStopped: true,
+    });
+  };
+
+  if (!state.selectedCard && cardDetails && cardDetails.length > 0) {
+    setState({
+      selectedCard: cardDetails[0],
+      isStopped: false,
+    });
   }
 
   const cards = cardDetails?.map((card) => {
@@ -46,7 +81,7 @@ const IconNavigator: React.FC<IconNavigatorProps> = ({
         key={card.title}
         onClick={() => handleLogoClick(card)}
         className={classnames('logo', 'm-2', {
-          selected: card === selectedCard,
+          selected: card === state.selectedCard,
           'rounded-circle': roundCards,
         })}
         height="75px"
@@ -57,9 +92,10 @@ const IconNavigator: React.FC<IconNavigatorProps> = ({
     );
   });
 
+  const selectedCard = state.selectedCard;
   const isDefault = sectionStyle === SectionStyle.Default;
-  const isSectionRef = selectedCard && selectedCard.url.startsWith('/#');
-  const isLocalLink = selectedCard && selectedCard.url.startsWith('/') && !isSectionRef;
+  const isSectionRef = state && selectedCard?.url.startsWith('/#');
+  const isLocalLink = state && selectedCard?.url.startsWith('/') && !isSectionRef;
 
   return isLoading ? (
     <Spinner className="m-5" animation="border" role="status" variant="primary">
