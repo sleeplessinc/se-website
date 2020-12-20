@@ -103,11 +103,11 @@ const IconNavigator: React.FC<IconNavigatorProps> = ({
     </Spinner>
   ) : (
     <Container>
-      <Row>
+      <Row className="align-items-center">
         <Col md={6} className="text-center mb-2">
           {cards}
         </Col>
-        <Col md={6}>
+        <Col className="d-flex align-items-center justify-content-center" style={{ minHeight: '350px' }} md={6}>
           <div
             className={classnames('text-center', 'align-self-center', {
               'text-light': isDefault,
