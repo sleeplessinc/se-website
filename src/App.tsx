@@ -13,7 +13,7 @@ import EditPage from './components/EditPage';
 import Announcement from './components/Announcement';
 import ListPage from './components/ListPage';
 import CollectionType from './enums/CollectionType';
-import { URL_BG_COMMUNITY, URL_BG_TOOLS } from './utils/constants';
+import { URL_BG_COMMUNITY, URL_BG_FILMING, URL_BG_TOOLS } from './utils/constants';
 
 const App: React.FC = () => {
   return (
@@ -65,9 +65,6 @@ const App: React.FC = () => {
           />
 
           {/* Handle legacy collection URLs */}
-          <Route path="/creators" exact={true}>
-            <Redirect to="/#creators" />
-          </Route>
           <Route path="/street-epistemology-frequently-asked-questions-faq" exact={true}>
             <Redirect to="/faq" />
           </Route>
@@ -85,13 +82,16 @@ const App: React.FC = () => {
             <ContactUsPage />
           </Route>
           <Route path="/community" exact={true}>
-            <ListPage collectionType={CollectionType.Communities} backgroundUrl={URL_BG_COMMUNITY} />
+            <ListPage key="community" collectionType={CollectionType.Communities} backgroundUrl={URL_BG_COMMUNITY} />
+          </Route>
+          <Route path="/creators" exact={true}>
+            <ListPage key="creators" collectionType={CollectionType.Creators} backgroundUrl={URL_BG_FILMING} />
           </Route>
           <Route path="/resources" exact={true}>
             <ListPage
+              key="resources"
               collectionType={CollectionType.Resources}
               backgroundUrl={URL_BG_TOOLS}
-              iconSize={150}
               iconCircle={false}
             />
           </Route>
