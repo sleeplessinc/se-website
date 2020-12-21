@@ -100,7 +100,7 @@ const ListPage: React.FC<ListPageProps> = ({ collectionType, backgroundUrl, icon
     <div
       style={{
         width: '100%',
-        backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), url(${backgroundUrl})`,
+        backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url(${backgroundUrl})`,
         backgroundRepeat: 'no-repeat',
         backgroundAttachment: 'fixed',
         backgroundPosition: 'center',

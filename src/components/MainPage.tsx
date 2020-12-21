@@ -19,7 +19,7 @@ const MainPage: React.FC = () => {
         <FaqCarousel />
       </div>
       <div id="examples">
-        <Section backgroundSource={video_camera} sectionStyle={SectionStyle.Light}>
+        <Section backgroundSource={video_camera}>
           <ExamplesPage />
         </Section>
       </div>
@@ -28,6 +28,7 @@ const MainPage: React.FC = () => {
           heading="Resources"
           blurb="The best resources available today for learning more about Street Epistemology have been gathered for you here."
           backgroundSource={bg_tools}
+          sectionStyle={SectionStyle.Light}
         >
           <Link to="/resources">
             <Button variant="primary">Read More</Button>
@@ -39,7 +40,6 @@ const MainPage: React.FC = () => {
           heading="Community"
           blurb="Looking for other people who are interested in Street Epistemology? There are a variety of active fan-managed communities waiting for you."
           backgroundSource={bg_community}
-          sectionStyle={SectionStyle.Light}
         >
           <Link to="/community">
             <Button variant="primary">Read More</Button>
@@ -51,6 +51,7 @@ const MainPage: React.FC = () => {
           heading="Content Creators"
           blurb="People are coming up with all sorts of creative ways to demonstrate Street Epistemology. Here are some of the most prolific."
           backgroundSource={bg_filming}
+          sectionStyle={SectionStyle.Light}
         >
           <Link to="/creators">
             <Button variant="primary">Read More</Button>
