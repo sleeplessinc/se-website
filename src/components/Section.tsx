@@ -56,8 +56,8 @@ const Section: React.FC<SectionProps> = ({
             </Col>
           </Row>
         )}
-        <Row className="justify-content-md-center">
-          <>{children}</>
+        <Row>
+          <Col className="d-flex justify-content-center">{children}</Col>
         </Row>
       </Container>
     </Container>
