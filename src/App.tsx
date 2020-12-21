@@ -96,12 +96,11 @@ const App: React.FC = () => {
             />
           </Route>
           <Route
-            path="/:id"
+            path="/acronyms"
             exact={true}
-            render={(routeProps) => (
-              <ContentPage path={`${routeProps.match.params.id}`} key={routeProps.match.params.id} />
-            )}
+            render={() => <ContentPage path="acronyms" key="acronyms" showAttribution={false} />}
           />
+          <Route path="/faq" exact={true} render={() => <ContentPage path="faq" key="faq" showAttribution={false} />} />
           <Route path="/" exact={true}>
             <MainPage />
           </Route>

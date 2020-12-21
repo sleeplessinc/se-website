@@ -13,9 +13,15 @@ import * as config from '../config.json';
 
 interface IContentPageProps {
   path: string;
+  showAttribution?: boolean;
 }
 
-const ContentPage: React.FC<IContentPageProps> = ({ path }: IContentPageProps) => {
+const defaultProps: IContentPageProps = {
+  path: '',
+  showAttribution: true,
+};
+
+const ContentPage: React.FC<IContentPageProps> = ({ path, showAttribution }: IContentPageProps) => {
   const firebaseContext = React.useContext(FirebaseContext);
   const userContext = React.useContext(UserContext);
   const [details, setDetails] = useState<Blog | undefined>(undefined);
@@ -76,12 +82,16 @@ const ContentPage: React.FC<IContentPageProps> = ({ path }: IContentPageProps) =
                   height="auto"
                 />
                 <h1>{details?.title}</h1>
-                by {details?.author}
-                <br />
-                <Badge variant="primary">{details?.category}</Badge>
-                <small>
-                  <p>{'Published ' + formatDistance(new Date(details?.published), new Date()) + ' ago'}</p>
-                </small>
+                {!showAttribution ? null : (
+                  <>
+                    <p>by {details?.author}</p>
+                    <br />
+                    <Badge variant="primary">{details?.category}</Badge>
+                    <small>
+                      <p>{'Published ' + formatDistance(new Date(details?.published), new Date()) + ' ago'}</p>
+                    </small>
+                  </>
+                )}
               </Col>
             </Row>
           )}
@@ -93,5 +103,7 @@ const ContentPage: React.FC<IContentPageProps> = ({ path }: IContentPageProps) =
     </Container>
   );
 };
+
+ContentPage.defaultProps = defaultProps;
 
 export default ContentPage;
