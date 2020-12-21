@@ -47,8 +47,7 @@ const Section: React.FC<SectionProps> = ({
             <Col sm className="text-center align-self-center">
               <div
                 className={classnames('text-center', 'align-self-center', 'mt-2', 'mb-2', 'p-2', {
-                  'text-light': isDefault,
-                  'bg-masked-dark rounded-xl': isDefault,
+                  'bg-masked-dark rounded-xl text-light': isDefault,
                 })}
               >
                 <h1>{heading}</h1>
