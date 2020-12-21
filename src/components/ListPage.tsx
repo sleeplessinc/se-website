@@ -21,7 +21,7 @@ export interface ListPageProps {
 const defaultProps: ListPageProps = {
   collectionType: CollectionType.Communities,
   backgroundUrl: URL_BG_HAND_SHAKE,
-  iconSize: 100,
+  iconSize: 150,
   iconCircle: true,
 };
 
