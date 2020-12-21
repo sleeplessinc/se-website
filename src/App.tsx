@@ -11,6 +11,9 @@ import ContactUsPage from './components/ContactUsPage';
 import Login from './components/Login';
 import EditPage from './components/EditPage';
 import Announcement from './components/Announcement';
+import ListPage from './components/ListPage';
+import CollectionType from './enums/CollectionType';
+import { URL_BG_COMMUNITY } from './utils/constants';
 
 const App: React.FC = () => {
   return (
@@ -65,9 +68,6 @@ const App: React.FC = () => {
           <Route path="/resources" exact={true}>
             <Redirect to="/#resources" />
           </Route>
-          <Route path="/community" exact={true}>
-            <Redirect to="/#communities" />
-          </Route>
           <Route path="/creators" exact={true}>
             <Redirect to="/#creators" />
           </Route>
@@ -89,6 +89,9 @@ const App: React.FC = () => {
           </Route>
           <Route path="/contact" exact={true}>
             <ContactUsPage />
+          </Route>
+          <Route path="/community" exact={true}>
+            <ListPage collectionType={CollectionType.Communities} backgroundUrl={URL_BG_COMMUNITY} />
           </Route>
           <Route
             path="/:id"

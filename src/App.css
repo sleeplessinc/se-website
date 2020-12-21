@@ -33,7 +33,12 @@ h1,
 }
 
 .rounded-xl {
-  border-radius: 15px;
+  border-radius: 0.5rem !important;
+}
+
+.my-6 {
+  margin-top: 5rem !important;
+  margin-bottom: 5rem !important;
 }
 
 blockquote {
