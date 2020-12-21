@@ -136,10 +136,6 @@ blockquote p {
   z-index: 999;
 }
 
-.blog p {
-  text-align: justify;
-}
-
 .blog img {
   height: auto;
   max-width: 100%;
