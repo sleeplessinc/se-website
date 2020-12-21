@@ -44,20 +44,8 @@ const ListPage: React.FC<ListPageProps> = ({ collectionType, backgroundUrl, icon
     );
   }, [firebaseContext]);
 
-  const collectionItems: CardDetails[] = collection
-    ? JSON.parse(collection).sort((a, b) => {
-        const aVal = a.logoUrl ?? '';
-        const bVal = b.logoUrl ?? '';
-        if (aVal > bVal) {
-          return 1;
-        }
-        if (aVal < bVal) {
-          return -1;
-        }
+  const collectionItems: CardDetails[] = collection ? JSON.parse(collection).sort((a, b) => a.order - b.order) : [];
 
-        return 0;
-      })
-    : [];
   const groups: _.Dictionary<CardDetails[]> = _.groupBy(collectionItems, (x) => x.logoUrl ?? '');
   const collectionCards: JSX.Element[] = [];
   let isFirst = true;
