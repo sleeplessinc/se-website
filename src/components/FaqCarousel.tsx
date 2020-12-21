@@ -6,7 +6,6 @@ import buildings_aerial_view from '../images/bg_buildings_aerial_view.webp';
 import pedestrian_crossing from '../images/bg_pedestrian_crossing.webp';
 import pocket_watch from '../images/bg_pocket_watch.webp';
 import hand_shake from '../images/bg_hand_shake.webp';
-import { Container, Row } from 'react-bootstrap';
 import Slide from './Slide';
 
 const FaqCarousel: React.FC = () => {
