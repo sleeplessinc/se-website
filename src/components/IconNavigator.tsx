@@ -119,7 +119,7 @@ const IconNavigator: React.FC<IconNavigatorProps> = ({
             <h2>{selectedCard?.title}</h2>
             <p>{selectedCard?.description}</p>
             {isLocalLink ? (
-              <Link to={selectedCard?.url}>
+              <Link to={selectedCard?.url ?? ''}>
                 <Button className="m-2">Continue ➧</Button>
               </Link>
             ) : (

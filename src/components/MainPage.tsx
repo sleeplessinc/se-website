@@ -11,7 +11,6 @@ import ExamplesPage from './ExamplesPage';
 import GuidePage from './GuidePage';
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
-import { HashLink } from 'react-router-hash-link';
 
 const MainPage: React.FC = () => {
   return (
@@ -30,7 +29,7 @@ const MainPage: React.FC = () => {
           blurb="The best resources available today for learning more about Street Epistemology have been gathered for you here."
           backgroundSource={bg_tools}
         >
-          <Link as={HashLink} to="/resources#top">
+          <Link to="/resources">
             <Button variant="primary">Read More</Button>
           </Link>
         </Section>
@@ -42,7 +41,7 @@ const MainPage: React.FC = () => {
           backgroundSource={bg_community}
           sectionStyle={SectionStyle.Light}
         >
-          <Link as={HashLink} to="/community#top">
+          <Link to="/community">
             <Button variant="primary">Read More</Button>
           </Link>
         </Section>
@@ -53,7 +52,7 @@ const MainPage: React.FC = () => {
           blurb="People are coming up with all sorts of creative ways to demonstrate Street Epistemology. Here are some of the most prolific."
           backgroundSource={bg_filming}
         >
-          <Link as={HashLink} to="/creators#top">
+          <Link to="/creators">
             <Button variant="primary">Read More</Button>
           </Link>
         </Section>
