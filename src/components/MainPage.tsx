@@ -9,8 +9,9 @@ import SectionStyle from '../enums/SectionStyle';
 import ShopSection from './ShopSection';
 import ExamplesPage from './ExamplesPage';
 import GuidePage from './GuidePage';
-import ContentCollection from './ContentCollection';
-import CollectionType from '../enums/CollectionType';
+import { Link } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
+import { HashLink } from 'react-router-hash-link';
 
 const MainPage: React.FC = () => {
   return (
@@ -29,21 +30,21 @@ const MainPage: React.FC = () => {
           blurb="The best resources available today for learning more about Street Epistemology have been gathered for you here."
           backgroundSource={bg_tools}
         >
-          <ContentCollection collectionType={CollectionType.Resources} />
+          <Link as={HashLink} to="/resources#top">
+            <Button variant="primary">Read More</Button>
+          </Link>
         </Section>
       </div>
-      <div id="communities">
+      <div id="community">
         <Section
-          heading="Communities"
+          heading="Community"
           blurb="Looking for other people who are interested in Street Epistemology? There are a variety of active fan-managed communities waiting for you."
           backgroundSource={bg_community}
           sectionStyle={SectionStyle.Light}
         >
-          <ContentCollection
-            collectionType={CollectionType.Communities}
-            sectionStyle={SectionStyle.Light}
-            roundCards={true}
-          />
+          <Link as={HashLink} to="/community#top">
+            <Button variant="primary">Read More</Button>
+          </Link>
         </Section>
       </div>
       <div id="creators">
@@ -52,7 +53,9 @@ const MainPage: React.FC = () => {
           blurb="People are coming up with all sorts of creative ways to demonstrate Street Epistemology. Here are some of the most prolific."
           backgroundSource={bg_filming}
         >
-          <ContentCollection collectionType={CollectionType.Creators} roundCards={true} />
+          <Link as={HashLink} to="/creators#top">
+            <Button variant="primary">Read More</Button>
+          </Link>
         </Section>
       </div>
       <div id="guide">
