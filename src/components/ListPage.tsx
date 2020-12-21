@@ -65,7 +65,7 @@ const ListPage: React.FC<ListPageProps> = ({ collectionType, backgroundUrl, icon
     const cards = groups[key];
     const cardElements = cards.map((card) => {
       return (
-        <div key={card.title} className="py-5 text-center">
+        <div key={card.title} className="py-5 text-center d-flex flex-column">
           <a href={card.url} target="blank" style={{ color: 'inherit', textDecoration: 'inherit' }}>
             <h1>{card.title}</h1>
             <p>{card.description}</p>
@@ -98,7 +98,9 @@ const ListPage: React.FC<ListPageProps> = ({ collectionType, backgroundUrl, icon
                 />
               </a>
             </Col>
-            <Col md={8}>{cardElements}</Col>
+            <Col className="d-flex align-items-center justify-content-center flex-column" md={8}>
+              {cardElements}
+            </Col>
           </Row>
         </Container>
       </div>,
