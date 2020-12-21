@@ -55,7 +55,7 @@ const ListPage: React.FC<ListPageProps> = ({ collectionType, backgroundUrl }: Li
     const cardElements = cards.map((card) => {
       return (
         <div key={card.title} className="my-6 text-center">
-          <a href={card.url} style={{ color: 'inherit', textDecoration: 'inherit' }}>
+          <a href={card.url} target="blank" style={{ color: 'inherit', textDecoration: 'inherit' }}>
             <h1>{card.title}</h1>
             <p>{card.description}</p>
           </a>
