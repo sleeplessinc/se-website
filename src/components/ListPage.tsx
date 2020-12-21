@@ -8,13 +8,24 @@ import useStateWithLocalStorage from '../utils/storage';
 import CollectionType from '../enums/CollectionType';
 import CardDetails from '../models/CardDetails';
 import * as _ from 'lodash';
+import { URL_BG_HAND_SHAKE } from '../utils/constants';
+import classnames from 'classnames';
 
 export interface ListPageProps {
   collectionType: CollectionType;
-  backgroundUrl: string;
+  backgroundUrl?: string;
+  iconSize?: number;
+  iconCircle?: boolean;
 }
 
-const ListPage: React.FC<ListPageProps> = ({ collectionType, backgroundUrl }: ListPageProps) => {
+const defaultProps: ListPageProps = {
+  collectionType: CollectionType.Communities,
+  backgroundUrl: URL_BG_HAND_SHAKE,
+  iconSize: 100,
+  iconCircle: true,
+};
+
+const ListPage: React.FC<ListPageProps> = ({ collectionType, backgroundUrl, iconSize, iconCircle }: ListPageProps) => {
   const firebaseContext = React.useContext(FirebaseContext);
   const [collection, setCollection] = useStateWithLocalStorage(collectionType.toString());
   const [isLoading, setIsLoading] = useState(collection !== '');
@@ -54,7 +65,7 @@ const ListPage: React.FC<ListPageProps> = ({ collectionType, backgroundUrl }: Li
     const cards = groups[key];
     const cardElements = cards.map((card) => {
       return (
-        <div key={card.title} className="my-6 text-center">
+        <div key={card.title} className="py-5 text-center">
           <a href={card.url} target="blank" style={{ color: 'inherit', textDecoration: 'inherit' }}>
             <h1>{card.title}</h1>
             <p>{card.description}</p>
@@ -62,19 +73,30 @@ const ListPage: React.FC<ListPageProps> = ({ collectionType, backgroundUrl }: Li
         </div>
       );
     });
+    const hasOneCard = cardElements.length === 1;
     collectionCards.push(
       <div key={key}>
         {isFirst ? null : (
-          <Row className="justify-content-center my-2">
+          <Row className="justify-content-center">
             <Col sm={10}>
-              <hr className="m-0" />
+              <hr className="my-5" />
             </Col>
           </Row>
         )}
         <Container fluid={true}>
           <Row className="justify-content-center">
             <Col md={2} className="d-flex justify-content-center align-items-center">
-              <img className="rounded-circle" src={key} height="100px" width="100px" />
+              <a href={hasOneCard ? cards[0].url : ''}>
+                <img
+                  className={classnames('my-5', {
+                    'rounded-circle': iconCircle,
+                    'rounded-xl': !iconCircle,
+                  })}
+                  src={key}
+                  height={`${iconSize}px`}
+                  width={`${iconSize}px`}
+                />
+              </a>
             </Col>
             <Col md={8}>{cardElements}</Col>
           </Row>
@@ -104,11 +126,13 @@ const ListPage: React.FC<ListPageProps> = ({ collectionType, backgroundUrl }: Li
             </Spinner>
           </div>
         ) : (
-          collectionCards
+          <div className="py-5">{collectionCards}</div>
         )}
       </Container>
     </div>
   );
 };
+
+ListPage.defaultProps = defaultProps;
 
 export default ListPage;
