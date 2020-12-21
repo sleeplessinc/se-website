@@ -23,6 +23,8 @@ const defaultProps: IconNavigatorProps = {
   isLoading: false,
 };
 
+const fallbackLogo = 'https://storage.googleapis.com/se-website-fe4a4.appspot.com/images/logos/se-logo-small.webp';
+
 const IconNavigator: React.FC<IconNavigatorProps> = ({
   cardDetails,
   sectionStyle,
@@ -77,7 +79,7 @@ const IconNavigator: React.FC<IconNavigatorProps> = ({
   const cards = cardDetails?.map((card) => {
     return (
       <img
-        src={process.env.PUBLIC_URL + '/img/' + card.logo + '.webp'}
+        src={card.logoUrl ?? fallbackLogo}
         key={card.title}
         onClick={() => handleLogoClick(card)}
         className={classnames('logo', 'm-2', {
