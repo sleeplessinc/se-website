@@ -9,8 +9,8 @@ import SectionStyle from '../enums/SectionStyle';
 import ShopSection from './ShopSection';
 import ExamplesPage from './ExamplesPage';
 import GuidePage from './GuidePage';
-import ContentCollection from './ContentCollection';
-import CollectionType from '../enums/CollectionType';
+import { Link } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 
 const MainPage: React.FC = () => {
   return (
@@ -19,7 +19,7 @@ const MainPage: React.FC = () => {
         <FaqCarousel />
       </div>
       <div id="examples">
-        <Section backgroundSource={video_camera} sectionStyle={SectionStyle.Light}>
+        <Section backgroundSource={video_camera}>
           <ExamplesPage />
         </Section>
       </div>
@@ -28,22 +28,22 @@ const MainPage: React.FC = () => {
           heading="Resources"
           blurb="The best resources available today for learning more about Street Epistemology have been gathered for you here."
           backgroundSource={bg_tools}
-        >
-          <ContentCollection collectionType={CollectionType.Resources} />
-        </Section>
-      </div>
-      <div id="communities">
-        <Section
-          heading="Communities"
-          blurb="Looking for other people who are interested in Street Epistemology? There are a variety of active fan-managed communities waiting for you."
-          backgroundSource={bg_community}
           sectionStyle={SectionStyle.Light}
         >
-          <ContentCollection
-            collectionType={CollectionType.Communities}
-            sectionStyle={SectionStyle.Light}
-            roundCards={true}
-          />
+          <Link to="/resources">
+            <Button variant="primary">Read More</Button>
+          </Link>
+        </Section>
+      </div>
+      <div id="community">
+        <Section
+          heading="Community"
+          blurb="Looking for other people who are interested in Street Epistemology? There are a variety of active fan-managed communities waiting for you."
+          backgroundSource={bg_community}
+        >
+          <Link to="/community">
+            <Button variant="primary">Read More</Button>
+          </Link>
         </Section>
       </div>
       <div id="creators">
@@ -51,8 +51,11 @@ const MainPage: React.FC = () => {
           heading="Content Creators"
           blurb="People are coming up with all sorts of creative ways to demonstrate Street Epistemology. Here are some of the most prolific."
           backgroundSource={bg_filming}
+          sectionStyle={SectionStyle.Light}
         >
-          <ContentCollection collectionType={CollectionType.Creators} roundCards={true} />
+          <Link to="/creators">
+            <Button variant="primary">Read More</Button>
+          </Link>
         </Section>
       </div>
       <div id="guide">

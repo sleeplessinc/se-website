@@ -12,7 +12,7 @@ const GuidePage: React.FC = () => {
       <Container>
         <Row>
           <Col md={6}>
-            <div className="text-center align-self-center text-light bg-masked-dark mt-2 mb-2 p-2 rounded-xl">
+            <div className="text-center align-self-center">
               <h4>
                 The SE Guide provides distilled advice for all stages of a Street Epistemology dialogue: preparation,
                 beginning a dialogue, managing a dialogue, examining epistemology, ending a dialogue, and following up.

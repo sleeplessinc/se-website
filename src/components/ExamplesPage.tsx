@@ -173,12 +173,23 @@ const ExamplesPage: React.FC = () => {
                     Edit
                   </Button>
                 )}
-                <p className="badge badge-dark p-2 m-2">
-                  Video courtesy of&nbsp;
-                  <a href={featuredVideo.channelUrl} target="blank">
-                    {featuredVideo.author}
-                  </a>
-                </p>
+                <div className="d-none d-sm-block">
+                  <p className="badge badge-dark p-2 m-2">
+                    Video of the Month courtesy of&nbsp;
+                    <a href={featuredVideo.channelUrl} target="blank">
+                      {featuredVideo.author}
+                    </a>
+                  </p>
+                </div>
+                <div className="d-flex d-sm-none justify-content-center">
+                  <p className="badge badge-dark p-2 m-2">
+                    Video of the Month <br />
+                    Courtesy of&nbsp;
+                    <a href={featuredVideo.channelUrl} target="blank">
+                      {featuredVideo.author}
+                    </a>
+                  </p>
+                </div>
               </>
             )}
           </div>

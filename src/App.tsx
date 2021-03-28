@@ -11,10 +11,15 @@ import ContactUsPage from './components/ContactUsPage';
 import Login from './components/Login';
 import EditPage from './components/EditPage';
 import Announcement from './components/Announcement';
+import ListPage from './components/ListPage';
+import CollectionType from './enums/CollectionType';
+import { URL_BG_COMMUNITY, URL_BG_FILMING, URL_BG_TOOLS } from './utils/constants';
+import ScrollToTop from './components/ScrollToTop';
 
 const App: React.FC = () => {
   return (
     <Router>
+      <ScrollToTop />
       <div className="App">
         <Navigation />
         <Announcement />
@@ -62,23 +67,11 @@ const App: React.FC = () => {
           />
 
           {/* Handle legacy collection URLs */}
-          <Route path="/resources" exact={true}>
-            <Redirect to="/#resources" />
-          </Route>
-          <Route path="/community" exact={true}>
-            <Redirect to="/#communities" />
-          </Route>
-          <Route path="/creators" exact={true}>
-            <Redirect to="/#creators" />
-          </Route>
           <Route path="/street-epistemology-frequently-asked-questions-faq" exact={true}>
             <Redirect to="/faq" />
           </Route>
           <Route path="/shop" exact={true}>
             <Redirect to="/#shop" />
-          </Route>
-          <Route path="/resources" exact={true}>
-            <Redirect to="/#resources" />
           </Route>
 
           <Route path="/blog" exact={true}>
@@ -90,13 +83,26 @@ const App: React.FC = () => {
           <Route path="/contact" exact={true}>
             <ContactUsPage />
           </Route>
+          <Route path="/community" exact={true}>
+            <ListPage key="community" collectionType={CollectionType.Communities} backgroundUrl={URL_BG_COMMUNITY} />
+          </Route>
+          <Route path="/creators" exact={true}>
+            <ListPage key="creators" collectionType={CollectionType.Creators} backgroundUrl={URL_BG_FILMING} />
+          </Route>
+          <Route path="/resources" exact={true}>
+            <ListPage
+              key="resources"
+              collectionType={CollectionType.Resources}
+              backgroundUrl={URL_BG_TOOLS}
+              iconCircle={false}
+            />
+          </Route>
           <Route
-            path="/:id"
+            path="/acronyms"
             exact={true}
-            render={(routeProps) => (
-              <ContentPage path={`${routeProps.match.params.id}`} key={routeProps.match.params.id} />
-            )}
+            render={() => <ContentPage path="acronyms" key="acronyms" showAttribution={false} />}
           />
+          <Route path="/faq" exact={true} render={() => <ContentPage path="faq" key="faq" showAttribution={false} />} />
           <Route path="/" exact={true}>
             <MainPage />
           </Route>

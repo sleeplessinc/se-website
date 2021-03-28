@@ -23,6 +23,8 @@ const defaultProps: IconNavigatorProps = {
   isLoading: false,
 };
 
+const fallbackLogo = 'https://storage.googleapis.com/se-website-fe4a4.appspot.com/images/logos/se-logo-small.webp';
+
 const IconNavigator: React.FC<IconNavigatorProps> = ({
   cardDetails,
   sectionStyle,
@@ -77,7 +79,7 @@ const IconNavigator: React.FC<IconNavigatorProps> = ({
   const cards = cardDetails?.map((card) => {
     return (
       <img
-        src={process.env.PUBLIC_URL + '/img/' + card.logo + '.webp'}
+        src={card.logoUrl ?? fallbackLogo}
         key={card.title}
         onClick={() => handleLogoClick(card)}
         className={classnames('logo', 'm-2', {
@@ -103,11 +105,11 @@ const IconNavigator: React.FC<IconNavigatorProps> = ({
     </Spinner>
   ) : (
     <Container>
-      <Row>
+      <Row className="align-items-center">
         <Col md={6} className="text-center mb-2">
           {cards}
         </Col>
-        <Col md={6}>
+        <Col className="d-flex align-items-center justify-content-center" style={{ minHeight: '350px' }} md={6}>
           <div
             className={classnames('text-center', 'align-self-center', {
               'text-light': isDefault,
@@ -117,7 +119,7 @@ const IconNavigator: React.FC<IconNavigatorProps> = ({
             <h2>{selectedCard?.title}</h2>
             <p>{selectedCard?.description}</p>
             {isLocalLink ? (
-              <Link to={selectedCard?.url}>
+              <Link to={selectedCard?.url ?? ''}>
                 <Button className="m-2">Continue ➧</Button>
               </Link>
             ) : (

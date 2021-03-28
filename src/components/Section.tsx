@@ -28,37 +28,28 @@ const Section: React.FC<SectionProps> = ({
   backgroundSource: src,
 }: SectionProps) => {
   const isDefault = sectionStyle === SectionStyle.Default;
-
+  const rgb = isDefault ? '255, 228, 121' : '255, 255, 255';
   return (
     <Container
       fluid
       className="section-background d-flex align-items-center"
       style={{
-        backgroundImage:
-          (isDefault ? '' : 'linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), ') +
-          'url(' +
-          src +
-          ')',
+        backgroundImage: `linear-gradient(rgba(${rgb}, 0.9), rgba(${rgb}, 0.9)), url(${src})`,
       }}
     >
       <Container className="section-container align-middle">
         {heading && (
           <Row className="align-items-center">
             <Col sm className="text-center align-self-center">
-              <div
-                className={classnames('text-center', 'align-self-center', 'mt-2', 'mb-2', 'p-2', {
-                  'text-light': isDefault,
-                  'bg-masked-dark rounded-xl': isDefault,
-                })}
-              >
+              <div className={classnames('text-center', 'align-self-center', 'mt-2', 'mb-2', 'p-2')}>
                 <h1>{heading}</h1>
                 {blurb ? <h4>{blurb}</h4> : null}
               </div>
             </Col>
           </Row>
         )}
-        <Row className="justify-content-md-center">
-          <>{children}</>
+        <Row>
+          <Col className="d-flex justify-content-center">{children}</Col>
         </Row>
       </Container>
     </Container>

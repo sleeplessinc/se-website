@@ -17,23 +17,32 @@ h1,
 }
 
 .carousel-slide {
-  min-height: 350px;
+  min-height: 512px;
   background-attachment: scroll;
   background-position: center;
   background-size: cover;
   vertical-align: middle;
 }
 
+.highlight {
+  color: #ffcc00;
+}
+
 .bg-masked-dark {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 123, 255, 0.9);
 }
 
 .bg-masked-light {
-  background-color: rgba(255, 255, 255, 0.75);
+  background-color: rgba(255, 255, 255, 0.9);
 }
 
 .rounded-xl {
-  border-radius: 15px;
+  border-radius: 0.5rem !important;
+}
+
+.my-6 {
+  margin-top: 5rem !important;
+  margin-bottom: 5rem !important;
 }
 
 blockquote {
@@ -125,10 +134,6 @@ blockquote p {
 
 .grecaptcha-badge {
   z-index: 999;
-}
-
-.blog p {
-  text-align: justify;
 }
 
 .blog img {
