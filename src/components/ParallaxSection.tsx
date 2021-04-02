@@ -3,16 +3,17 @@ import { Row } from 'react-bootstrap';
 import Col from 'react-bootstrap/esm/Col';
 import Container from 'react-bootstrap/esm/Container';
 import { Parallax } from 'react-parallax';
+import { URL_BG_QUESTION_MARK } from '../utils/constants';
 
 export interface ParallaxSectionProps {
-  children?: React.ReactNode | null;
   backgroundSource?: string | undefined;
+  children?: React.ReactNode | null;
   alt?: string | undefined;
 }
 
 const defaultProps: ParallaxSectionProps = {
+  backgroundSource: URL_BG_QUESTION_MARK,
   children: null,
-  backgroundSource: undefined,
   alt: 'background',
 };
 
@@ -25,6 +26,7 @@ const ParallaxSection: React.FC<ParallaxSectionProps> = ({
   const primary = style.getPropertyValue('--primary');
   return (
     <Parallax
+      className="text-light"
       bgImage={src}
       bgImageAlt={alt}
       strength={200}
