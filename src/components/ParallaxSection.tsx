@@ -4,6 +4,7 @@ import Col from 'react-bootstrap/esm/Col';
 import Container from 'react-bootstrap/esm/Container';
 import { Parallax } from 'react-parallax';
 import { URL_BG_QUESTION_MARK } from '../utils/constants';
+import { ThemeContext } from './ThemeProvider';
 
 export interface ParallaxSectionProps {
   backgroundSource?: string | undefined;
@@ -22,8 +23,8 @@ const ParallaxSection: React.FC<ParallaxSectionProps> = ({
   backgroundSource: src,
   alt: alt,
 }: ParallaxSectionProps) => {
-  const style = getComputedStyle(document.body);
-  const primary = style.getPropertyValue('--primary');
+  const themeContext = React.useContext(ThemeContext);
+
   return (
     <Parallax
       className="text-light"
@@ -34,7 +35,7 @@ const ParallaxSection: React.FC<ParallaxSectionProps> = ({
         <div
           style={{
             position: 'absolute',
-            background: primary,
+            background: themeContext?.primary,
             left: '0%',
             top: '0%',
             width: '100%',
