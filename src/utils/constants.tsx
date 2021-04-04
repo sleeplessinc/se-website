@@ -28,3 +28,6 @@ export const URL_BG_THINKING =
   'https://storage.googleapis.com/se-website-fe4a4.appspot.com/images/backgrounds/bg_thinking.webp';
 export const URL_BG_TOOLS =
   'https://storage.googleapis.com/se-website-fe4a4.appspot.com/images/backgrounds/bg_tools.webp';
+export const LOGO_SE = 'https://storage.googleapis.com/se-website-fe4a4.appspot.com/images/logos/se-logo-only.png';
+export const LOGO_SE_WHITE =
+  'https://storage.googleapis.com/se-website-fe4a4.appspot.com/images/logos/logo-se-white.svg';
