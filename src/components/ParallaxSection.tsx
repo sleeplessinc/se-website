@@ -35,7 +35,7 @@ const ParallaxSection: React.FC<ParallaxSectionProps> = ({
         <div
           style={{
             position: 'absolute',
-            background: themeContext?.primary,
+            background: themeContext?.dark,
             left: '0%',
             top: '0%',
             width: '100%',

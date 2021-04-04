@@ -1,7 +1,16 @@
-@font-face {
-  font-family: Montserrat;
-  src: url(fonts/Montserrat-Bold.otf);
-}
+@import '../node_modules/bootstrap/scss/functions';
+
+$theme-colors: (
+  dark: #11121c,
+  primary: #515482,
+  secondary: #ffd943,
+  light: #ffffff,
+);
+
+@import '../node_modules/bootstrap/scss/variables';
+@import '../node_modules/bootstrap/scss/bootstrap';
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&family=Quicksand&display=swap');
 
 .navbar-animated {
   transition: top 0.6s;
@@ -11,9 +20,26 @@
   top: -60px;
 }
 
-h1,
+h1 {
+  font-family: Montserrat, sans-serif;
+  font-weight: 700;
+}
+
 .montserrat {
-  font-family: Montserrat;
+  font-family: Montserrat, sans-serif;
+  font-weight: 300;
+}
+
+.text-logo {
+  font-family: Montserrat, sans-serif;
+  font-weight: 700;
+}
+
+h2,
+h3,
+h4,
+p {
+  font-family: 'Quicksand', sans-serif;
 }
 
 .carousel-slide {
@@ -157,4 +183,35 @@ blockquote p {
   top: 25px;
   right: 40px;
   z-index: 999;
+}
+
+// ANIMATION
+
+.slide-in-bottom {
+  -webkit-animation: slide-in-bottom 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: slide-in-bottom 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+@-webkit-keyframes slide-in-bottom {
+  0% {
+    -webkit-transform: translateY(1000px);
+    transform: translateY(1000px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes slide-in-bottom {
+  0% {
+    -webkit-transform: translateY(1000px);
+    transform: translateY(1000px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
