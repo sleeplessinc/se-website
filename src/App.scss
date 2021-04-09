@@ -215,3 +215,20 @@ blockquote p {
     opacity: 1;
   }
 }
+
+.overlay-container {
+  display: flex; /* required */
+  flex-flow: row nowrap; /* required */
+}
+.overlay-container .overlay-background,
+.overlay-container .overlay-foreground {
+  box-sizing: border-box; /* required */
+  flex: none; /* required */
+}
+.overlay-container .overlay-background {
+  width: 30%;
+}
+.overlay-container .overlay-foreground {
+  width: 80%;
+  margin-left: -10%; /* required */
+}

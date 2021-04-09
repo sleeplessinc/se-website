@@ -77,8 +77,46 @@ const MainPage: React.FC = () => {
           </Row>
         </Container>
       </div>
-      <div id="examples">
-        <Section backgroundSource={video_camera}>
+      <div className="bg-light">
+        <Container className="px-0 py-4">
+          <div className="overlay-container">
+            <div
+              className="overlay-background"
+              style={{
+                overflow: 'hidden',
+                background: `url(${URL_BG_HAND_SHAKE})`,
+                backgroundSize: 'auto 100%',
+                backgroundPositionY: 'top',
+                backgroundPositionX: 'center',
+                backgroundRepeat: 'no-repeat',
+              }}
+            />
+            <div className="my-5 p-0 overlay-foreground">
+              {/* style={{ marginLeft: '-50px' }} */}
+              <div className="bg-primary text-light p-4">
+                <h2 className="text-center">
+                  <strong>The Evolution of Better Conversations</strong>
+                </h2>
+                <p>
+                  <span className="text-logo">Street Epistemology</span> started life as a method to discuss religious
+                  belief in the 2013 book <i>A Manual for Creating Atheists</i>. The book motivated many to apply the
+                  techniques in their conversations, with some recording their interactions and making these recordings
+                  available online for others to study and critique. This drove innovation in the method - most
+                  importantly motivating people to apply it to more than just religion.
+                </p>
+                <p>
+                  Today the method has a life of its own, driven by a community of people interested in discussing
+                  difficult topics, seeking truth and reflecting on the methods we use to arrive at our deep
+                  convictions. The community promotes the method as a way of creating understanding, combatting
+                  tribalism and improving public dialogue in general, irrespective of someone politcal leanings,
+                  religious background or other convitions.
+                </p>
+              </div>
+            </div>
+          </div>
+        </Container>
+        <Container className="bg-secondary" style={{ height: '10px' }} />
+        <div id="examples">
           <ExamplesPage />
         </Section>
       </div>
