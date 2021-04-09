@@ -1,10 +1,15 @@
 @import '../node_modules/bootstrap/scss/functions';
 
+$dark: #11121c;
+$primary: #515482;
+$secondary: #ffd943;
+$light: #f0f1f2;
+
 $theme-colors: (
-  dark: #11121c,
-  primary: #515482,
-  secondary: #ffd943,
-  light: #ffffff,
+  dark: $dark,
+  primary: $primary,
+  secondary: $secondary,
+  light: $light,
 );
 
 @import '../node_modules/bootstrap/scss/variables';
@@ -38,6 +43,7 @@ h1 {
 h2,
 h3,
 h4,
+h5,
 p {
   font-family: 'Quicksand', sans-serif;
 }
