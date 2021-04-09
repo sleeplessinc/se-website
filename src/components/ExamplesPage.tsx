@@ -11,6 +11,7 @@ import { Button, Card, Spinner } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { IVideoReference } from '../models/interfaces';
 import * as lodash from 'lodash';
+import { URL_LOGO_YOUTUBE_COLOR } from '../utils/constants';
 
 const ExamplesPage: React.FC = () => {
   console.info('Examples page refreshed');
@@ -135,23 +136,25 @@ const ExamplesPage: React.FC = () => {
   };
 
   return (
-    <Container>
+    <Container className="py-4">
       <Row>
-        <Col lg={6} className="align-self-center">
-          <div className="text-center m-3">
-            <h1>Video Examples</h1>
-            <h4>
-              One of the best ways to learn the techniques used in Street Epistemology is to see them in action.
-              The&nbsp;
+        <Col lg={6} className="align-self-top">
+          <div className="m-3">
+            <h2 className="text-center text-primary">
+              <strong>See it in action</strong>
+            </h2>
+            <h5>
+              One of the best ways to see what <span className="text-logo">Street Epistemology</span> is about or learn
+              how to apply it is to watch video examples. The&nbsp;
               <a href={'https://www.youtube.com/playlist?list=PLfb-sNm-sTE0fZQkynr-qTu6krq68S-po'} target="blank">
                 SE Latest Releases playlist
               </a>
               &nbsp;is the best place to find new content and see how SE is progressing.
-            </h4>
+            </h5>
           </div>
         </Col>
         <Col lg={6} className="align-self-center">
-          <div className="text-center m-3">
+          <div className="text-center">
             {isUpdating ? (
               <Card>
                 <div className="card-img-top">{embed(featuredVideo.videoId)}</div>
@@ -174,21 +177,10 @@ const ExamplesPage: React.FC = () => {
                   </Button>
                 )}
                 <div className="d-none d-sm-block">
-                  <p className="badge badge-dark p-2 m-2">
+                  <a className="badge badge-primary p-2 mt-2" href={featuredVideo.channelUrl} target="blank">
                     Video of the Month courtesy of&nbsp;
-                    <a href={featuredVideo.channelUrl} target="blank">
-                      {featuredVideo.author}
-                    </a>
-                  </p>
-                </div>
-                <div className="d-flex d-sm-none justify-content-center">
-                  <p className="badge badge-dark p-2 m-2">
-                    Video of the Month <br />
-                    Courtesy of&nbsp;
-                    <a href={featuredVideo.channelUrl} target="blank">
-                      {featuredVideo.author}
-                    </a>
-                  </p>
+                    {featuredVideo.author}
+                  </a>
                 </div>
               </>
             )}
