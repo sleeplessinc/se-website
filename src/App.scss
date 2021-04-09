@@ -204,6 +204,22 @@ div.col-d-2 {
   z-index: 999;
 }
 
+.border-bar-bottom {
+  border-bottom: 10px solid $secondary;
+}
+
+.border-bar-left {
+  border-left: 10px solid $secondary;
+}
+
+.border-bar-right {
+  border-right: 10px solid $secondary;
+}
+
+.border-bar-top {
+  border-top: 10px solid $secondary;
+}
+
 // ANIMATION
 
 .slide-in-bottom {

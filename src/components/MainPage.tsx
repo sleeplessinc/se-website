@@ -11,12 +11,28 @@ import GuidePage from './GuidePage';
 import { Link } from 'react-router-dom';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import ParallaxSection from './ParallaxSection';
-import { LOGO_SE_WHITE, URL_BG_THINKING } from '../utils/constants';
+import {
+  URL_LOGO_SE_WHITE,
+  URL_BG_GIRLS_CHATTING_ON_SWING,
+  URL_ICON_VIDEO_CAMERA,
+  URL_ICON_BOOK,
+  URL_ICON_PODCAST,
+  URL_ICON_COMMUNITY,
+  URL_BG_HAND_SHAKE,
+} from '../utils/constants';
+import { ReactComponent as CommunityIcon } from '../images/icon-community.svg';
+import { ReactComponent as BookIcon } from '../images/icon-book.svg';
+import { ReactComponent as VideoIcon } from '../images/icon-video-camera.svg';
+import { ReactComponent as PodcastIcon } from '../images/icon-podcast.svg';
+import { ThemeContext } from './ThemeProvider';
+import ContentCollectionList from './ContentCollectionList';
+import CollectionType from '../enums/CollectionType';
 
 const MainPage: React.FC = () => {
+  const themeContext = React.useContext(ThemeContext);
   return (
     <div className="container-fluid p-0">
-      <ParallaxSection backgroundSource={URL_BG_THINKING}>
+      <ParallaxSection backgroundSource={URL_BG_GIRLS_CHATTING_ON_SWING}>
         <div className="my-5 py-5 text-center">
           <h1>The World Needs Better Conversations</h1>
           <h4 className="my-4">
@@ -37,8 +53,7 @@ const MainPage: React.FC = () => {
               <img alt="" src={LOGO_SE} width="300" height="auto" className="d-inline-block align-middle mr-2" />
             </Col> */}
             <Col md>
-              <div style={{ height: '10px' }} className="bg-secondary mb-2" />
-              <h4 className="text-center">
+              <h4 className="text-center border-bar-top pt-2">
                 <span className="text-logo">What</span> is the benefit of <span className="text-logo">SE</span>?
               </h4>
               <p>
@@ -48,8 +63,7 @@ const MainPage: React.FC = () => {
               </p>
             </Col>
             <Col md>
-              <div style={{ height: '10px' }} className="bg-secondary mb-2" />
-              <h4 className="text-center">
+              <h4 className="text-center border-bar-top pt-2">
                 <span className="text-logo">Who</span> is <span className="text-logo">SE</span> for?
               </h4>
               <p>
@@ -59,8 +73,7 @@ const MainPage: React.FC = () => {
               </p>
             </Col>
             <Col md>
-              <div style={{ height: '10px' }} className="bg-secondary mb-2" />
-              <h4 className="text-center">
+              <h4 className="text-center border-bar-top pt-2">
                 <span className="text-logo">How</span> do I learn <span className="text-logo">SE</span>?
               </h4>
               <p>
@@ -72,7 +85,13 @@ const MainPage: React.FC = () => {
           </Row>
           <Row className="pt-3">
             <Col className="d-flex justify-content-center align-items-center" md>
-              <img alt="" src={LOGO_SE_WHITE} width="300" height="auto" className="d-inline-block align-middle mr-2" />
+              <img
+                alt=""
+                src={URL_LOGO_SE_WHITE}
+                width="300"
+                height="auto"
+                className="d-inline-block align-middle mr-2"
+              />
             </Col>
           </Row>
         </Container>
@@ -119,6 +138,49 @@ const MainPage: React.FC = () => {
         <div id="examples">
           <ExamplesPage />
         </div>
+      </div>
+      <div className="bg-secondary">
+        <Container className="py-5">
+          <Row className="text-center">
+            <Col>
+              <h2 className="text-primary">
+                <strong>There are many ways to learn</strong>
+              </h2>
+            </Col>
+          </Row>
+          <Row>
+            <Col md className="text-center my-2">
+              <div>
+                <VideoIcon className="mb-2" width="100" height="auto" fill={themeContext?.primary} />
+              </div>
+              <h4 className="text-logo text-primary">Video Examples</h4>
+              <h5>Watch SE in action with examples from various practitioners from around the world.</h5>
+            </Col>
+            <Col md className="text-center my-2">
+              <div>
+                <BookIcon className="mb-2" width="100" height="auto" fill={themeContext?.primary} />
+              </div>
+              <h4 className="text-logo text-primary">Books</h4>
+              <h5>
+                Read the official manual, blog posts or the book &quot;How to have Impossible Conversations&quot;.
+              </h5>
+            </Col>
+            <Col md className="text-center my-2">
+              <div>
+                <PodcastIcon className="mb-2" width="100" height="auto" fill={themeContext?.primary} />
+              </div>
+              <h4 className="text-logo text-primary">Podcast</h4>
+              <h5>Listen to SE interviews, discussions, breakdowns and reviews on the official podcast.</h5>
+            </Col>
+            <Col md className="text-center my-2">
+              <div>
+                <CommunityIcon className="mb-2" width="100" height="auto" fill={themeContext?.primary} />
+              </div>
+              <h4 className="text-logo text-primary">Community</h4>
+              <h5>Meet other people interested in SE in one of the many online communities.</h5>
+            </Col>
+          </Row>
+        </Container>
       </div>
       <div className="bg-dark text-light">
         <Container className="py-5 text-center">
