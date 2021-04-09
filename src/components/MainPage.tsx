@@ -118,7 +118,16 @@ const MainPage: React.FC = () => {
         <Container className="bg-secondary" style={{ height: '10px' }} />
         <div id="examples">
           <ExamplesPage />
-        </Section>
+        </div>
+      </div>
+      <div className="bg-dark text-light">
+        <Container className="py-5 text-center">
+          <h1>Get Involved</h1>
+          <h4 className="my-2">Join the community on your favorite platform</h4>
+          <div className="col-d-2 py-4">
+            <ContentCollectionList key="community" collectionType={CollectionType.Communities} />
+          </div>
+        </Container>
       </div>
       <div id="resources">
         <Section
