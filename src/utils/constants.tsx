@@ -42,3 +42,8 @@ export const URL_ICON_PODCAST =
 export const URL_ICON_BOOK = 'https://storage.googleapis.com/se-website-fe4a4.appspot.com/images/icons/icon-book.svg';
 export const URL_ICON_COMMUNITY =
   'https://storage.googleapis.com/se-website-fe4a4.appspot.com/images/icons/icon-community.svg';
+export const URL_BG_STUDY_GROUP =
+  'https://storage.googleapis.com/se-website-fe4a4.appspot.com/images/backgrounds/bg-study-group.webp';
+export const URL_IMG_SKETCH_PAD = 'https://storage.googleapis.com/se-website-fe4a4.appspot.com/images/sketch-pad.webp';
+export const URL_IMG_IMPOSSIBLE_CONVERSATIONS =
+  'https://storage.googleapis.com/se-website-fe4a4.appspot.com/images/impossible-conversations.webp';
