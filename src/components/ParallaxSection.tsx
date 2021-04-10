@@ -9,19 +9,22 @@ import { ThemeContext } from './ThemeProvider';
 export interface ParallaxSectionProps {
   backgroundSource?: string | undefined;
   children?: React.ReactNode | null;
+  minHeight?: string;
   alt?: string | undefined;
 }
 
 const defaultProps: ParallaxSectionProps = {
   backgroundSource: URL_BG_QUESTION_MARK,
   children: null,
+  minHeight: '0',
   alt: 'background',
 };
 
 const ParallaxSection: React.FC<ParallaxSectionProps> = ({
   children,
   backgroundSource: src,
-  alt: alt,
+  minHeight,
+  alt,
 }: ParallaxSectionProps) => {
   const themeContext = React.useContext(ThemeContext);
 
@@ -46,8 +49,8 @@ const ParallaxSection: React.FC<ParallaxSectionProps> = ({
       )}
     >
       <Container className="section-container align-middle">
-        <Row className="align-items-center">
-          <Col className="d-flex justify-content-center">{children}</Col>
+        <Row className="align-items-center" style={{ minHeight: minHeight }}>
+          <Col className="justify-content-center">{children}</Col>
         </Row>
       </Container>
     </Parallax>
