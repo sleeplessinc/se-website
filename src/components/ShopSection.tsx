@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import Col from 'react-bootstrap/esm/Col';
-import Container from 'react-bootstrap/esm/Container';
-import Row from 'react-bootstrap/esm/Row';
-import img_shirt from '../images/shirt.webp';
 import { Button } from 'react-bootstrap';
 import { FirebaseContext } from '../firebase';
 import * as alertify from 'alertifyjs';
+import OverlayDisplay from './OverlayDisplay';
+import { URL_IMG_SHIRT } from '../utils/constants';
 
 const ShopSection: React.FC = () => {
   const firebaseContext = React.useContext(FirebaseContext);
@@ -25,40 +23,18 @@ const ShopSection: React.FC = () => {
     );
   }, [firebaseContext]);
 
-  const text = (
-    <div className="text-center m-1 bg-masked-light p-2 rounded-xl">
-      <h1>Shop</h1>
-      <h4>Looking for Street Epistemology-themed merch? Browse our selection here.</h4>
-      <Button className="m-2" href={shopUrl} target="blank" disabled={!shopUrl}>
-        Continue ➧
-      </Button>
-    </div>
-  );
-
-  const image = <img src={img_shirt} title="Street Epistemology t shirt" alt="Street Epistemology t shirt" />;
-
   return (
-    <>
-      <Container fluid className="d-none d-lg-block section-background">
-        <Container>
-          <Row>
-            <Col className="align-self-center">{text}</Col>
-            <Col className="align-self-center">{image}</Col>
-          </Row>
-        </Container>
-      </Container>
-      <Container
-        fluid
-        className="d-flex d-lg-none section-background align-items-center"
-        style={{
-          backgroundImage: 'url(' + img_shirt + ')',
-        }}
-      >
-        <Container>
-          <Row>{text}</Row>
-        </Container>
-      </Container>
-    </>
+    <OverlayDisplay imageSrc={URL_IMG_SHIRT} overlap={0.05} imageWidth={0.5}>
+      <div className="text-primary text-center px-3">
+        <h2>
+          <strong>Merchandise</strong>
+        </h2>
+        <h5>Looking for Street Epistemology-themed merch? Browse our selection here.</h5>
+        <Button className="m-2" href={shopUrl} target="blank" disabled={!shopUrl}>
+          Shop Now
+        </Button>
+      </div>
+    </OverlayDisplay>
   );
 };
 

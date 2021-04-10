@@ -1,12 +1,9 @@
 import React from 'react';
 import bg_tools from '../images/bg_tools.webp';
-import bg_filming from '../images/bg_filming.webp';
-import bg_community from '../images/bg_community.webp';
 import Section from './Section';
 import SectionStyle from '../enums/SectionStyle';
 import ShopSection from './ShopSection';
 import ExamplesPage from './ExamplesPage';
-import GuidePage from './GuidePage';
 import { Link } from 'react-router-dom';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import ParallaxSection from './ParallaxSection';
@@ -18,18 +15,22 @@ import {
   URL_BG_PEDESTRIAN_CROSSING,
   URL_BG_BOOK,
   URL_IMG_SKETCH_PAD,
+  URL_BG_TAKING_SURVEY,
+  URL_BG_TEAM_WORK,
+  URL_SEI,
+  URL_IMG_SHIRT,
 } from '../utils/constants';
 import { ReactComponent as CommunityIcon } from '../images/icon-community.svg';
 import { ReactComponent as BookIcon } from '../images/icon-book.svg';
 import { ReactComponent as VideoIcon } from '../images/icon-video-camera.svg';
 import { ReactComponent as PodcastIcon } from '../images/icon-podcast.svg';
 import { ReactComponent as HandShakeIcon } from '../images/icon-hand-shake.svg';
+import { ReactComponent as GlobeIcon } from '../images/icon-globe.svg';
 import { ThemeContext } from './ThemeProvider';
 import ContentList from './ContentList';
 import CollectionType from '../enums/CollectionType';
-import ContentCreatorList from './ContentCreatorList';
-import CardDetails from '../models/CardDetails';
 import { GetSocialMediaIcon } from '../utils/iconSelectors';
+import OverlayDisplay from './OverlayDisplay';
 
 const MainPage: React.FC = () => {
   const themeContext = React.useContext(ThemeContext);
@@ -85,19 +86,8 @@ const MainPage: React.FC = () => {
         </Container>
       </div>
       <div className="bg-light">
-        <Container className="px-0 py-4">
-          <div className="overlay-container">
-            <div
-              className="overlay-background"
-              style={{
-                overflow: 'hidden',
-                background: `url(${URL_BG_HAND_SHAKE})`,
-                backgroundSize: 'auto 100%',
-                backgroundPositionY: 'top',
-                backgroundPositionX: 'center',
-                backgroundRepeat: 'no-repeat',
-              }}
-            />
+        <Container className="py-4">
+          <OverlayDisplay imageSrc={URL_BG_HAND_SHAKE} overlap={0.05}>
             <div className="my-5 p-0 overlay-foreground">
               {/* style={{ marginLeft: '-50px' }} */}
               <div className="bg-primary text-light p-4">
@@ -120,7 +110,7 @@ const MainPage: React.FC = () => {
                 </p>
               </div>
             </div>
-          </div>
+          </OverlayDisplay>
         </Container>
         <Container className="bg-secondary" style={{ height: '10px' }} />
         <div id="examples">
@@ -179,9 +169,7 @@ const MainPage: React.FC = () => {
               <ContentList
                 key="community"
                 collectionType={CollectionType.Communities}
-                iconSelector={(card: CardDetails, iconSize: number) =>
-                  GetSocialMediaIcon(card, iconSize, themeContext?.light)
-                }
+                iconSelector={(card, iconSize) => GetSocialMediaIcon(card, iconSize, themeContext?.light)}
               />
             </div>
           </Container>
@@ -189,65 +177,51 @@ const MainPage: React.FC = () => {
       </div>
       <div className="bg-primary" id="guide">
         <Container className="px-0 py-4">
-          <div className="overlay-container">
-            <div
-              className="overlay-background"
-              style={{
-                overflow: 'hidden',
-                background: `url(${URL_IMG_SKETCH_PAD})`,
-                backgroundSize: 'auto 100%',
-                backgroundPositionY: 'top',
-                backgroundPositionX: 'center',
-                backgroundRepeat: 'no-repeat',
-              }}
-            />
-            <div className="my-5 p-0 overlay-foreground">
-              {/* style={{ marginLeft: '-50px' }} */}
-              <div className="bg-dark text-light p-4">
-                <h2 className="text-center">
-                  <strong>Read the Guide</strong>
-                </h2>
-                <Container>
-                  <Row>
-                    <Col md={7}>
-                      <div className="text-left align-self-center">
-                        <h5>
-                          The SE Guide provides distilled advice for all stages of a dialogue. It covers both basic and
-                          advanced topics, making it great for beginners and advanced practitioners alike!
-                        </h5>
-                      </div>
-                    </Col>
-                    <Col md={5} className="text-center mb-2 align-self-center">
-                      <Button
-                        className="m-2"
-                        variant="secondary"
-                        href="https://docs.google.com/document/export?format=pdf&id=1YOqUGBlTJ6cCnkfZCYN6zV-csG85b_fkIiQAi3EPXSw"
-                        target="_blank"
-                      >
-                        Download PDF
-                      </Button>
-                      <Button
-                        className="m-2"
-                        variant="secondary"
-                        href="https://docs.google.com/document/export?format=epub&id=1YOqUGBlTJ6cCnkfZCYN6zV-csG85b_fkIiQAi3EPXSw"
-                        target="_blank"
-                      >
-                        Download EPUB
-                      </Button>
-                      <Button
-                        className="m-2"
-                        variant="secondary"
-                        href="https://docs.google.com/document/d/1YOqUGBlTJ6cCnkfZCYN6zV-csG85b_fkIiQAi3EPXSw"
-                        target="_blank"
-                      >
-                        Open with Google Docs
-                      </Button>
-                    </Col>
-                  </Row>
-                </Container>
-              </div>
+          <OverlayDisplay imageSrc={URL_IMG_SKETCH_PAD} overlap={0.05}>
+            <div className="bg-dark text-light p-4">
+              <h2 className="text-center">
+                <strong>Read the Guide</strong>
+              </h2>
+              <Container>
+                <Row>
+                  <Col md={7}>
+                    <div className="text-left align-self-center">
+                      <h5>
+                        The SE Guide provides distilled advice for all stages of a dialogue. It covers both basic and
+                        advanced topics, making it great for beginners and advanced practitioners alike!
+                      </h5>
+                    </div>
+                  </Col>
+                  <Col md={5} className="text-center mb-2 align-self-center">
+                    <Button
+                      className="m-2"
+                      variant="secondary"
+                      href="https://docs.google.com/document/export?format=pdf&id=1YOqUGBlTJ6cCnkfZCYN6zV-csG85b_fkIiQAi3EPXSw"
+                      target="_blank"
+                    >
+                      Download PDF
+                    </Button>
+                    <Button
+                      className="m-2"
+                      variant="secondary"
+                      href="https://docs.google.com/document/export?format=epub&id=1YOqUGBlTJ6cCnkfZCYN6zV-csG85b_fkIiQAi3EPXSw"
+                      target="_blank"
+                    >
+                      Download EPUB
+                    </Button>
+                    <Button
+                      className="m-2"
+                      variant="secondary"
+                      href="https://docs.google.com/document/d/1YOqUGBlTJ6cCnkfZCYN6zV-csG85b_fkIiQAi3EPXSw"
+                      target="_blank"
+                    >
+                      Open with Google Docs
+                    </Button>
+                  </Col>
+                </Row>
+              </Container>
             </div>
-          </div>
+          </OverlayDisplay>
         </Container>
       </div>
       <div id="creators" className="bg-dark text-light">
@@ -262,20 +236,30 @@ const MainPage: React.FC = () => {
           </div>
         </Container>
       </div>
-      <div id="resources">
-        <Section
-          heading="Resources"
-          blurb="The best resources available today for learning more about Street Epistemology have been gathered for you here."
-          backgroundSource={bg_tools}
-          sectionStyle={SectionStyle.Light}
-        >
-          <Link to="/resources">
-            <Button variant="primary">Read More</Button>
-          </Link>
-        </Section>
+      <div id="support">
+        <ParallaxSection backgroundSource={URL_BG_TEAM_WORK}>
+          <Container className="py-5 text-center">
+            <h1>
+              Support <span className="text-logo">Street Epistemology</span>
+            </h1>
+            <h4 className="my-2">
+              <span className="text-logo">Street Epistemology International</span> is a non-profit organization that
+              supports the development and promotion of <span className="text-logo">SE</span>.
+            </h4>
+            <div>
+              <GlobeIcon width="160px" height="160px" fill={themeContext?.light} className="my-4" />
+            </div>
+            <Button variant="primary" href={URL_SEI}>
+              Find Out More
+            </Button>
+          </Container>
+        </ParallaxSection>
       </div>
-      <div id="shop">
-        <ShopSection />
+
+      <div className="bg-secondary text-primary" id="shop">
+        <Container className="px-0">
+          <ShopSection />
+        </Container>
       </div>
     </div>
   );
