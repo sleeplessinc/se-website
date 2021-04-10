@@ -1,30 +1,21 @@
 import React from 'react';
-import bg_tools from '../images/bg_tools.webp';
-import Section from './Section';
-import SectionStyle from '../enums/SectionStyle';
 import ShopSection from './ShopSection';
 import ExamplesPage from './ExamplesPage';
-import { Link } from 'react-router-dom';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import ParallaxSection from './ParallaxSection';
 import {
   URL_LOGO_SE_WHITE,
   URL_BG_GIRLS_CHATTING_ON_SWING,
   URL_BG_HAND_SHAKE,
-  URL_BG_STUDY_GROUP,
   URL_BG_PEDESTRIAN_CROSSING,
-  URL_BG_BOOK,
   URL_IMG_SKETCH_PAD,
-  URL_BG_TAKING_SURVEY,
   URL_BG_TEAM_WORK,
   URL_SEI,
-  URL_IMG_SHIRT,
 } from '../utils/constants';
 import { ReactComponent as CommunityIcon } from '../images/icon-community.svg';
 import { ReactComponent as BookIcon } from '../images/icon-book.svg';
 import { ReactComponent as VideoIcon } from '../images/icon-video-camera.svg';
 import { ReactComponent as PodcastIcon } from '../images/icon-podcast.svg';
-import { ReactComponent as HandShakeIcon } from '../images/icon-hand-shake.svg';
 import { ReactComponent as GlobeIcon } from '../images/icon-globe.svg';
 import { ThemeContext } from './ThemeProvider';
 import ContentList from './ContentList';
@@ -47,11 +38,8 @@ const MainPage: React.FC = () => {
         </div>
       </ParallaxSection>
       <div className="bg-dark text-light p-5">
-        <Container className="py-5">
+        <Container>
           <Row>
-            {/* <Col className="bg-secondary d-flex justify-content-center align-items-center" md>
-              <img alt="" src={LOGO_SE} width="300" height="auto" className="d-inline-block align-middle mr-2" />
-            </Col> */}
             <Col md>
               <h4 className="text-center border-bar-top pt-2">
                 <span className="text-logo">What</span> is the benefit of <span className="text-logo">SE</span>?
@@ -112,8 +100,7 @@ const MainPage: React.FC = () => {
             </div>
           </OverlayDisplay>
         </Container>
-        <Container className="bg-secondary" style={{ height: '10px' }} />
-        <div id="examples">
+        <div id="examples" className="bg-dark">
           <ExamplesPage />
         </div>
       </div>
