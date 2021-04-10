@@ -11,7 +11,6 @@ import { Button, Card, Spinner } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { IVideoReference } from '../models/interfaces';
 import * as lodash from 'lodash';
-import { URL_LOGO_YOUTUBE_COLOR } from '../utils/constants';
 
 const ExamplesPage: React.FC = () => {
   console.info('Examples page refreshed');
@@ -136,16 +135,16 @@ const ExamplesPage: React.FC = () => {
   };
 
   return (
-    <Container className="py-4">
+    <Container className="py-4 bg-dark text-light">
       <Row>
-        <Col lg={6} className="align-self-top">
-          <div className="m-3">
-            <h2 className="text-center text-primary">
+        <Col lg={6} className="align-self-center">
+          <div className="m-3 text-center">
+            <h2>
               <strong>See it in action</strong>
             </h2>
             <h5>
-              One of the best ways to see what <span className="text-logo">Street Epistemology</span> is about or learn
-              how to apply it is to watch video examples. The&nbsp;
+              Video examples are one of the best ways to see what <span className="text-logo">SE</span> is about.
+              The&nbsp;
               <a href={'https://www.youtube.com/playlist?list=PLfb-sNm-sTE0fZQkynr-qTu6krq68S-po'} target="blank">
                 SE Latest Releases playlist
               </a>
