@@ -47,3 +47,7 @@ export const URL_BG_STUDY_GROUP =
 export const URL_IMG_SKETCH_PAD = 'https://storage.googleapis.com/se-website-fe4a4.appspot.com/images/sketch-pad.webp';
 export const URL_IMG_IMPOSSIBLE_CONVERSATIONS =
   'https://storage.googleapis.com/se-website-fe4a4.appspot.com/images/impossible-conversations.webp';
+export const URL_BG_TEAM_WORK =
+  'https://storage.googleapis.com/se-website-fe4a4.appspot.com/images/backgrounds/bg-team-work.webp';
+export const URL_SEI = 'https://streetepistemologyinternational.org/';
+export const URL_IMG_SHIRT = 'https://storage.googleapis.com/se-website-fe4a4.appspot.com/images/shirt.webp';
