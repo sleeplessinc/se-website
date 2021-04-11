@@ -4,6 +4,7 @@ $dark: #11121c;
 $primary: #515482;
 $secondary: #ffd943;
 $light: #f0f1f2;
+$font-family-sans-serif: 'Quicksand', sans-serif;
 
 $theme-colors: (
   dark: $dark,
@@ -38,14 +39,6 @@ h1 {
 .text-logo {
   font-family: Montserrat, sans-serif;
   font-weight: 700;
-}
-
-h2,
-h3,
-h4,
-h5,
-p {
-  font-family: 'Quicksand', sans-serif;
 }
 
 .carousel-slide {
