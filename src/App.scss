@@ -187,8 +187,8 @@ h5 {
   color: $primary;
 }
 .blog h2 {
-  margin-top: $spacer * 1;
-  margin-bottom: $spacer;
+  @extend .border-bar-left;
+  @extend .p-3;
 }
 
 .blog a {
