@@ -145,7 +145,11 @@ const ExamplesPage: React.FC = () => {
             <h5>
               Video examples are one of the best ways to see what <span className="text-logo">SE</span> is about.
               The&nbsp;
-              <a href={'https://www.youtube.com/playlist?list=PLfb-sNm-sTE0fZQkynr-qTu6krq68S-po'} target="blank">
+              <a
+                href={'https://www.youtube.com/playlist?list=PLfb-sNm-sTE0fZQkynr-qTu6krq68S-po'}
+                target="blank"
+                className="text-secondary"
+              >
                 SE Latest Releases playlist
               </a>
               &nbsp;is the best place to find new content and see how SE is progressing.

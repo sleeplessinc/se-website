@@ -74,7 +74,7 @@ const MainPage: React.FC = () => {
         </Container>
       </div>
       <div className="bg-light">
-        <Container className="py-4">
+        <Container>
           <OverlayDisplay imageSrc={URL_BG_HAND_SHAKE} overlap={0.05}>
             <div className="my-5 p-0 overlay-foreground">
               {/* style={{ marginLeft: '-50px' }} */}
@@ -163,9 +163,9 @@ const MainPage: React.FC = () => {
         </ParallaxSection>
       </div>
       <div className="bg-primary" id="guide">
-        <Container className="px-0 py-4">
+        <Container className="px-0">
           <OverlayDisplay imageSrc={URL_IMG_SKETCH_PAD} overlap={0.05}>
-            <div className="bg-dark text-light p-4">
+            <div className="bg-dark text-light p-4 my-5">
               <h2 className="text-center">
                 <strong>Read the Guide</strong>
               </h2>

@@ -53,7 +53,7 @@ const ContentList: React.FC<Props> = ({ collectionType, iconSelector, iconSize }
             'mb-3': index + 1 != cards.length,
           })}
         >
-          <a href={card.url} target="blank" className="text-light">
+          <a href={card.url} target="blank" className="text-secondary">
             <h5>{card.title}</h5>
           </a>
           {card.description}
