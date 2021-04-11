@@ -10,14 +10,17 @@ import reportWebVitals from './reportWebVitals';
 import Firebase, { FirebaseContext } from './firebase';
 import UserProvider from './components/UserProvider';
 import AppSettingsProvider from './components/AppSettingsProvider';
+import ThemeProvider from './components/ThemeProvider';
 
 ReactDOM.render(
   <React.StrictMode>
     <FirebaseContext.Provider value={new Firebase()}>
       <AppSettingsProvider>
-        <UserProvider>
-          <App />
-        </UserProvider>
+        <ThemeProvider>
+          <UserProvider>
+            <App />
+          </UserProvider>
+        </ThemeProvider>
       </AppSettingsProvider>
     </FirebaseContext.Provider>
   </React.StrictMode>,

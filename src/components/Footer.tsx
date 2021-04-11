@@ -1,12 +1,15 @@
 import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import { Col, Container, Nav } from 'react-bootstrap';
-import icon_facebook from '../images/icon-facebook.svg';
-import icon_reddit from '../images/icon-reddit.svg';
-import icon_twitter from '../images/icon-twitter.svg';
-import icon_discord from '../images/icon-discord.svg';
+import { ReactComponent as FacebookIcon } from '../images/icon-facebook.svg';
+import { ReactComponent as RedditIcon } from '../images/icon-reddit.svg';
+import { ReactComponent as TwitterIcon } from '../images/icon-twitter.svg';
+import { ReactComponent as DiscordIcon } from '../images/icon-discord.svg';
+import { ThemeContext } from './ThemeProvider';
 
 const Footer: React.FC = () => {
+  const themeContext = React.useContext(ThemeContext);
+  const iconSize = '32px';
   return (
     <Navbar bg="primary" variant="dark" expand="lg" className="footer">
       <Container fluid>
@@ -17,16 +20,16 @@ const Footer: React.FC = () => {
         </Col>
         <Col md className="text-center m-1">
           <Nav.Link href="https://discordapp.com/invite/sKap3zM" target="blank" className="d-inline">
-            <img src={icon_discord} width="30px" height="30px" />
+            <DiscordIcon width={iconSize} height={iconSize} fill={themeContext?.light} />
           </Nav.Link>
           <Nav.Link href="https://www.facebook.com/StreetEpistemology/" target="blank" className="d-inline">
-            <img src={icon_facebook} width="30px" height="30px" />
+            <FacebookIcon width={iconSize} height={iconSize} fill={themeContext?.light} />
           </Nav.Link>
           <Nav.Link href="https://www.reddit.com/r/StreetEpistemology/" target="blank" className="d-inline">
-            <img src={icon_reddit} width="30px" height="30px" />
+            <RedditIcon width={iconSize} height={iconSize} fill={themeContext?.light} />
           </Nav.Link>
           <Nav.Link href="https://twitter.com/StEpistemology" target="blank" className="d-inline">
-            <img src={icon_twitter} width="30px" height="30px" />
+            <TwitterIcon width={iconSize} height={iconSize} fill={themeContext?.light} />
           </Nav.Link>
         </Col>
         <Col md={3} className="text-center m-1">

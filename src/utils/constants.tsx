@@ -28,3 +28,26 @@ export const URL_BG_THINKING =
   'https://storage.googleapis.com/se-website-fe4a4.appspot.com/images/backgrounds/bg_thinking.webp';
 export const URL_BG_TOOLS =
   'https://storage.googleapis.com/se-website-fe4a4.appspot.com/images/backgrounds/bg_tools.webp';
+export const URL_BG_GIRLS_CHATTING_ON_SWING =
+  'https://storage.googleapis.com/se-website-fe4a4.appspot.com/images/backgrounds/bg-girls-chatting-on-swing.webp';
+export const URL_LOGO_SE = 'https://storage.googleapis.com/se-website-fe4a4.appspot.com/images/logos/se-logo-only.png';
+export const URL_LOGO_SE_WHITE =
+  'https://storage.googleapis.com/se-website-fe4a4.appspot.com/images/logos/logo-se-white.svg';
+export const URL_LOGO_YOUTUBE_COLOR =
+  'https://storage.googleapis.com/se-website-fe4a4.appspot.com/images/logos/logo-youtube-color.svg';
+export const URL_ICON_VIDEO_CAMERA =
+  'https://storage.googleapis.com/se-website-fe4a4.appspot.com/images/icons/icon-video-camera.svg';
+export const URL_ICON_PODCAST =
+  'https://storage.googleapis.com/se-website-fe4a4.appspot.com/images/icons/icon-podcast.svg';
+export const URL_ICON_BOOK = 'https://storage.googleapis.com/se-website-fe4a4.appspot.com/images/icons/icon-book.svg';
+export const URL_ICON_COMMUNITY =
+  'https://storage.googleapis.com/se-website-fe4a4.appspot.com/images/icons/icon-community.svg';
+export const URL_BG_STUDY_GROUP =
+  'https://storage.googleapis.com/se-website-fe4a4.appspot.com/images/backgrounds/bg-study-group.webp';
+export const URL_IMG_SKETCH_PAD = 'https://storage.googleapis.com/se-website-fe4a4.appspot.com/images/sketch-pad.webp';
+export const URL_IMG_IMPOSSIBLE_CONVERSATIONS =
+  'https://storage.googleapis.com/se-website-fe4a4.appspot.com/images/impossible-conversations.webp';
+export const URL_BG_TEAM_WORK =
+  'https://storage.googleapis.com/se-website-fe4a4.appspot.com/images/backgrounds/bg-team-work.webp';
+export const URL_SEI = 'https://streetepistemologyinternational.org/';
+export const URL_IMG_SHIRT = 'https://storage.googleapis.com/se-website-fe4a4.appspot.com/images/shirt.webp';

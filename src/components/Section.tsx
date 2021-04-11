@@ -37,12 +37,12 @@ const Section: React.FC<SectionProps> = ({
         backgroundImage: `linear-gradient(rgba(${rgb}, 0.9), rgba(${rgb}, 0.9)), url(${src})`,
       }}
     >
-      <Container className="section-container align-middle">
+      <Container className="align-middle">
         {heading && (
           <Row className="align-items-center">
             <Col sm className="text-center align-self-center">
               <div className={classnames('text-center', 'align-self-center', 'mt-2', 'mb-2', 'p-2')}>
-                <h1>{heading}</h1>
+                <h1 style={{ width: '200px' }}>{heading}</h1>
                 {blurb ? <h4>{blurb}</h4> : null}
               </div>
             </Col>

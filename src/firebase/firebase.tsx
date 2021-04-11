@@ -136,6 +136,20 @@ class Firebase {
     return this.subscribeToPath(path, converter, callback, cancelCallbackOrContext);
   }
 
+  subscribeToCollectionDetails(
+    collectionType: CollectionType,
+    callback: (content: Blog) => void,
+    cancelCallbackOrContext?: (error: any) => void,
+  ): () => void {
+    const path = CollectionType[collectionType].toLowerCase();
+    return this.subscribeToPath(
+      `collection-details/${path}`,
+      (snapshot) => deserialize(Blog, snapshot.val()),
+      callback,
+      cancelCallbackOrContext,
+    );
+  }
+
   subscribeToPage(
     pageName: string,
     callback: (content: string) => void,

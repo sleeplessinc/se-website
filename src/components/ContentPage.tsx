@@ -10,6 +10,7 @@ import { UserContext } from './UserProvider';
 import Blog from '../models/Blog';
 import { formatDistance } from 'date-fns';
 import * as config from '../config.json';
+import ParallaxSection from './ParallaxSection';
 
 interface IContentPageProps {
   path: string;
@@ -54,53 +55,65 @@ const ContentPage: React.FC<IContentPageProps> = ({ path, showAttribution }: ICo
   return notFound ? (
     <PageNotFound />
   ) : (
-    <Container className="blog">
-      {isLoading ? (
-        <div className="text-center">
-          <Spinner className="m-5" animation="border" role="status" variant="primary">
-            <span className="sr-only">Loading...</span>
-          </Spinner>
-        </div>
-      ) : (
-        <>
-          {userContext?.isAdmin ? (
+    <div className="bg-dark">
+      <Container className="blog bg-light">
+        {isLoading ? (
+          <div className="text-center">
+            <Spinner className="m-5" animation="border" role="status" variant="primary">
+              <span className="sr-only">Loading...</span>
+            </Spinner>
+          </div>
+        ) : (
+          <>
+            {userContext?.isAdmin ? (
+              <Row>
+                <Col />
+                <Col sm="auto" className="mt-2">
+                  <Link to={`/${path}/edit`}>
+                    <Button className="m-2">Edit Page</Button>
+                  </Link>
+                </Col>
+              </Row>
+            ) : null}
             <Row>
-              <Col />
-              <Col sm="auto" className="mt-2">
-                <Link to={`/${path}/edit`}>
-                  <Button className="m-2">Edit Page</Button>
-                </Link>
+              <Col className="p-0">
+                <ParallaxSection
+                  backgroundSource={config.googleCloudBaseUrl + config.bannerFolder + path + '.webp'}
+                  wrapInContainer={false}
+                  overlayOpacity={0}
+                >
+                  <Container className="align-middle">
+                    <Row className="align-items-end " style={{ minHeight: '400px' }}>
+                      <Col className="bg-primary text-light px-4 py-2" sm="auto">
+                        <h1>{details?.title}</h1>
+                      </Col>
+                    </Row>
+                  </Container>
+                  {/* <div className="bg-primary text-light px-4">
+                    <h1 className="my-2">{details?.title}</h1>
+                  </div> */}
+                </ParallaxSection>
               </Col>
             </Row>
-          ) : null}
-          {details && (
-            <Row>
+            <Row className="px-4 pb-4">
               <Col>
-                <img
-                  src={config.googleCloudBaseUrl + config.bannerFolder + path + '.webp'}
-                  width="100%"
-                  height="auto"
-                />
-                <h1>{details?.title}</h1>
-                {!showAttribution ? null : (
-                  <>
-                    <p>by {details?.author}</p>
+                {!(details && showAttribution) ? null : (
+                  <p>
+                    by {details?.author}
                     <br />
                     <Badge variant="primary">{details?.category}</Badge>
                     <small>
                       <p>{'Published ' + formatDistance(new Date(details?.published), new Date()) + ' ago'}</p>
                     </small>
-                  </>
+                  </p>
                 )}
+                {parse(content)}
               </Col>
             </Row>
-          )}
-          <Row>
-            <Col>{parse(content)}</Col>
-          </Row>
-        </>
-      )}
-    </Container>
+          </>
+        )}
+      </Container>
+    </div>
   );
 };
 

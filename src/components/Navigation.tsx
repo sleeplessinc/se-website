@@ -53,7 +53,7 @@ const Navigation: React.FC = () => {
           className="d-inline-block align-middle mr-2"
         />
         <div className="d-inline">
-          <span className="d-none d-sm-inline-block">Street Epistemology</span>
+          <span className="d-none d-sm-inline-block text-logo">Street Epistemology</span>
         </div>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
