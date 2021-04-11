@@ -40,7 +40,7 @@ const ParallaxSection: React.FC<ParallaxSectionProps> = ({
       className="text-light"
       bgImage={src}
       bgImageAlt={alt}
-      bgImageStyle={{ width: '100%', height: 'auto' }}
+      bgStyle={{ width: 'auto', height: '100%' }}
       strength={200}
       renderLayer={() => (
         <div
