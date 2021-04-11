@@ -10,29 +10,28 @@ import CardDetails from '../models/CardDetails';
 import * as _ from 'lodash';
 import { URL_BG_HAND_SHAKE } from '../utils/constants';
 import classnames from 'classnames';
-import ParallaxSection from './ParallaxSection';
 import { ThemeContext } from './ThemeProvider';
-import { hexToRgb, rgbObjectToHex, rgbToHex } from '../utils/colorHelper';
+import { hexToRgb } from '../utils/colorHelper';
+import Blog from '../models/Blog';
 
 export interface ListPageProps {
   collectionType: CollectionType;
   backgroundUrl?: string;
-  iconSize?: number;
   iconCircle?: boolean;
 }
 
 const defaultProps: ListPageProps = {
   collectionType: CollectionType.Communities,
   backgroundUrl: URL_BG_HAND_SHAKE,
-  iconSize: 150,
   iconCircle: true,
 };
 
-const ListPage: React.FC<ListPageProps> = ({ collectionType, backgroundUrl, iconSize, iconCircle }: ListPageProps) => {
+const ListPage: React.FC<ListPageProps> = ({ collectionType, backgroundUrl, iconCircle }: ListPageProps) => {
   const themeContext = React.useContext(ThemeContext);
   const firebaseContext = React.useContext(FirebaseContext);
   const [collection, setCollection] = useStateWithLocalStorage(collectionType.toString());
   const [isLoading, setIsLoading] = useState(collection !== '');
+  const [details, setDetails] = useState<Blog | undefined>(undefined);
   let rgbDark = { r: 0, g: 0, b: 0 };
   if (themeContext?.dark) {
     rgbDark = hexToRgb(themeContext?.dark) ?? rgbDark;
@@ -52,11 +51,14 @@ const ListPage: React.FC<ListPageProps> = ({ collectionType, backgroundUrl, icon
     );
   }, [firebaseContext]);
 
+  useEffect(() => {
+    return firebaseContext?.subscribeToCollectionDetails(collectionType, setDetails, console.log);
+  }, [firebaseContext]);
+
   const collectionItems: CardDetails[] = collection ? JSON.parse(collection).sort((a, b) => a.order - b.order) : [];
 
   const groups: _.Dictionary<CardDetails[]> = _.groupBy(collectionItems, (x) => x.logoUrl ?? '');
   const collectionCards: JSX.Element[] = [];
-  let isFirst = true;
   for (const key in groups) {
     const cards = groups[key];
     const cardElements = cards.map((card) => {
@@ -92,7 +94,6 @@ const ListPage: React.FC<ListPageProps> = ({ collectionType, backgroundUrl, icon
         </Col>
       </Row>,
     );
-    isFirst = false;
   }
 
   const gradient = `rgba(${rgbDark.r}, ${rgbDark.g}, ${rgbDark.b}, 0.9)`;
@@ -117,7 +118,17 @@ const ListPage: React.FC<ListPageProps> = ({ collectionType, backgroundUrl, icon
             </Spinner>
           </div>
         ) : (
-          <>{collectionCards}</>
+          <>
+            {details && (
+              <Row className="justify-content-center">
+                <Col md={10} className="text-center mt-5">
+                  <h1 className="text-light">{details?.title}</h1>
+                  <h4 className="text-light">{details.blurb}</h4>
+                </Col>
+              </Row>
+            )}
+            {collectionCards}
+          </>
         )}
       </Container>
     </div>
