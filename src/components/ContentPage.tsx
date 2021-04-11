@@ -54,53 +54,64 @@ const ContentPage: React.FC<IContentPageProps> = ({ path, showAttribution }: ICo
   return notFound ? (
     <PageNotFound />
   ) : (
-    <Container className="blog">
-      {isLoading ? (
-        <div className="text-center">
-          <Spinner className="m-5" animation="border" role="status" variant="primary">
-            <span className="sr-only">Loading...</span>
-          </Spinner>
-        </div>
-      ) : (
-        <>
-          {userContext?.isAdmin ? (
-            <Row>
-              <Col />
-              <Col sm="auto" className="mt-2">
-                <Link to={`/${path}/edit`}>
-                  <Button className="m-2">Edit Page</Button>
-                </Link>
+    <div className="bg-dark">
+      <Container className="blog bg-light">
+        {isLoading ? (
+          <div className="text-center">
+            <Spinner className="m-5" animation="border" role="status" variant="primary">
+              <span className="sr-only">Loading...</span>
+            </Spinner>
+          </div>
+        ) : (
+          <>
+            {userContext?.isAdmin ? (
+              <Row>
+                <Col />
+                <Col sm="auto" className="mt-2">
+                  <Link to={`/${path}/edit`}>
+                    <Button className="m-2">Edit Page</Button>
+                  </Link>
+                </Col>
+              </Row>
+            ) : null}
+            {details && (
+              <>
+                <Row className="p-0">
+                  <Col className="p-0">
+                    <img
+                      src={config.googleCloudBaseUrl + config.bannerFolder + path + '.webp'}
+                      width="100%"
+                      height="auto"
+                      className="m-0"
+                    />
+                  </Col>
+                </Row>
+              </>
+            )}
+            <Row className="bg-primary text-light">
+              <Col>
+                <h1 className="my-2">{details?.title}</h1>
               </Col>
             </Row>
-          ) : null}
-          {details && (
             <Row>
-              <Col>
-                <img
-                  src={config.googleCloudBaseUrl + config.bannerFolder + path + '.webp'}
-                  width="100%"
-                  height="auto"
-                />
-                <h1>{details?.title}</h1>
-                {!showAttribution ? null : (
-                  <>
-                    <p>by {details?.author}</p>
+              <Col className="pb-4">
+                {!(details && showAttribution) ? null : (
+                  <p>
+                    by {details?.author}
                     <br />
                     <Badge variant="primary">{details?.category}</Badge>
                     <small>
                       <p>{'Published ' + formatDistance(new Date(details?.published), new Date()) + ' ago'}</p>
                     </small>
-                  </>
+                  </p>
                 )}
+                {parse(content)}
               </Col>
             </Row>
-          )}
-          <Row>
-            <Col>{parse(content)}</Col>
-          </Row>
-        </>
-      )}
-    </Container>
+          </>
+        )}
+      </Container>
+    </div>
   );
 };
 
