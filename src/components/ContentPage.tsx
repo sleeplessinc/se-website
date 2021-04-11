@@ -88,13 +88,13 @@ const ContentPage: React.FC<IContentPageProps> = ({ path, showAttribution }: ICo
                 </Row>
               </>
             )}
-            <Row className="bg-primary text-light">
+            <Row className="bg-primary text-light px-4">
               <Col>
                 <h1 className="my-2">{details?.title}</h1>
               </Col>
             </Row>
-            <Row>
-              <Col className="pb-4">
+            <Row className="px-4 pb-4">
+              <Col>
                 {!(details && showAttribution) ? null : (
                   <p>
                     by {details?.author}
