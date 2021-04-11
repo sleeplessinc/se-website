@@ -10,6 +10,9 @@ import CardDetails from '../models/CardDetails';
 import * as _ from 'lodash';
 import { URL_BG_HAND_SHAKE } from '../utils/constants';
 import classnames from 'classnames';
+import ParallaxSection from './ParallaxSection';
+import { ThemeContext } from './ThemeProvider';
+import { hexToRgb, rgbObjectToHex, rgbToHex } from '../utils/colorHelper';
 
 export interface ListPageProps {
   collectionType: CollectionType;
@@ -26,9 +29,14 @@ const defaultProps: ListPageProps = {
 };
 
 const ListPage: React.FC<ListPageProps> = ({ collectionType, backgroundUrl, iconSize, iconCircle }: ListPageProps) => {
+  const themeContext = React.useContext(ThemeContext);
   const firebaseContext = React.useContext(FirebaseContext);
   const [collection, setCollection] = useStateWithLocalStorage(collectionType.toString());
   const [isLoading, setIsLoading] = useState(collection !== '');
+  let rgbDark = { r: 0, g: 0, b: 0 };
+  if (themeContext?.dark) {
+    rgbDark = hexToRgb(themeContext?.dark) ?? rgbDark;
+  }
 
   useEffect(() => {
     return firebaseContext?.subscribeToCollection(
@@ -53,54 +61,47 @@ const ListPage: React.FC<ListPageProps> = ({ collectionType, backgroundUrl, icon
     const cards = groups[key];
     const cardElements = cards.map((card) => {
       return (
-        <div key={card.title} className="py-5 text-center d-flex flex-column">
-          <a href={card.url} target="blank" style={{ color: 'inherit', textDecoration: 'inherit' }}>
-            <h1>{card.title}</h1>
-            <p>{card.description}</p>
+        <div key={card.title} className="py-3">
+          <a href={card.url} target="blank" className="text-light">
+            <h2>
+              <strong>{card.title}</strong>
+            </h2>
           </a>
+          <h5 className="text-light">{card.description}</h5>
         </div>
       );
     });
     const hasOneCard = cardElements.length === 1;
     collectionCards.push(
-      <div key={key}>
-        {isFirst ? null : (
-          <Row className="justify-content-center">
-            <Col sm={10}>
-              <hr className="my-5" />
-            </Col>
-          </Row>
-        )}
-        <Container fluid={true}>
-          <Row className="justify-content-center">
-            <Col md={2} className="d-flex justify-content-center align-items-center">
-              <a href={hasOneCard ? cards[0].url : ''}>
-                <img
-                  className={classnames('my-5', {
-                    'rounded-circle': iconCircle,
-                    'rounded-xl': !iconCircle,
-                  })}
-                  src={key}
-                  height={`${iconSize}px`}
-                  width={`${iconSize}px`}
-                />
-              </a>
-            </Col>
-            <Col className="d-flex align-items-center justify-content-center flex-column" md={8}>
-              {cardElements}
-            </Col>
-          </Row>
-        </Container>
-      </div>,
+      <Row className="justify-content-center my-5" key={key}>
+        <Col md={2} xs={3} className="align-items-left justify-content-center">
+          <a href={hasOneCard ? cards[0].url : ''}>
+            <img
+              className={classnames('mb-2', {
+                'rounded-circle': iconCircle,
+                'rounded-xl': !iconCircle,
+              })}
+              src={key}
+              height="auto"
+              width="100%"
+            />
+          </a>
+        </Col>
+        <Col className="align-items-left align-self-top border-bar-top" xs={9} md={8}>
+          {cardElements}
+        </Col>
+      </Row>,
     );
     isFirst = false;
   }
+
+  const gradient = `rgba(${rgbDark.r}, ${rgbDark.g}, ${rgbDark.b}, 0.9)`;
 
   return (
     <div
       style={{
         width: '100%',
-        backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url(${backgroundUrl})`,
+        backgroundImage: `linear-gradient(${gradient}, ${gradient}), url(${backgroundUrl})`,
         backgroundRepeat: 'no-repeat',
         backgroundAttachment: 'fixed',
         backgroundPosition: 'center',
@@ -110,13 +111,13 @@ const ListPage: React.FC<ListPageProps> = ({ collectionType, backgroundUrl, icon
     >
       <Container>
         {isLoading ? (
-          <div className="text-center">
+          <div className="text-center text-light">
             <Spinner className="m-5" animation="border" role="status" variant="primary">
               <span className="sr-only">Loading...</span>
             </Spinner>
           </div>
         ) : (
-          <div className="py-5">{collectionCards}</div>
+          <>{collectionCards}</>
         )}
       </Container>
     </div>
