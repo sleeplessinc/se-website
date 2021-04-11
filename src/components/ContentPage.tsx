@@ -10,6 +10,7 @@ import { UserContext } from './UserProvider';
 import Blog from '../models/Blog';
 import { formatDistance } from 'date-fns';
 import * as config from '../config.json';
+import ParallaxSection from './ParallaxSection';
 
 interface IContentPageProps {
   path: string;
@@ -74,23 +75,24 @@ const ContentPage: React.FC<IContentPageProps> = ({ path, showAttribution }: ICo
                 </Col>
               </Row>
             ) : null}
-            {details && (
-              <>
-                <Row className="p-0">
-                  <Col className="p-0">
-                    <img
-                      src={config.googleCloudBaseUrl + config.bannerFolder + path + '.webp'}
-                      width="100%"
-                      height="auto"
-                      className="m-0"
-                    />
-                  </Col>
-                </Row>
-              </>
-            )}
-            <Row className="bg-primary text-light px-4">
-              <Col>
-                <h1 className="my-2">{details?.title}</h1>
+            <Row>
+              <Col className="p-0">
+                <ParallaxSection
+                  backgroundSource={config.googleCloudBaseUrl + config.bannerFolder + path + '.webp'}
+                  wrapInContainer={false}
+                  overlayOpacity={0}
+                >
+                  <Container className="align-middle">
+                    <Row className="align-items-end " style={{ minHeight: '400px' }}>
+                      <Col className="bg-primary text-light px-4 py-2" sm="auto">
+                        <h1>{details?.title}</h1>
+                      </Col>
+                    </Row>
+                  </Container>
+                  {/* <div className="bg-primary text-light px-4">
+                    <h1 className="my-2">{details?.title}</h1>
+                  </div> */}
+                </ParallaxSection>
               </Col>
             </Row>
             <Row className="px-4 pb-4">

@@ -181,14 +181,14 @@ div.col-d-2 {
 }
 
 .blog h2,
-h3,
-h4,
-h5 {
+.blog h3,
+.blog h4,
+.blog h5 {
   color: $primary;
 }
 .blog h2 {
   @extend .border-bar-left;
-  @extend .p-3;
+  @extend .p-3, .my-3;
 }
 
 .blog a {

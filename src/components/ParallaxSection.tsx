@@ -11,6 +11,9 @@ export interface ParallaxSectionProps {
   children?: React.ReactNode | null;
   minHeight?: string;
   alt?: string | undefined;
+  wrapInContainer?: boolean;
+  fitWidth?: boolean;
+  overlayOpacity?: number;
 }
 
 const defaultProps: ParallaxSectionProps = {
@@ -18,6 +21,8 @@ const defaultProps: ParallaxSectionProps = {
   children: null,
   minHeight: '0',
   alt: 'background',
+  wrapInContainer: true,
+  overlayOpacity: 0.75,
 };
 
 const ParallaxSection: React.FC<ParallaxSectionProps> = ({
@@ -25,6 +30,8 @@ const ParallaxSection: React.FC<ParallaxSectionProps> = ({
   backgroundSource: src,
   minHeight,
   alt,
+  wrapInContainer,
+  overlayOpacity,
 }: ParallaxSectionProps) => {
   const themeContext = React.useContext(ThemeContext);
 
@@ -33,6 +40,7 @@ const ParallaxSection: React.FC<ParallaxSectionProps> = ({
       className="text-light"
       bgImage={src}
       bgImageAlt={alt}
+      bgImageStyle={{ width: '100%', height: 'auto' }}
       strength={200}
       renderLayer={() => (
         <div
@@ -43,16 +51,20 @@ const ParallaxSection: React.FC<ParallaxSectionProps> = ({
             top: '0%',
             width: '100%',
             height: '100%',
-            opacity: '0.75',
+            opacity: overlayOpacity,
           }}
         />
       )}
     >
-      <Container className="section-container align-middle">
-        <Row className="align-items-center" style={{ minHeight: minHeight }}>
-          <Col className="justify-content-center">{children}</Col>
-        </Row>
-      </Container>
+      {wrapInContainer ? (
+        <Container className="align-middle">
+          <Row className="align-items-center" style={{ minHeight: minHeight }}>
+            <Col className="justify-content-center">{children}</Col>
+          </Row>
+        </Container>
+      ) : (
+        <div style={{ minHeight: minHeight }}>{children}</div>
+      )}
     </Parallax>
   );
 };
