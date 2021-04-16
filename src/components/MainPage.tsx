@@ -33,7 +33,7 @@ const MainPage: React.FC = () => {
     <div className="container-fluid p-0">
       <ParallaxSection backgroundSource={URL_BG_GIRLS_CHATTING_ON_SWING} minHeight="400px">
         <div className="text-center">
-          <SeLogoIcon width="300" height="auto" />
+          <SeLogoIcon width="300" height="auto" className="m-3" />
           <h1>The World Needs Better Conversations</h1>
           <h4 className="my-4">
             <span className="text-logo">Street Epistemology</span> is a set of tools that helps you have better
