@@ -51,3 +51,6 @@ export const URL_BG_TEAM_WORK =
   'https://storage.googleapis.com/se-website-fe4a4.appspot.com/images/backgrounds/bg-team-work.webp';
 export const URL_SEI = 'https://streetepistemologyinternational.org/';
 export const URL_IMG_SHIRT = 'https://storage.googleapis.com/se-website-fe4a4.appspot.com/images/shirt.webp';
+export const URL_SE_PODCAST = 'https://soundcloud.com/user-534471447';
+export const URL_SE_LATEST_RELEASES = 'https://www.youtube.com/playlist?list=PLfb-sNm-sTE0fZQkynr-qTu6krq68S-po';
+export const URL_HTHIC = 'https://www.goodreads.com/book/show/43885240-how-to-have-impossible-conversations';
