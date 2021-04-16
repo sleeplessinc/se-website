@@ -93,8 +93,6 @@ const ListPage: React.FC<ListPageProps> = ({ collectionType, iconCircle }: ListP
     );
   }
 
-  const gradient = `rgba(${rgbDark.r}, ${rgbDark.g}, ${rgbDark.b}, 0.9)`;
-
   return (
     <div
       className="bg-dark"

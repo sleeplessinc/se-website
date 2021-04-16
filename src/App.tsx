@@ -13,7 +13,6 @@ import EditPage from './components/EditPage';
 import Announcement from './components/Announcement';
 import ListPage from './components/ListPage';
 import CollectionType from './enums/CollectionType';
-import { URL_BG_COMMUNITY, URL_BG_FILMING, URL_BG_TOOLS } from './utils/constants';
 import ScrollToTop from './components/ScrollToTop';
 
 const App: React.FC = () => {
