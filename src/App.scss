@@ -124,6 +124,11 @@ div.col-d-2 {
   column-fill: auto;
 }
 
+.blog-img-container {
+  padding-top: 100%;
+  background-position: left top;
+}
+
 /* Extra large devices (large desktops, 1200px and up) */
 @media (max-width: 1200px) {
 }
@@ -147,6 +152,10 @@ div.col-d-2 {
     -webkit-column-count: 1;
     -moz-column-count: 1;
     column-count: 1;
+  }
+  .blog-img-container {
+    padding-top: 30%;
+    background-position: center center;
   }
 }
 
@@ -276,4 +285,8 @@ div.col-d-2 {
   -webkit-column-break-inside: avoid;
   page-break-inside: avoid;
   break-inside: avoid;
+}
+
+div .bg-g-dark {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.85), transparent);
 }
