@@ -9,8 +9,6 @@ import CollectionType from '../enums/CollectionType';
 import CardDetails from '../models/CardDetails';
 import * as _ from 'lodash';
 import classnames from 'classnames';
-import { ThemeContext } from './ThemeProvider';
-import { hexToRgb } from '../utils/colorHelper';
 import Blog from '../models/Blog';
 
 export interface ListPageProps {
@@ -24,15 +22,10 @@ const defaultProps: ListPageProps = {
 };
 
 const ListPage: React.FC<ListPageProps> = ({ collectionType, iconCircle }: ListPageProps) => {
-  const themeContext = React.useContext(ThemeContext);
   const firebaseContext = React.useContext(FirebaseContext);
   const [collection, setCollection] = useStateWithLocalStorage(collectionType.toString());
   const [isLoading, setIsLoading] = useState(collection !== '');
   const [details, setDetails] = useState<Blog | undefined>(undefined);
-  let rgbDark = { r: 0, g: 0, b: 0 };
-  if (themeContext?.dark) {
-    rgbDark = hexToRgb(themeContext?.dark) ?? rgbDark;
-  }
 
   useEffect(() => {
     return firebaseContext?.subscribeToCollection(
