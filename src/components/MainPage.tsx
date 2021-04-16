@@ -4,7 +4,6 @@ import ExamplesPage from './ExamplesPage';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import ParallaxSection from './ParallaxSection';
 import {
-  URL_LOGO_SE_WHITE,
   URL_BG_GIRLS_CHATTING_ON_SWING,
   URL_BG_HAND_SHAKE,
   URL_BG_PEDESTRIAN_CROSSING,
@@ -20,6 +19,7 @@ import { ReactComponent as BookIcon } from '../images/icon-book.svg';
 import { ReactComponent as VideoIcon } from '../images/icon-video-camera.svg';
 import { ReactComponent as PodcastIcon } from '../images/icon-podcast.svg';
 import { ReactComponent as GlobeIcon } from '../images/icon-globe.svg';
+import { ReactComponent as SeLogoIcon } from '../images/icon-se-logo-border.svg';
 import { ThemeContext } from './ThemeProvider';
 import ContentList from './ContentList';
 import CollectionType from '../enums/CollectionType';
@@ -33,7 +33,7 @@ const MainPage: React.FC = () => {
     <div className="container-fluid p-0">
       <ParallaxSection backgroundSource={URL_BG_GIRLS_CHATTING_ON_SWING} minHeight="400px">
         <div className="text-center">
-          <img alt="" src={URL_LOGO_SE_WHITE} width="300" height="auto" className="d-inline-block align-middle mr-2" />
+          <SeLogoIcon width="300" height="auto" />
           <h1>The World Needs Better Conversations</h1>
           <h4 className="my-4">
             <span className="text-logo">Street Epistemology</span> is a set of tools that helps you have better
