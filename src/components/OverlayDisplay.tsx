@@ -5,15 +5,26 @@ export interface Props {
   imageWidth?: number;
   overlap?: number;
   children?: React.ReactNode | null;
+  backgroundPositionX?: 'center' | 'left' | 'right' | 'x-start' | 'x-end';
+  backgroundPositionY?: 'center' | 'top' | 'bottom' | 'y-start' | 'y-end';
 }
 
 const defaultProps: Props = {
   imageSrc: '',
   imageWidth: 0.3,
   overlap: 0.1,
+  backgroundPositionX: 'center',
+  backgroundPositionY: 'top',
 };
 
-const OverlayDisplay: React.FC<Props> = ({ children, imageSrc, imageWidth, overlap }: Props) => {
+const OverlayDisplay: React.FC<Props> = ({
+  children,
+  imageSrc,
+  imageWidth,
+  overlap,
+  backgroundPositionX,
+  backgroundPositionY,
+}: Props) => {
   const toPercentString = (value: number) => `${Math.abs(value * 100)}%`;
 
   if (!imageWidth || imageWidth < 0 || imageWidth > 1) {
@@ -34,8 +45,8 @@ const OverlayDisplay: React.FC<Props> = ({ children, imageSrc, imageWidth, overl
           overflow: 'hidden',
           background: `url(${imageSrc})`,
           backgroundSize: 'auto 100%',
-          backgroundPositionY: 'top',
-          backgroundPositionX: 'center',
+          backgroundPositionX: backgroundPositionX,
+          backgroundPositionY: backgroundPositionY,
           backgroundRepeat: 'no-repeat',
           boxSizing: 'border-box',
           width: toPercentString(imageWidth),

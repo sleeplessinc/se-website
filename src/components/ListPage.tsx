@@ -8,34 +8,24 @@ import useStateWithLocalStorage from '../utils/storage';
 import CollectionType from '../enums/CollectionType';
 import CardDetails from '../models/CardDetails';
 import * as _ from 'lodash';
-import { URL_BG_HAND_SHAKE } from '../utils/constants';
 import classnames from 'classnames';
-import { ThemeContext } from './ThemeProvider';
-import { hexToRgb } from '../utils/colorHelper';
 import Blog from '../models/Blog';
 
 export interface ListPageProps {
   collectionType: CollectionType;
-  backgroundUrl?: string;
   iconCircle?: boolean;
 }
 
 const defaultProps: ListPageProps = {
   collectionType: CollectionType.Communities,
-  backgroundUrl: URL_BG_HAND_SHAKE,
   iconCircle: true,
 };
 
-const ListPage: React.FC<ListPageProps> = ({ collectionType, backgroundUrl, iconCircle }: ListPageProps) => {
-  const themeContext = React.useContext(ThemeContext);
+const ListPage: React.FC<ListPageProps> = ({ collectionType, iconCircle }: ListPageProps) => {
   const firebaseContext = React.useContext(FirebaseContext);
   const [collection, setCollection] = useStateWithLocalStorage(collectionType.toString());
   const [isLoading, setIsLoading] = useState(collection !== '');
   const [details, setDetails] = useState<Blog | undefined>(undefined);
-  let rgbDark = { r: 0, g: 0, b: 0 };
-  if (themeContext?.dark) {
-    rgbDark = hexToRgb(themeContext?.dark) ?? rgbDark;
-  }
 
   useEffect(() => {
     return firebaseContext?.subscribeToCollection(
@@ -89,24 +79,18 @@ const ListPage: React.FC<ListPageProps> = ({ collectionType, backgroundUrl, icon
             />
           </a>
         </Col>
-        <Col className="align-items-left align-self-top border-bar-top" xs={9} md={8}>
-          {cardElements}
+        <Col className="align-items-left align-self-top" xs={9} md={8}>
+          <div className="border-bar-top">{cardElements}</div>
         </Col>
       </Row>,
     );
   }
 
-  const gradient = `rgba(${rgbDark.r}, ${rgbDark.g}, ${rgbDark.b}, 0.9)`;
-
   return (
     <div
+      className="bg-dark"
       style={{
         width: '100%',
-        backgroundImage: `linear-gradient(${gradient}, ${gradient}), url(${backgroundUrl})`,
-        backgroundRepeat: 'no-repeat',
-        backgroundAttachment: 'fixed',
-        backgroundPosition: 'center',
-        backgroundSize: 'cover',
         minHeight: '100vh',
       }}
     >

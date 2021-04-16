@@ -4,24 +4,28 @@ import ExamplesPage from './ExamplesPage';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import ParallaxSection from './ParallaxSection';
 import {
-  URL_LOGO_SE_WHITE,
   URL_BG_GIRLS_CHATTING_ON_SWING,
   URL_BG_HAND_SHAKE,
   URL_BG_PEDESTRIAN_CROSSING,
+  URL_HTHIC,
   URL_IMG_SKETCH_PAD,
   URL_BG_TEAM_WORK,
   URL_SEI,
+  URL_SE_PODCAST,
+  URL_SE_LATEST_RELEASES,
 } from '../utils/constants';
 import { ReactComponent as CommunityIcon } from '../images/icon-community.svg';
 import { ReactComponent as BookIcon } from '../images/icon-book.svg';
 import { ReactComponent as VideoIcon } from '../images/icon-video-camera.svg';
 import { ReactComponent as PodcastIcon } from '../images/icon-podcast.svg';
 import { ReactComponent as GlobeIcon } from '../images/icon-globe.svg';
+import { ReactComponent as SeLogoIcon } from '../images/icon-se-logo-border.svg';
 import { ThemeContext } from './ThemeProvider';
 import ContentList from './ContentList';
 import CollectionType from '../enums/CollectionType';
 import { GetSocialMediaIcon } from '../utils/iconSelectors';
 import OverlayDisplay from './OverlayDisplay';
+import { Link } from 'react-router-dom';
 
 const MainPage: React.FC = () => {
   const themeContext = React.useContext(ThemeContext);
@@ -29,7 +33,7 @@ const MainPage: React.FC = () => {
     <div className="container-fluid p-0">
       <ParallaxSection backgroundSource={URL_BG_GIRLS_CHATTING_ON_SWING} minHeight="400px">
         <div className="text-center">
-          <img alt="" src={URL_LOGO_SE_WHITE} width="300" height="auto" className="d-inline-block align-middle mr-2" />
+          <SeLogoIcon width="300" height="auto" className="m-3" />
           <h1>The World Needs Better Conversations</h1>
           <h4 className="my-4">
             <span className="text-logo">Street Epistemology</span> is a set of tools that helps you have better
@@ -86,14 +90,14 @@ const MainPage: React.FC = () => {
                   <span className="text-logo">Street Epistemology</span> started life as a method to discuss religious
                   belief in the 2013 book <i>A Manual for Creating Atheists</i>. The book motivated many to apply the
                   techniques in their conversations, with some recording their interactions and making these recordings
-                  available online for others to study and critique. This drove innovation in the method - most
+                  available online for others to study and critique. This drove innovation in the method — most
                   importantly motivating people to apply it to more than just religion.
                 </p>
                 <p>
                   Today the method has a life of its own, driven by a community of people interested in discussing
                   difficult topics, seeking truth and reflecting on the methods we use to arrive at our deep
                   convictions. The community promotes the method as a way of creating understanding, combatting
-                  tribalism and improving public dialogue in general, irrespective of someone politcal leanings,
+                  tribalism and improving public dialogue in general, irrespective of someone&#39;s politcal leanings,
                   religious background or other convitions.
                 </p>
               </div>
@@ -115,33 +119,41 @@ const MainPage: React.FC = () => {
           </Row>
           <Row>
             <Col md className="text-center my-2">
-              <div>
-                <VideoIcon className="mb-2" width="100" height="auto" fill={themeContext?.primary} />
-              </div>
-              <h4 className="text-logo text-primary">Video Examples</h4>
+              <a href={URL_SE_LATEST_RELEASES} target="blank" className="text-primary">
+                <div>
+                  <VideoIcon className="mb-2" width="100" height="auto" fill={themeContext?.primary} />
+                </div>
+                <h4 className="text-logo">Video Examples</h4>
+              </a>
               <h5>Watch SE in action with examples from various practitioners from around the world.</h5>
             </Col>
             <Col md className="text-center my-2">
-              <div>
-                <BookIcon className="mb-2" width="100" height="auto" fill={themeContext?.primary} />
-              </div>
-              <h4 className="text-logo text-primary">Books</h4>
+              <a href={URL_HTHIC} target="blank" className="text-primary">
+                <div>
+                  <BookIcon className="mb-2" width="100" height="auto" fill={themeContext?.primary} />
+                </div>
+                <h4 className="text-logo">Books</h4>
+              </a>
               <h5>
                 Read the official manual, blog posts or the book &quot;How to have Impossible Conversations&quot;.
               </h5>
             </Col>
             <Col md className="text-center my-2">
-              <div>
-                <PodcastIcon className="mb-2" width="100" height="auto" fill={themeContext?.primary} />
-              </div>
-              <h4 className="text-logo text-primary">Podcast</h4>
+              <a href={URL_SE_PODCAST} target="blank" className="text-primary">
+                <div>
+                  <PodcastIcon className="mb-2" width="100" height="auto" fill={themeContext?.primary} />
+                </div>
+                <h4 className="text-logo">Podcast</h4>
+              </a>
               <h5>Listen to SE interviews, discussions, breakdowns and reviews on the official podcast.</h5>
             </Col>
             <Col md className="text-center my-2">
-              <div>
-                <CommunityIcon className="mb-2" width="100" height="auto" fill={themeContext?.primary} />
-              </div>
-              <h4 className="text-logo text-primary">Community</h4>
+              <Link to="/community" className="text-primary">
+                <div>
+                  <CommunityIcon className="mb-2" width="100" height="auto" fill={themeContext?.primary} />
+                </div>
+                <h4 className="text-logo">Community</h4>
+              </Link>
               <h5>Meet other people interested in SE in one of the many online communities.</h5>
             </Col>
           </Row>

@@ -13,7 +13,6 @@ import EditPage from './components/EditPage';
 import Announcement from './components/Announcement';
 import ListPage from './components/ListPage';
 import CollectionType from './enums/CollectionType';
-import { URL_BG_COMMUNITY, URL_BG_FILMING, URL_BG_TOOLS } from './utils/constants';
 import ScrollToTop from './components/ScrollToTop';
 
 const App: React.FC = () => {
@@ -84,18 +83,13 @@ const App: React.FC = () => {
             <ContactUsPage />
           </Route>
           <Route path="/community" exact={true}>
-            <ListPage key="community" collectionType={CollectionType.Communities} backgroundUrl={URL_BG_COMMUNITY} />
+            <ListPage key="community" collectionType={CollectionType.Communities} />
           </Route>
           <Route path="/creators" exact={true}>
-            <ListPage key="creators" collectionType={CollectionType.Creators} backgroundUrl={URL_BG_FILMING} />
+            <ListPage key="creators" collectionType={CollectionType.Creators} />
           </Route>
           <Route path="/resources" exact={true}>
-            <ListPage
-              key="resources"
-              collectionType={CollectionType.Resources}
-              backgroundUrl={URL_BG_TOOLS}
-              iconCircle={false}
-            />
+            <ListPage key="resources" collectionType={CollectionType.Resources} iconCircle={false} />
           </Route>
           <Route
             path="/acronyms"
