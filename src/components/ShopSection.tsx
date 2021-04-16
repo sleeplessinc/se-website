@@ -24,8 +24,8 @@ const ShopSection: React.FC = () => {
   }, [firebaseContext]);
 
   return (
-    <OverlayDisplay imageSrc={URL_IMG_SHIRT} overlap={0.05} imageWidth={0.5}>
-      <div className="text-primary text-center px-3 d-flex align-items-center" style={{ height: '20rem' }}>
+    <OverlayDisplay imageSrc={URL_IMG_SHIRT} overlap={0.6} imageWidth={1} backgroundPositionX="left">
+      <div className="bg-secondary text-primary text-center px-2 d-flex align-items-center" style={{ height: '20rem' }}>
         <div>
           <h2>
             <strong>Merchandise</strong>
