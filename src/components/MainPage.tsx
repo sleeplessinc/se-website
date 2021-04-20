@@ -97,8 +97,8 @@ const MainPage: React.FC = () => {
                   Today the method has a life of its own, driven by a community of people interested in discussing
                   difficult topics, seeking truth and reflecting on the methods we use to arrive at our deep
                   convictions. The community promotes the method as a way of creating understanding, combatting
-                  tribalism and improving public dialogue in general, irrespective of someone&#39;s politcal leanings,
-                  religious background or other convitions.
+                  tribalism and improving public dialogue in general, irrespective of someone&#39;s political leanings,
+                  religious background or other convictions.
                 </p>
               </div>
             </div>
