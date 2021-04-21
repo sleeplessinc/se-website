@@ -84,7 +84,7 @@ const MainPage: React.FC = () => {
               {/* style={{ marginLeft: '-50px' }} */}
               <div className="bg-primary text-light p-4">
                 <h2 className="text-center">
-                  <strong>The Evolution of Better Conversations</strong>
+                  <strong>The Road to Better Conversations</strong>
                 </h2>
                 <p>
                   <span className="text-logo">Street Epistemology</span> started life as a method to discuss religious
