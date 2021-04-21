@@ -19,7 +19,7 @@ const App: React.FC = () => {
   return (
     <Router>
       <ScrollToTop />
-      <div className="App">
+      <div className="App bg-dark">
         <Navigation />
         <Announcement />
         <Switch>
