@@ -287,6 +287,17 @@ div.col-d-2 {
   break-inside: avoid;
 }
 
+a.text-primary {
+  svg {
+    fill: $primary;
+  }
+}
+a.text-primary:hover {
+  svg {
+    fill: $dark;
+  }
+}
+
 div .bg-g-dark {
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.85), transparent);
 }
