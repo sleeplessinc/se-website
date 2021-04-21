@@ -84,7 +84,7 @@ const MainPage: React.FC = () => {
               {/* style={{ marginLeft: '-50px' }} */}
               <div className="bg-primary text-light p-4">
                 <h2 className="text-center">
-                  <strong>The Evolution of Better Conversations</strong>
+                  <strong>The Road to Better Conversations</strong>
                 </h2>
                 <p>
                   <span className="text-logo">Street Epistemology</span> started life as a method to discuss religious
@@ -119,42 +119,42 @@ const MainPage: React.FC = () => {
           </Row>
           <Row>
             <Col md className="text-center my-2">
-              <a href={URL_SE_LATEST_RELEASES} target="blank" className="text-primary">
+              <a href={URL_SE_LATEST_RELEASES} target="blank" className="text-primary text-decoration-none">
                 <div>
-                  <VideoIcon className="mb-2" width="100" height="auto" fill={themeContext?.primary} />
+                  <VideoIcon className="mb-2" width="100" height="auto" />
                 </div>
                 <h4 className="text-logo">Video Examples</h4>
+                <h5>Watch SE in action with examples from various practitioners from around the world.</h5>
               </a>
-              <h5>Watch SE in action with examples from various practitioners from around the world.</h5>
             </Col>
             <Col md className="text-center my-2">
-              <a href={URL_HTHIC} target="blank" className="text-primary">
+              <a href={URL_HTHIC} target="blank" className="text-primary text-decoration-none">
                 <div>
-                  <BookIcon className="mb-2" width="100" height="auto" fill={themeContext?.primary} />
+                  <BookIcon className="mb-2" width="100" height="auto" />
                 </div>
                 <h4 className="text-logo">Books</h4>
+                <h5>
+                  Read the official manual, blog posts or the book &quot;How to have Impossible Conversations&quot;.
+                </h5>
               </a>
-              <h5>
-                Read the official manual, blog posts or the book &quot;How to have Impossible Conversations&quot;.
-              </h5>
             </Col>
             <Col md className="text-center my-2">
-              <a href={URL_SE_PODCAST} target="blank" className="text-primary">
+              <a href={URL_SE_PODCAST} target="blank" className="text-primary text-decoration-none">
                 <div>
-                  <PodcastIcon className="mb-2" width="100" height="auto" fill={themeContext?.primary} />
+                  <PodcastIcon className="mb-2" width="100" height="auto" />
                 </div>
                 <h4 className="text-logo">Podcast</h4>
+                <h5>Listen to SE interviews, discussions, breakdowns and reviews on the official podcast.</h5>
               </a>
-              <h5>Listen to SE interviews, discussions, breakdowns and reviews on the official podcast.</h5>
             </Col>
             <Col md className="text-center my-2">
-              <Link to="/community" className="text-primary">
+              <Link to="/community" className="text-primary text-decoration-none">
                 <div>
-                  <CommunityIcon className="mb-2" width="100" height="auto" fill={themeContext?.primary} />
+                  <CommunityIcon className="mb-2" width="100" height="auto" />
                 </div>
                 <h4 className="text-logo">Community</h4>
+                <h5>Meet other people interested in SE in one of the many online communities.</h5>
               </Link>
-              <h5>Meet other people interested in SE in one of the many online communities.</h5>
             </Col>
           </Row>
         </Container>
