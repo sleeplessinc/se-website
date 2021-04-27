@@ -22,7 +22,7 @@ const defaultProps: ParallaxSectionProps = {
   minHeight: '0',
   alt: 'background',
   wrapInContainer: true,
-  overlayOpacity: 0.75,
+  overlayOpacity: 0.9,
 };
 
 const ParallaxSection: React.FC<ParallaxSectionProps> = ({
