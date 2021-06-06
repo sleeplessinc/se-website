@@ -164,11 +164,12 @@ const MainPage: React.FC = () => {
           <Container className="py-5 text-center">
             <h1>Get Involved</h1>
             <h4 className="my-2">Join the community on your favorite platform</h4>
-            <div className="col-d-2 py-4">
+            <div className="py-4">
               <ContentList
                 key="community"
                 collectionType={CollectionType.Communities}
                 iconSelector={(card, iconSize) => GetSocialMediaIcon(card, iconSize, themeContext?.light)}
+                groupSelector={(card) => card.logoUrl ?? ''}
               />
             </div>
           </Container>
@@ -230,8 +231,8 @@ const MainPage: React.FC = () => {
             There is a wealth of <span className="text-logo">SE</span> content available online. Here are some of our
             favorites.
           </h4>
-          <div className="col-d-2 py-4">
-            <ContentList collectionType={CollectionType.Creators} />
+          <div className="py-4">
+            <ContentList collectionType={CollectionType.Creators} itemsPerPage={8} />
           </div>
         </Container>
       </div>
