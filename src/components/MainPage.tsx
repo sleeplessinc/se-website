@@ -176,7 +176,6 @@ const MainPage: React.FC = () => {
         </ParallaxSection>
       </div>
       <div className="bg-primary" id="guide">
-	  	<a name="guide"></a>
         <Container className="px-0">
           <OverlayDisplay imageSrc={URL_IMG_SKETCH_PAD} overlap={0.05}>
             <div className="bg-dark text-light p-4 my-5">
