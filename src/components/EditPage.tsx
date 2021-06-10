@@ -31,7 +31,6 @@ interface IEditPageProps {
 }
 
 const EditPage: React.FC<IEditPageProps> = ({ path }: IEditPageProps) => {
-	/*
   const firebaseContext = React.useContext(FirebaseContext);
   const userContext = React.useContext(UserContext);
 
@@ -147,11 +146,6 @@ const EditPage: React.FC<IEditPageProps> = ({ path }: IEditPageProps) => {
         </Modal.Footer>
       </Modal>
     </>
-  );
-  */
-  return (
-  	<>
-	</>
   );
 };
 
