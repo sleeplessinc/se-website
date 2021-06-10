@@ -18,7 +18,7 @@
     "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-prettier": "^3.2.0",
     "firebase-admin": "^9.2.0",
-    "firebase-functions": "^3.11.0",
+    "firebase-functions": "^3.14.1",
     "nodemailer": "^6.4.17",
     "prettier": "^2.2.1"
   },
