@@ -76,6 +76,9 @@ const App: React.FC = () => {
           <Route path="/blog" exact={true}>
             <BlogListPage />
           </Route>
+          <Route path="/related-books" exact={true}>
+            <ListPage key="related-books" collectionType={CollectionType.Books} iconCircle={false} />
+          </Route>
           <Route path="/login" exact={true}>
             <Login />
           </Route>
