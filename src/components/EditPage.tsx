@@ -41,10 +41,6 @@ const EditPage: React.FC<IEditPageProps> = ({ path }: IEditPageProps) => {
   const [showConfirm, setShowConfirm] = useState(false);
   const [cancelled, setCancelled] = useState(false);
 
-  if (!userContext?.isAdmin) {
-    return <NotAuthorized />;
-  }
-
   useEffect(() => {
     return firebaseContext?.subscribeToPage(
       path,
@@ -62,6 +58,10 @@ const EditPage: React.FC<IEditPageProps> = ({ path }: IEditPageProps) => {
       },
     );
   }, [firebaseContext]);
+
+  if (!userContext?.isAdmin) {
+    return <NotAuthorized />;
+  }
 
   const handleSubmit = () => {
     const html = draftToHtml(convertToRaw(editorState.getCurrentContent()));
