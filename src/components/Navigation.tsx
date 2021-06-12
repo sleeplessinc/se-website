@@ -74,6 +74,9 @@ const Navigation: React.FC = () => {
           <Nav.Link as={HashLink} to="/creators#top">
             Creators
           </Nav.Link>
+          <Nav.Link as={HashLink} to="/learning-course">
+            Course
+          </Nav.Link>
           <Nav.Link as={HashLink} to="/#guide">
             Guide
           </Nav.Link>

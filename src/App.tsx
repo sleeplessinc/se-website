@@ -12,6 +12,7 @@ import Login from './components/Login';
 import EditPage from './components/EditPage';
 import Announcement from './components/Announcement';
 import ListPage from './components/ListPage';
+import LearningCoursePage from './components/LearningCoursePage';
 import CollectionType from './enums/CollectionType';
 import ScrollToTop from './components/ScrollToTop';
 
@@ -79,6 +80,9 @@ const App: React.FC = () => {
           <Route path="/related-books" exact={true}>
             <ListPage key="related-books" collectionType={CollectionType.Books} iconCircle={false} />
           </Route>
+          <Route
+		  	path="/learning-course" exact={true} render={() => <ContentPage path="learning-course" key="learning-course" showAttribution={false} />}
+		  />
           <Route path="/login" exact={true}>
             <Login />
           </Route>
@@ -99,7 +103,9 @@ const App: React.FC = () => {
             exact={true}
             render={() => <ContentPage path="acronyms" key="acronyms" showAttribution={false} />}
           />
-          <Route path="/faq" exact={true} render={() => <ContentPage path="faq" key="faq" showAttribution={false} />} />
+          <Route
+		  	path="/faq" exact={true} render={() => <ContentPage path="faq" key="faq" showAttribution={false} />}
+		  />
           <Route path="/" exact={true}>
             <MainPage />
           </Route>

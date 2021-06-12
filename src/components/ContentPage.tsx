@@ -77,8 +77,9 @@ const ContentPage: React.FC<IContentPageProps> = ({ path, showAttribution }: ICo
             ) : null}
             <Row>
               <Col className="p-0">
+                  {/*z_backgroundSource={config.googleCloudBaseUrl + config.bannerFolder + path + '.webp'}*/}
                 <ParallaxSection
-                  backgroundSource={config.googleCloudBaseUrl + config.bannerFolder + path + '.webp'}
+                  backgroundSource={'/img/banners/' + path + '.webp'}
                   wrapInContainer={false}
                   overlayOpacity={0}
                 >
