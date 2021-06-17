@@ -66,7 +66,7 @@ const ContentPage: React.FC<IContentPageProps> = ({ path, showAttribution }: ICo
         ) : (
           <>
             {userContext?.isAdmin ? (
-              <Row>
+              <Row>1
                 <Col />
                 <Col sm="auto" className="mt-2">
                   <Link to={`/${path}/edit`}>
@@ -77,9 +77,11 @@ const ContentPage: React.FC<IContentPageProps> = ({ path, showAttribution }: ICo
             ) : null}
             <Row>
               <Col className="p-0">
-                  {/*z_backgroundSource={config.googleCloudBaseUrl + config.bannerFolder + path + '.webp'}*/}
+                  {/*backgroundSource={config.googleCloudBaseUrl + config.bannerFolder + path + '.webp'}*/}
+                  {/*backgroundSource={'/img/banners/' + path + '.webp'}*/}
                 <ParallaxSection
-                  backgroundSource={'/img/banners/' + path + '.webp'}
+                  backgroundSource={config.googleCloudBaseUrl + config.bannerFolder + path + '.webp'}
+
                   wrapInContainer={false}
                   overlayOpacity={0}
                 >

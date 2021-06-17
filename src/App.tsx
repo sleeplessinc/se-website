@@ -5,6 +5,7 @@ import Navigation from './components/Navigation';
 import MainPage from './components/MainPage';
 import BlogListPage from './components/BlogListPage';
 import ContentPage from './components/ContentPage';
+import LearningCoursePage from './components/LearningCoursePage';
 import PageNotFound from './components/PageNotFound';
 import Footer from './components/Footer';
 import ContactUsPage from './components/ContactUsPage';
@@ -12,7 +13,6 @@ import Login from './components/Login';
 import EditPage from './components/EditPage';
 import Announcement from './components/Announcement';
 import ListPage from './components/ListPage';
-import LearningCoursePage from './components/LearningCoursePage';
 import CollectionType from './enums/CollectionType';
 import ScrollToTop from './components/ScrollToTop';
 
@@ -81,7 +81,7 @@ const App: React.FC = () => {
             <ListPage key="related-books" collectionType={CollectionType.Books} iconCircle={false} />
           </Route>
           <Route
-		  	path="/learning-course" exact={true} render={() => <ContentPage path="learning-course" key="learning-course" showAttribution={false} />}
+		  	path="/learning-course" exact={true} render={() => <LearningCoursePage path="learning-course" key="learning-course" showAttribution={false} />}
 		  />
           <Route path="/login" exact={true}>
             <Login />
