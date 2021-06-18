@@ -3,6 +3,7 @@ export enum CollectionType {
   Creators,
   Resources,
   Books,
+  Blog,
 }
 
 export default CollectionType;

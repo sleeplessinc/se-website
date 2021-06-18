@@ -9,11 +9,17 @@ import { formatDistance } from 'date-fns';
 import useStateWithLocalStorage from '../utils/storage';
 import * as config from '../config.json';
 import { Link } from 'react-router-dom';
+import CollectionType from '../enums/CollectionType';
 
-const BlogListPage: React.FC = () => {
+export interface BlogListPageProps {
+  collectionType: CollectionType.Blog;
+}
+
+const BlogListPage: React.FC<BlogListPageProps> = ({ collectionType }: BlogListPageProps) => {
   const firebaseContext = React.useContext(FirebaseContext);
   const [blogJson, setBlogJson] = useStateWithLocalStorage('blog');
   const [isLoading, setIsLoading] = useState(blogJson !== '');
+  const [details, setDetails] = useState<Blog | undefined>(undefined);
 
   useEffect(() => {
     return firebaseContext?.subscribeToBlogs(
@@ -26,6 +32,10 @@ const BlogListPage: React.FC = () => {
         setIsLoading(false);
       },
     );
+  }, [firebaseContext]);
+
+  useEffect(() => {
+    return firebaseContext?.subscribeToCollectionDetails(collectionType, setDetails, console.log);
   }, [firebaseContext]);
 
   const blogs: Blog[] = blogJson ? JSON.parse(blogJson) : [];
@@ -80,11 +90,24 @@ const BlogListPage: React.FC = () => {
             </Spinner>
           </div>
         ) : (
-          blogCards
+          <>
+            {details && (
+              <Row className="justify-content-center">
+                <Col md={10} className="text-center mt-5">
+                  <h1 className="text-light">{details?.title}</h1>
+                  <h4 className="text-light">{details.blurb}</h4>
+				  <a className="text-secondary" href="/blog-submission-process" title="Link to information about submitting blog articles">How to submit a blog article.</a>
+                </Col>
+              </Row>
+            )}
+          	{ blogCards }
+          </>
         )}
       </Container>
     </div>
   );
 };
+/* "We welcome thoughtful and relevant blog submissions from the SE community. &nbsp; <a href=\"/publications/street_epistemology_blog_submission_process\" title=\"Link to information about submitting blog articles\">How to submit a blog article.</a>" */
+/* We welcome thoughtful and relevant blog submissions from the SE community.  How to submit a blog article. */
 
 export default BlogListPage;

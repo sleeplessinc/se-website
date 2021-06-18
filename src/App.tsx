@@ -6,6 +6,7 @@ import MainPage from './components/MainPage';
 import BlogListPage from './components/BlogListPage';
 import ContentPage from './components/ContentPage';
 import LearningCoursePage from './components/LearningCoursePage';
+import BlogSubmitPage from './components/BlogSubmitPage';
 import PageNotFound from './components/PageNotFound';
 import Footer from './components/Footer';
 import ContactUsPage from './components/ContactUsPage';
@@ -75,13 +76,16 @@ const App: React.FC = () => {
           </Route>
 
           <Route path="/blog" exact={true}>
-            <BlogListPage />
+            <BlogListPage collectionType={CollectionType.Blog} />
           </Route>
           <Route path="/related-books" exact={true}>
             <ListPage key="related-books" collectionType={CollectionType.Books} iconCircle={false} />
           </Route>
           <Route
 		  	path="/learning-course" exact={true} render={() => <LearningCoursePage path="learning-course" key="learning-course" showAttribution={false} />}
+		  />
+          <Route
+		  	path="/blog-submission-process" exact={true} render={() => <BlogSubmitPage path="blog-submission-process" key="blog-submission-process" showAttribution={false} />}
 		  />
           <Route path="/login" exact={true}>
             <Login />
