@@ -1,4 +1,5 @@
-import React from 'react';
+//import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ShopSection from './ShopSection';
 import ExamplesPage from './ExamplesPage';
 import { Button, Col, Container, Row } from 'react-bootstrap';
@@ -29,6 +30,17 @@ import { Link } from 'react-router-dom';
 
 const MainPage: React.FC = () => {
   const themeContext = React.useContext(ThemeContext);
+
+  useEffect(() => {
+	let qsa = document.querySelectorAll( document.location.hash );
+	let el = qsa[ 0 ];
+	if( el ) {
+		console.log( "scrolling to "+hash );
+		el.scrollIntoView( true );
+	}
+  });
+
+
   return (
     <div className="container-fluid p-0">
       <ParallaxSection backgroundSource={URL_BG_GIRLS_CHATTING_ON_SWING} minHeight="400px">
