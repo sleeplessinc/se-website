@@ -110,6 +110,9 @@ const App: React.FC = () => {
           <Route
 		  	path="/faq" exact={true} render={() => <ContentPage path="faq" key="faq" showAttribution={false} />}
 		  />
+          <Route
+		  	path="/style-guide" exact={true} render={() => <ContentPage path="style-guide" key="style-guide" showAttribution={false} />}
+		  />
           <Route path="/" exact={true}>
             <MainPage />
           </Route>
