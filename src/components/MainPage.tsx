@@ -33,11 +33,13 @@ const MainPage: React.FC = () => {
 
   useEffect(() => {
   	let hash = document.location.hash;
-	let qsa = document.querySelectorAll( hash );
-	let el = qsa[ 0 ];
-	if( el ) {
-		console.log( "scrolling to "+hash );
-		el.scrollIntoView( true );
+	if( hash ) {
+		let qsa = document.querySelectorAll( hash );
+		let el = qsa[ 0 ];
+		if( el ) {
+			console.log( "Scrolling to "+hash );
+			el.scrollIntoView( true );
+		}
 	}
   });
 
