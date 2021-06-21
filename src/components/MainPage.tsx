@@ -32,7 +32,8 @@ const MainPage: React.FC = () => {
   const themeContext = React.useContext(ThemeContext);
 
   useEffect(() => {
-	let qsa = document.querySelectorAll( document.location.hash );
+  	let hash = document.location.hash;
+	let qsa = document.querySelectorAll( hash );
 	let el = qsa[ 0 ];
 	if( el ) {
 		console.log( "scrolling to "+hash );
