@@ -11651,6 +11651,11 @@
   "resolved" "https://registry.npmjs.org/slash/-/slash-3.0.0.tgz"
   "version" "3.0.0"
 
+"sleepless@^4.4.3":
+  "integrity" "sha512-YfDbhdl1TL3OqGjkGWayC8Q70aeWIKp/K9KTnZMz3jtxXZpDpeeqX4UPsAfO1qeb1QH7WLwXp044/jbaboD3uQ=="
+  "resolved" "https://registry.npmjs.org/sleepless/-/sleepless-4.4.3.tgz"
+  "version" "4.4.3"
+
 "slice-ansi@^4.0.0":
   "integrity" "sha512-qMCMfhY040cVHT43K9BFygqYbUPFZKHOg7K73mtTWJRb8pyP3fzf4Ixd5SzdEJQ6MRUg/WBnOLxghZtKKurENQ=="
   "resolved" "https://registry.npmjs.org/slice-ansi/-/slice-ansi-4.0.0.tgz"
