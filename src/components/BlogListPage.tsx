@@ -91,11 +91,11 @@ const BlogListPage: React.FC<BlogListPageProps> = ({ collectionType }: BlogListP
           </div>
         ) : (
           <>
-            {details && (
+            {true && (
               <Row className="justify-content-center">
                 <Col md={10} className="text-center mt-5">
-                  <h1 className="text-light">{details?.title}</h1>
-                  <h4 className="text-light">{details.blurb}</h4>
+                  <h1 className="text-light">The Official Street Epistemology Blog</h1>
+                  <h4 className="text-light">We welcome thoughtful and relevant blog submissions from the SE community.</h4>
 				  <a className="text-secondary" href="/blog-submission-process" title="Link to information about submitting blog articles">How to submit a blog article.</a>
                 </Col>
               </Row>
